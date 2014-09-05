@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+    <head>
+        <title>{% block title %}InnovOrder{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        {% block meta %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+
+        {% block stylesheets %}
+            {% stylesheets 
+                'bundles/iodefault/css/bootstrap.min.css'
+                'bundles/iodefault/css/styles.css'
+                filter='yui_css,cssrewrite' 
+                output='css/main.css' %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" ref="{{ asset('favicon.ico') }}">
+    </head>
+    <body>
+        {% block body %}
+            {% include 'IODefaultBundle::header.html.twig' %} 
+
+            {% block content %}{% endblock %}
+            
+            {% include 'IODefaultBundle::footer.html.twig' %} 
+        {% endblock %}
+        
+        {% block javascripts %}
+            {% javascripts 
+                '@IODefaultBundle/Resources/public/js/jquery.min.js'
+                '@IODefaultBundle/Resources/public/js/bootstrap.min.js'
+                '@IODefaultBundle/Resources/public/js/main.js'
+                filter='yui_js'
+                output='js/main.js' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

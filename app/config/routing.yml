@@ -1,0 +1,10 @@
+io_default:
+    resource: "@IODefaultBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+io_order:
+    resource: "@IOOrderBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
