@@ -2,13 +2,11 @@
 
 {% block content %}
 <div class="container">
-    <h1>Mama Responsable</h1>
         {% for article in articles %}
     <div class="article">
-    <p>
-        {#<a href="{{path(}}"/>"#}
-        {{article.title}} posté le {{article.date|date('d/m/Y')}}
-    </p>
+        <img class="article-vignette" src="{{ asset(article.img) }}"/>
+        <h5 class="article-text"><strong>{{article.title}}</strong></h5>
+        <p class="article-text">{{article.short}}</p>
     </div>
     {%else%}
     <li>Pas encore d'article.</li>
