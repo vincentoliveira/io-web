@@ -1,7 +1,42 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
 {% block content %}
-<div class="container">
+    <div id="welcomeCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#welcomeCarousel" data-slide-to="0"></li>
+            <li data-target="#welcomeCarousel" data-slide-to="1" class="active"></li>
+            <li data-target="#welcomeCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item">
+                <div class="fill" style="background-image:url({{ asset("bundles/iodefault/images/home_slide3.jpg") }});"></div>
+                <div class="carousel-caption">
+                    <h1>MAMA STREET</h1>
+                    <p>Kidnappez la Mama pour un événement pour déduster une vraie cuisine Thaï</p>
+                    <div class="carousel-separator"></div>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">KIDNAP MAMA</a></p>
+                </div>
+            </div>
+            <div class="item active">
+                <div class="fill" style="background-image:url({{ asset("bundles/iodefault/images/home_slide1.jpg") }});"></div>
+                <div class="carousel-caption">
+                    <h1>MAMA STREET</h1>
+                    <p>Mama responsable Découvrez l'essence et l'authenticité de Mama Street.</p>
+                    <div class="carousel-separator"></div>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">THE AUTHENTIQUE FOOD</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url({{ asset("bundles/iodefault/images/home_slide2.jpg") }});"></div>
+                <div class="carousel-caption">
+                    <h1>MAMA TEAM</h1>
+                    <p>Découvrez la team MAMA STREET dans tous ces états</p>
+                    <div class="carousel-separator"></div>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">DECOUVRE LA MAMA TEAM</a></p>
+                </div>
+            </div>
+        </div><a class="left carousel-control" href="#welcomeCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#welcomeCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a></div>   
+    <div class="container">
     Hello World!
 </div>
 {% endblock content %}
