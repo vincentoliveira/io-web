@@ -2,6 +2,16 @@
 
 {% block content %}
 <div class="container">
-    Mama
+    <h1>Mama Responsable</h1>
+        {% for article in articles %}
+    <div class="article">
+    <p>
+        {#<a href="{{path(}}"/>"#}
+        {{article.title}} posté le {{article.date|date('d/m/Y')}}
+    </p>
+    </div>
+    {%else%}
+    <li>Pas encore d'article.</li>
+    {%endfor%}
 </div>
 {% endblock content %}

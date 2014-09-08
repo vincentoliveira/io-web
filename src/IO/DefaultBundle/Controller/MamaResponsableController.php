@@ -12,8 +12,16 @@ class MamaResponsableController extends BaseController
      * @Route("/mama", name="mama_responsable")
      * @Template()
      */
+    
+    
     public function indexAction()
     {
-        return array();
+        $list = array(
+            array('id' => 1, 'title' => "Premier article", 'date' => new \DateTime()),
+            array('id' => 2, 'title' => "Deuxième article", 'date' => new \DateTime()),
+            array('id' => 3, 'title' => "Troisième article", 'date' => new \DateTime())
+        );
+        return $this->render('IODefaultBundle:MamaResponsable:index.html.twig',
+                array('articles' => $list));
     }
 }
