@@ -1,0 +1,247 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 sept. 2014, 15:10:01
+    Author     : Romain
+*/
+
+/*CHARGEMENT DES POLICES*/
+
+@font-face {
+    font-family: '28_Days_Later';
+    src: url(../fonts/28_Days_Later.ttf);
+}
+@font-face {
+    font-family: 'Aller_Bd';
+    src: url(../fonts/Aller_Bd.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Bdlt';
+    src: url(../fonts/Aller_Bdlt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_lt';
+    src: url(../fonts/Aller_lt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Lt';
+    src: url(../fonts/Aller_Lt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Ltlt';
+    src: url(../fonts/Aller_LTlt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Rg';
+    src: url(../fonts/Aller_Rg.ttf);
+}
+
+@font-face {
+    font-family: 'AllerDisplay';
+    src: url(../fonts/AllerDisplay.ttf);
+}
+
+@font-face {
+    font-family: 'Juergen';
+    src: url(../fonts/Juergen.ttf);
+} 
+
+@font-face {
+    font-family: 'Lato-Black';
+    src: url(../fonts/Lato-Black.ttf);
+}
+
+
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url(../fonts/Lato-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url(../fonts/Lato-Regular.ttf);
+}
+
+/*HEADER*/
+
+html,
+body {
+    height: 100%;
+}
+  
+#site-header {
+    z-index: 200;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+ 
+#site-footer {
+    margin-top: -102px;
+    z-index: 200;
+    position: relative;
+}
+
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+.carousel .carousel-caption {
+    top: 30%;
+}
+
+.carousel .carousel-indicators {
+    bottom: 105px;
+}
+
+.carousel .carousel-separator {
+    background: url(../images/separation.png) no-repeat center;
+    height: 18px;
+}
+
+@media (max-width:480px) {
+    .carousel .carousel-caption {
+        top: auto;
+    }
+    
+    .carousel .carousel-caption .btn {
+        font-size: 1em;
+    }
+    
+    .carousel .carousel-indicators {
+        bottom: 10px;
+    }
+    
+    #site-footer {
+        margin: 0;
+    }
+}
+
+.carousel .btn-primary {
+    background: rgba(0, 0, 0, 0.7);
+    border:solid rgba(225, 225, 225, 0.8) 3px;
+    border-radius:2px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+
+}
+
+
+
+.carousel-indicators li {
+display: inline-block;
+width: 20px;
+height: 20px;
+margin: 5px;
+text-indent: -999px;
+cursor: pointer;
+background-color: #000 \9;
+background-color: rgba(0,0,0,0);
+border: 2px solid #fff;
+border-radius: 10px;
+}
+
+.carousel-indicators .active {
+width: 20px;
+height: 20px;
+margin: 5px;
+background-color: #fff;
+}
+
+@media (min-width:480px) {
+    .carousel .btn-primary {
+        width: 380px;
+        padding: 20px;
+    }
+}
+
+@media (min-width:768px) {
+    #site-header .container {
+    background:none;
+    }
+}
+
+#site-header .container {
+    background: url('../images/header-bg.jpg') repeat-x top;
+    box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+#site-header .brand {
+    width: 150px;
+    height: 150px;
+}
+
+
+#site-header .header-links {
+    background: white;
+}
+
+@media (min-width:768px) {
+    #site-header .header-links {
+        background: rgba(80, 40, 20, 0.2);
+        border-radius: 10px;
+        box-shadow: 0px 2px 15px -2px rgba(0, 0, 0, 0.7);
+        margin: 40px 0px 40px 150px;
+        height: 70px !important;
+        padding: 0;
+    }
+
+
+
+    #site-header .navbar-nav>li { 
+        text-align: center;
+        width:16%;
+    }
+}
+
+#site-header .navbar-nav>li { 
+    font-family: "Aller_Bd";
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+#site-header .navbar-nav>li>a>strong { 
+    text-transform: uppercase;
+    display: block;
+}
+
+#site-header .navbar-nav>li>a {
+    color: #000000;
+    padding: 10px 10px;
+}
+
+#site-header .navbar-nav>li>a:hover {
+    color: #560705;
+}
+
+
