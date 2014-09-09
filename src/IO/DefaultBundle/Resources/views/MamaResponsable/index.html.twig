@@ -2,14 +2,12 @@
 
 {% block content %}
 <div class="container">
-        {% for article in articles %}
+    {% for article in articles %}
     <div class="article">
         <img class="article-vignette" src="{{ asset(article.img) }}"/>
-        <h5 class="article-text"><strong>{{article.title}}</strong></h5>
-        <p class="article-text">{{article.short}}</p>
+        <h5><strong class="article-text">{{ article.title }}</strong></h5>
+        <p><span class="article-text">{{ article.short }}</span></p>
     </div>
-    {%else%}
-    <li>Pas encore d'article.</li>
     {%endfor%}
 </div>
 {% endblock content %}

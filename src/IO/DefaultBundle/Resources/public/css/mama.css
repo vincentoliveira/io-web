@@ -249,20 +249,19 @@ background-color: #fff;
 	border-radius: 6px;
 	color: white;
 	background-color: rgba(0, 0, 0, 0.6);
-	width: 100%;
-        margin-right: 50px;
-        margin-left: 50px;
+	width: 90%;
+        margin-right: 20px;
+        //margin-left: 50px;
 }
 
 .article-vignette
 {
-        width: 98%;
+        width: 100%;
         height: auto;
-        margin-top:  1%;
+        padding:  5px;
 }
 
 .article-text
 {
-    position: relative;
-    left: 50px;
+    padding-left: 5px;
 }
