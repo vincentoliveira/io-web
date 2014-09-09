@@ -1,4 +1,4 @@
-<div id="site-header" class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav id="site-header" class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -7,19 +7,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="/">
+            <a class="brand" href="{{ path('homepage') }}">
             <img class="navbar-brand" src="{{ asset("bundles/iodefault/images/logo.jpg") }}">
             </a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('menu') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-                <li><a href="{{ path('menu') }}"><i class="glyphicon glyphicon-cutlery"></i> La carte</a></li>
-                <li><a href="{{ path('mama_responsable') }}">Mama</a></li>
+                <li><a href="{{ path('mama_responsable') }}">MAMA RESPONSABLE</a></li>
+                <li><a href="{{ path('menu') }}">AUTHENTIC FOOD</a></li>
+                <li><a href="{{ path('menu') }}">OU TROUVER LA MAMA</a></li>
+                <li><a href="{{ path('menu') }}">KIDNAP MAMA</a></li>
+                <li><a href="{{ path('menu') }}">BANGKOK EXPERIENCE</a></li>
+                <li><a href="{{ path('menu') }}">BE A MAMA !</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+           {# <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ path('cart') }}"><i class="glyphicon glyphicon-shopping-cart"></i> 0 article</a></li>
-            </ul>
+            </ul>#}
         </div>
     </div>
-</div>
+</nav>
+        

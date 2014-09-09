@@ -1,13 +1,25 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
+{% block body_class %}
+body-mama
+{% endblock body_class %}
+
 {% block content %}
-<div class="container">
+<div class="article-liste">
+    <div class="container">
     {% for article in articles %}
-    <div class="article">
-        <img class="article-vignette" src="{{ asset(article.img) }}"/>
-        <h5><strong class="article-text">{{ article.title }}</strong></h5>
-        <p><span class="article-text">{{ article.short }}</span></p>
-    </div>
+        <div class="article" id="article{{ loop.index }}">
+            <div class="article-vignette">
+                <img src="{{ asset(article.img) }}"/>
+                <div class="overlay">
+                    <a href="#" class="expand">+</a>
+                </div>
+            </div>
+            <h5><strong class="article-text">{{ article.title }}</strong></h5>
+            <p class="article-text">{{ article.short }}</p>
+            <p class="article-text article-content">{{ article.content }}</p>
+        </div>
     {%endfor%}
+    </div>
 </div>
 {% endblock content %}
