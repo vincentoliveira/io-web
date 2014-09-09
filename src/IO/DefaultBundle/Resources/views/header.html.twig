@@ -1,6 +1,9 @@
+{% set current_route = app.request.attributes.get("_route")%}
+
 <nav id="site-header" class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
+            <img class="scotch" src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -8,18 +11,24 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="brand" href="{{ path('homepage') }}">
-                <img class="navbar-brand" src="{{ asset("bundles/iodefault/images/logo.jpg") }}" alt="MamaStreet" />
+                <img src="{{ asset("bundles/iodefault/images/logo.jpg") }}" alt="MamaStreet" />
             </a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ path('mama_responsable') }}">MAMA RESPONSABLE</a></li>
-                <li><a href="{{ path('menu') }}">AUTHENTIC FOOD</a></li>
-                <li><a href="{{ path('menu') }}">OU TROUVER LA MAMA</a></li>
-                <li><a href="{{ path('menu') }}">KIDNAP MAMA</a></li>
-                <li><a href="{{ path('menu') }}">BANGKOK EXPERIENCE</a></li>
-                <li><a href="{{ path('menu') }}">BE A MAMA !</a></li>
-            </ul>
+            <div class="header-btns">
+                <ul class="nav navbar-nav">
+                    <li {%if current_route == 'mama_responsable'%} class="active" {%endif%}>
+                        <a href="{{ path('mama_responsable') }}">MAMA RESPONSABLE</a></li>
+                    <li {%if current_route == 'menu'%} class="active" {%endif%}>
+                        <a href="{{ path('menu') }}">AUTHENTIC FOOD<br/>Menus</a></li>
+                    <li {%if current_route == 'menu'%} class="active" {%endif%}>
+                        <a href="{{ path('menu') }}">OU TROUVER LA MAMA<br/>Contact</a></li>
+                    <li {%if current_route == 'menu'%} class="active" {%endif%}>
+                        <a href="{{ path('menu') }}">KIDNAP MAMA<br/>Traiteur</a></li>
+                    <li {%if current_route == 'menu'%} class="active" {%endif%}>
+                        <a href="{{ path('menu') }}">BANGKOK EXPERIENCE<br/>Blog</a></li>
+                    <li {%if current_route == 'menu'%} class="active" {%endif%}>
+                        <a href="{{ path('menu') }}">BE A MAMA !<br/>Connexion</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

@@ -19,13 +19,13 @@ $(document).ready(function() {
     });
     $('.article').find('.article-content').toggle();
 
-    $('.article').find(".article-vignette").mouseenter(function() {
+    /*$('.article').find(".article-vignette").mouseenter(function() {
         console.log("ENTER");
         $(this).addClass("hover");
     });
     $('.article').find(".article-vignette").mouseleave(function() {
         $(this).removeClass("hover");
-    });
+    });*/
 
     // carousel
     $('#welcomeCarousel').carousel({

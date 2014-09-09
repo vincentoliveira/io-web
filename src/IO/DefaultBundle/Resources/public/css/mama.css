@@ -195,15 +195,41 @@ body {
 #site-header .container {
     background: url('../images/header-bg.jpg') repeat-x top;
     box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.8);
+    width: 85%;
 }
-
 
 #site-header .brand {
+    display: inline-block;
+    vertical-align: middle;
+}
+#site-header .brand img {
     width: 150px;
     height: 150px;
+    padding: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+#site-header .scotch {
+    position: absolute;
+    left: 50%;
+    z-index: 20;
 }
 
+#site-header .header-btns{
+    display: inline-block;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px black;
 
+#site-header .navbar-nav{
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px black;
+    //padding-left: 10px;
+}
+
+}
 #site-header .header-links {
     background: white;
 }
@@ -228,8 +254,8 @@ body {
 
 #site-header .navbar-nav>li { 
     font-family: "Aller_Bd";
-    font-size: 1.1em;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 300;
 }
 
 #site-header .navbar-nav>li>a>strong { 
@@ -239,13 +265,22 @@ body {
 
 #site-header .navbar-nav>li>a {
     color: #000000;
-    padding: 10px 10px;
+    padding: 3px 3px;
+    text-align: center;
 }
 
 #site-header .navbar-nav>li>a:hover {
-    color: #560705;
+    color: white;
 }
 
+.navbar-nav>.active>a {
+    color: white !important;
+    background: none !important;
+}
+.navbar-nav>.active>a:focus {
+    color: white;
+    background: none;
+}
 /*Body Styles: backgrounds*/
 body{
     width: 100%;
@@ -276,7 +311,7 @@ body{
 
 .article-liste
 {
-    margin-top: 80px;
+    margin-top: 175px;
     margin-bottom: 130px;
 }
 
@@ -307,8 +342,8 @@ body{
 {
     position: absolute;
     left: 40%;
-    top: 40%;//tmp
-    //background-color: rgba(0, 0, 0, 0.7);
+    top: 100px;//tmp
+    background: rgba(0, 0, 0, 0.7);
     border: 3px solid white;
     border-radius: 0px;
     color: white;
@@ -332,16 +367,11 @@ body{
     padding-bottom: 8px;
 }
 
-.article-content
-{
-    //display: none;
-}
-
-.overlay{
+/*.overlay{
     display: block;
     position: absolute;
     z-index: 20;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     overflow: hidden;
     transition: all 0.5s;
     
@@ -375,5 +405,5 @@ a.expand{
 .article-vignette.hover .overlay
 {
     height: 100%;
-}
+}*/
 

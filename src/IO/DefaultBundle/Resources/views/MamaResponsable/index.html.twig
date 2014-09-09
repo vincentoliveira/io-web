@@ -9,11 +9,9 @@ body-mama
     <div class="container">
     {% for article in articles %}
         <div class="article" id="article{{ loop.index }}">
+            <a class="btn default_btn article-btn" href="#">{{ article.title }}</a>
             <div class="article-vignette">
                 <img src="{{ asset(article.img) }}"/>
-                <div class="overlay">
-                    <a href="#" class="expand">+</a>
-                </div>
             </div>
             <h5><strong class="article-text">{{ article.title }}</strong></h5>
             <p class="article-text">{{ article.short }}</p>
