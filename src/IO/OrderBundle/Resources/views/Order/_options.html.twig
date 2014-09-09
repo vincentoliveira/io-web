@@ -1,0 +1,36 @@
+{% for category in menu %}
+    {% for product in category.products %}
+        {% if product.options is not empty %}
+<div id="product{{ product.id }}_options" class="option modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                <h4 class="modal-title">{{ product.name }}</h4>
+            </div>
+            <div class="modal-body">
+                {% for option in product.options %}
+                <div class="option">
+                    <h5>{{ option.name }}</h5>
+                    {% for choice in option.choices %}
+                    <div class="radio choice">
+                        <label>
+                            <input type="radio" name="{{ option.name }}" value="{{ choice.id }}" />
+                                {{ choice.name }}{% if choice.price > 0 %}
+                            <em>{{ choice.price|number_format(2, ',', ' ') }}€</em>{% endif %}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary btn-add-product options-selected" product-id="{{ product.id }}" action-url="{{ path('add_product') }}">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
