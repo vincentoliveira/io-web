@@ -2,6 +2,14 @@
 
 {% block content %}
 <div class="container">
-    Mama
+        {% for article in articles %}
+    <div class="article">
+        <img class="article-vignette" src="{{ asset(article.img) }}"/>
+        <h5 class="article-text"><strong>{{article.title}}</strong></h5>
+        <p class="article-text">{{article.short}}</p>
+    </div>
+    {%else%}
+    <li>Pas encore d'article.</li>
+    {%endfor%}
 </div>
 {% endblock content %}

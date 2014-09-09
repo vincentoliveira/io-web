@@ -268,4 +268,26 @@ body{
 
 .body3 {
     background-image: url(../images/home_slide3.jpg);
+
+.article
+{
+	border-radius: 6px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.6);
+	width: 100%;
+        margin-right: 50px;
+        margin-left: 50px;
+}
+
+.article-vignette
+{
+        width: 98%;
+        height: auto;
+        margin-top:  1%;
+}
+
+.article-text
+{
+    position: relative;
+    left: 50px;
 }
