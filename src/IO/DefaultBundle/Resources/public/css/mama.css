@@ -83,6 +83,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    background: none;
+    border: none;
 }
  
 #site-footer {
@@ -244,4 +246,26 @@ background-color: #fff;
     color: #560705;
 }
 
+/*Body Styles: backgrounds*/
+body{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    padding: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 
+.body1 {
+    background-image: url(../images/home_slide1.jpg);
+}
+
+.body2 {
+    background-image: url(../images/home_slide2.jpg);
+}
+
+.body3 {
+    background-image: url(../images/home_slide3.jpg);
+}
