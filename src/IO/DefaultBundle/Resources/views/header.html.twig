@@ -7,15 +7,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">InnovOrder</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">InnovOrder</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('menu') }}"><i class="glyphicon glyphicon-home"></i> </a></li>
+                <li><a href="{{ path('homepage') }}"><i class="glyphicon glyphicon-home"></i> </a></li>
                 <li><a href="{{ path('menu') }}"><i class="glyphicon glyphicon-cutlery"></i> La carte</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('cart') }}"><i class="glyphicon glyphicon-shopping-cart"></i> 0 article</a></li>
+                <li><a href="{{ path('cart') }}"><i class="glyphicon glyphicon-shopping-cart"></i> {{ cart.products|default([])|length }} article{% if cart and cart.products|length > 1 %}s{% endif %}</a></li>
             </ul>
         </div>
     </div>
