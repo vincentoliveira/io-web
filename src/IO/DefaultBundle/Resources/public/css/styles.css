@@ -10,3 +10,175 @@ body {
 .footer {
     margin-top: 50px;
 }
+
+
+/*
+ * MENU
+ */
+@media(min-width: 992px) {
+    #menu {
+        border-right: 1px solid black;
+    }
+}
+
+#menu h3 {
+    text-transform: uppercase;
+    text-align: left;
+    color: #000000;
+}
+
+#menu .description {
+    color: #000000;
+}
+
+.product {
+    float: left;
+    width: 100%;
+    padding: 5px;
+    margin: 1px 1px 0 0;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.product strong {
+    text-transform: uppercase;
+}
+
+.product em {
+    float: right;
+}
+
+.product p {
+    margin-top: 10px;
+    height: 60px;
+}
+
+.product img {
+    display: block;
+    width: auto;
+    margin: auto;
+}
+
+.product .btn {
+    text-transform: uppercase;
+}
+
+.product .btn-add-product {
+    display: block;
+}
+
+.choice label em {
+    font-size: 0.8em;
+}
+
+@media (min-width:480px){
+    .product {
+        width: 49%;
+    }
+
+    .product img {
+        height: 150px;
+    }
+}
+
+@media (min-width:768px){
+    .product {
+        width: 33%;
+    }
+
+    .product img {
+        height: 150px;
+    }
+}
+
+/*
+ * Cart
+ */
+#cart {
+    padding: 40px 5px 40px 20px;
+    font-size: 0.9em;
+}
+
+#cart h3 {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+#cart .section {
+    margin: 10px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid #000;
+    text-align: left;
+}
+
+#cart .section-first {
+    border-top: none;
+}
+
+#cart .section .info {
+    text-align: center;
+    display: block;
+    font-style: italic;
+}
+
+#cart .product-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#cart .product-list li {
+    clear: both;
+}
+
+#cart .product-list .count {
+    display: inline-block;
+}
+
+#cart .product-list .count a {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 12px;
+    text-align: center;
+}
+
+
+#cart .product-list strong {
+    display: inline-block;
+    font-weight: normal;
+}
+#cart .product-list em {
+    position: relative;
+    display: block;
+    float: right;
+}
+
+#cart .product-list .extra {
+    display: block; 
+    font-style: italic; 
+    font-size: 0.9em;
+    margin: -5px 0 0 45px;
+}
+
+
+#cart .section em {
+    float: right;
+    font-style: normal;
+}
+
+#cart .nb-products {
+    color: #666;
+}
+
+#cart .total {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+#cart .btn {
+    width: 100%;
+    margin-top: 20px;
+    text-transform: uppercase;
+}

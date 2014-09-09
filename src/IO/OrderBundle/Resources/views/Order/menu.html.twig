@@ -2,6 +2,41 @@
 
 {% block content %}
 <div class="container">
-    <h2>La carte</h2>
+    <div id="menu" class="col-md-9">
+        <ul class="nav nav-pills" role="tablist">
+        {% for category in menu %}
+            <li{% if loop.first %} class="active"{% endif %}><a href="#cat{{ category.id }}" role="tab" data-toggle="tab">{{ category.name }}</a></li>
+        {% endfor %}
+        </ul>
+        <div class="tab-content">
+        {% for category in menu %}
+            <div class="category tab-pane{% if loop.first %} active{% endif %}" id="cat{{ category.id }}">
+                <h3>{{ category.name }}</h3>
+                <p>{{ category.description }}</p>
+                {% for product in category.products %}
+                <div class="product" id="product24">
+                    {% if product.media is defined %}
+                    <img src="{{ product.media.path|apiMedia }}" alt="{{ product.name }}">
+                    {% else %}
+                    {% endif %}
+                    <div class="product-content">
+                        <strong>{{ product.name }}</strong>
+                        <em>{{ product.price|number_format(2, ',', ' ') }}€</em>
+                        <p>{{ product.description }}</p>
+                    </div>
+                    <a class="btn btn-primary btn-add-product" href="#cart" product-id="{{ product.id }}" action-url="{{ path('add_product') }}">Ajouter</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+
+        {% include 'IOOrderBundle:Order:_options.html.twig' %} 
+
+    </div>
+
+    {% include 'IOOrderBundle:Order:_cart.html.twig' %} 
+
 </div>
 {% endblock content %}
