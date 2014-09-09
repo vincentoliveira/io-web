@@ -221,12 +221,12 @@ body {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     box-shadow: 3px 3px 3px black;
+    padding-left: 10px;
 
 #site-header .navbar-nav{
     background: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     box-shadow: 3px 3px 3px black;
-    //padding-left: 10px;
 }
 
 }
@@ -256,6 +256,7 @@ body {
     font-family: "Aller_Bd";
     font-size: 12px;
     font-weight: 300;
+    vertical-align: middle;
 }
 
 #site-header .navbar-nav>li>a>strong { 
