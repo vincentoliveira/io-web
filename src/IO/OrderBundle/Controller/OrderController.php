@@ -38,8 +38,8 @@ class OrderController extends BaseController
         
         // not validated
         $cart = $this->storage->getCart();
-        if ($cart && isset($cart['order_type'])) {
-            unset($cart['order_type']);
+        if ($cart && $cart['validated']) {
+            $cart['validated'] = false;
             $this->storage->setCart($cart);
         }
 
@@ -121,14 +121,12 @@ class OrderController extends BaseController
     public function validRecapAction(Request $request)
     {
         $cart = $this->storage->getCart();
-        if ($cart === null || empty($cart['products'])) {
+        $orderType = $this->storage->get('order_type');
+        if ($cart === null || empty($cart['products']) || $orderType === null) {
             $this->redirect($this->generateUrl('menu'));
         }
         
-        $orderType = $request->request->get('order_type');
-        $orderPostcode = intval($request->request->get('order_postcode'));
-        $cart['order_type'] = $orderType;
-        $cart['order_postcode'] = $orderPostcode;       
+        $cart['validated'] = true;
         $this->storage->setCart($cart);
         
         return $this->redirect($this->generateUrl('auth'));

@@ -1,7 +1,7 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
 {% block content %}
-{% if cart and cart.order_type is defined %}
+{% if cart and cart.validated %}
 <div class="container">
     <div id="order_step">
         <ul>

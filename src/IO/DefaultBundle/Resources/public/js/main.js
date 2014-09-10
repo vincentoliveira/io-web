@@ -56,9 +56,9 @@ function enableButtons() {
 function hideShowPostcode() {
     var value = $("input[name=order_type]:checked").val();
     if (value === "livraison") {
-        $('.order-postcode').show();
+        $('.order-postcode').show().prop("required", true);
     } else {
-        $('.order-postcode').hide();
+        $('.order-postcode').hide().prop("required", false);
     }
 }
 

@@ -128,7 +128,7 @@ class AuthController extends BaseController
     {
         $cart = $this->stockage->getCart();
         $client = $this->stockage->getClient();
-        if ($client !== null && $cart !== null && isset($cart['order_type'])) {
+        if ($client !== null && $cart !== null && $cart['validated']) {
             return $this->redirect($this->generateUrl('payment_index'));
         } else {
             return $this->redirect($this->generateUrl('menu'));

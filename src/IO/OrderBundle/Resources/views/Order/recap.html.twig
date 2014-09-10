@@ -56,23 +56,6 @@
     </div>
 
     <form action="{{ path('order_valid_recap') }}" method="POST">
-        <h5>Sélectionner votre type de commande</h5>
-        <div class="radio-inline">
-            <label>
-                <input type="radio" name="order_type" value="emporter" required {% if order_type == "emporter" %}checked{% endif %} />
-                A emporter
-            </label>
-        </div>
-        <div class="radio-inline">
-            <label>
-                <input type="radio" name="order_type" value="livraison" {% if order_type == "livraison" %}checked{% endif %} />
-                A livrer
-            </label>
-        </div>
-        <div class="form-group-sm order-postcode form-inline">
-            <label for="code_postal">Code postal</label>
-            <input type="text" class="form-control form-" name="order_postcode" />
-        </div>
         <div>
             <a href="{{ path('menu') }}" class="btn btn-default">Retour à la carte</a>
             <button href="#" class="btn btn-primary">Valider ma commande</button>
