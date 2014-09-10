@@ -38,6 +38,7 @@ class OrderTwigExtension extends \Twig_Extension
     {
         return array(
             'cart' => $this->stockage->getCart(),
+            'order_type' => $this->stockage->get('order_type'),
         );
     }
 
@@ -50,6 +51,7 @@ class OrderTwigExtension extends \Twig_Extension
             'apiMedia' => new \Twig_SimpleFilter('apiMedia', array($this, 'apiMediaFilter')),
             'total_price' => new \Twig_SimpleFilter('total_price', array($this, 'totalPriceFilter')),
             'ordonate_products' => new \Twig_SimpleFilter('ordonate_products', array($this, 'ordonateProductsFilter')),
+            'product_media' => new \Twig_SimpleFilter('product_media', array($this, 'productMediaFilter')),
         );
     }
 
@@ -107,6 +109,26 @@ class OrderTwigExtension extends \Twig_Extension
         }
 
         return $result;
+    }
+
+    /**
+     * Get product media from product id
+     * 
+     * @param int $productId
+     * @return string
+     */
+    public function productMediaFilter($productId)
+    {
+        $menu = $this->stockage->getMenu();
+        foreach ($menu as $category) {
+            foreach ($category['products'] as $product) {
+                if ($product['id'] === $productId) {
+                    return $product['media']['path'];
+                }
+            }
+        }
+
+        return null;
     }
 
     /**

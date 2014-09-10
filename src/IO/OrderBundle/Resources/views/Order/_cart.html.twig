@@ -27,22 +27,22 @@
     </div>
     <h3><i class="glyphicon glyphicon-phone"></i> Commander</h3>
     <div class="section section-first">
-        <form action="{{ path('cart') }}" method="POST">
+        <form action="{{ path('order_recap') }}" method="POST">
             <div class="radio">
                 <label>
-                    <input type="radio" name="order_type" value="emporter" required>
+                    <input type="radio" name="order_type" value="emporter" required {% if order_type == "emporter" %}checked{% endif %} />
                     A emporter
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="order_type" value="livraison">
+                    <input type="radio" name="order_type" value="livraison" {% if order_type == "livraison" %}checked{% endif %} />
                     A livrer
                 </label>
             </div>
-            <div class="form-group">
+            <div class="form-group order-postcode">
                 <label for="code_postal">Code postal</label>
-                <input type="email" class="form-control" placeholder="75001">
+                <input type="text" class="form-control" name="order_postcode" />
             </div>
             <button class="btn btn-primary{% if cart is null or cart.products is empty %} disabled{% endif %}">Valider ma commande</button>
         </form>

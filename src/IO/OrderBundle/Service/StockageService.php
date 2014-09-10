@@ -33,6 +33,29 @@ class StockageService
     }
 
     /**
+     * Get value
+     * 
+     * @param type $name
+     * @return type
+     */
+    public function get($name)
+    {
+        return$this->getSession()->get($name);
+    }
+
+    /**
+     * Set value
+     * 
+     * @param type $name
+     * @param type $value
+     * @return type
+     */
+    public function set($name, $value)
+    {
+        return$this->getSession()->set($name, $value);
+    }
+    
+    /**
      * Get menu
      * 
      * @return array

@@ -9,7 +9,7 @@ function enableButtons() {
     $('.btn-add-product').click(function() {
         var productId = $(this).attr("product-id");
         var productOptionsId = "#product" + productId + "_options";
-        
+
         if ($(this).hasClass("options-selected") || $(productOptionsId).length === 0) {
             // add product
             var actionUrl = $(this).attr("action-url");
@@ -17,7 +17,7 @@ function enableButtons() {
             $(productOptionsId).find('.option').each(function() {
                 options.push($(this).find('input:checked').val());
             });
-            
+
             // call internal api
             $.post(actionUrl, {'product_id': productId, 'options': options}, function(data) {
                 $('.modal').modal('hide');
@@ -29,22 +29,41 @@ function enableButtons() {
             $(productOptionsId).modal({'show': true});
         }
     });
-    
+
     $('.btn-remove-product').off('click');
     $('.btn-remove-product').click(function() {
         var actionUrl = $(this).attr("action-url");
         var productId = $(this).attr("product-id");
         var extra = $(this).attr("extra");
-        
+
         // call internal api
-        $.post(actionUrl, {'product_id':productId, 'extra': extra}, function(data) {
+        $.post(actionUrl, {'product_id': productId, 'extra': extra}, function(data) {
             $("#cart").html($(data).find("#cart").html());
             enableButtons();
         });
     });
+    
+    $("input[name=order_type]").change(function() {
+        hideShowPostcode();
+        
+        var form = $(this).parents('form');
+        var url = form.attr("action");
+        console.log(form);
+        $.post(url, form.serialize());
+    });
+}
+
+function hideShowPostcode() {
+    var value = $("input[name=order_type]:checked").val();
+    if (value === "livraison") {
+        $('.order-postcode').show();
+    } else {
+        $('.order-postcode').hide();
+    }
 }
 
 
-$(document).ready(function(){
+$(document).ready(function() {
     enableButtons();
+    hideShowPostcode();
 });

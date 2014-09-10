@@ -6,6 +6,7 @@ use IO\DefaultBundle\Controller\DefaultController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use \Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use JMS\DiExtraBundle\Annotation\Inject;
 
 class OrderController extends BaseController
@@ -86,12 +87,38 @@ class OrderController extends BaseController
     }
 
     /**
-     * @Route("/panier", name="cart")
+     * @Route("/panier", name="order_recap")
      * @Template()
      */
-    public function cartAction()
+    public function recapAction(Request $request)
     {
+        $cart = $this->stockage->getCart();
+        if ($cart === null || empty($cart['products'])) {
+            $this->redirect($this->generateUrl('menu'));
+        }
+        
+        if ($request->isMethod('POST')) {
+            $orderType = $request->request->get('order_type');
+            $this->stockage->set('order_type', $orderType);
+            $orderPostcode = intval($request->request->get('order_postcode'));
+            $this->stockage->set('order_postcode', $orderPostcode);
+        }
         return array();
+    }
+    
+
+    /**
+     * @Route("/panier/confirm", name="order_valid_recap")
+     * @Method("POST")
+     */
+    public function validRecapAction(Request $request)
+    {
+        $orderType = $request->request->get('order_type');
+        $orderPostcode = intval($request->request->get('order_postcode'));
+        $this->stockage->set('order_type', $orderType);
+        $this->stockage->set('order_postcode', $orderPostcode);        
+        
+        return $this->redirect($this->generateUrl('auth'));
     }
 
     /**
