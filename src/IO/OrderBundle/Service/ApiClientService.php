@@ -14,6 +14,8 @@ use JMS\DiExtraBundle\Annotation\Inject;
  */
 class ApiClientService
 {
+ 
+    protected $headers;
     
     /**
      * Container
@@ -133,7 +135,48 @@ class ApiClientService
 
         return $result['cart'];
     }
+    
+    /**
+     * Anthenticate user
+     * 
+     * @param array $data
+     * @return client token or null
+     */
+    public function authenticate(array $data)
+    {
+        $baseUrl = $this->getBaseApiUrl();
+            
+        $url = sprintf("%s/client/auth.json", $baseUrl);
+        $jsonResults = $this->restCall($url, $data, "POST");
+        $result = json_decode($jsonResults, true);
+        if (!isset($result['client_token'])) {
+            return null;
+        }
+        
+        return $result['client_token'];
+    }
 
+    
+    /**
+     * Register new user
+     * 
+     * @param array $data
+     * @return client token or null
+     */
+    public function register(array $data)
+    {
+        $baseUrl = $this->getBaseApiUrl();
+            
+        $url = sprintf("%s/client/create.json", $baseUrl);
+        $jsonResults = $this->restCall($url, $data, "POST");
+        $result = json_decode($jsonResults, true);
+        if (!isset($result['client_token'])) {
+            return null;
+        }
+        
+        return $result['client_token'];
+    }
+    
     /**
      * Rest call. Return response.
      * 
@@ -143,7 +186,7 @@ class ApiClientService
      * @return type
      */
     protected function restCall($url, $data = array(), $method = "GET")
-    {
+    {        
         $query_data = http_build_query($data);
         
         $opts = array(
@@ -156,7 +199,14 @@ class ApiClientService
         );
         
         $context = stream_context_create($opts);
+        if (($stream = @fopen($url, 'r', false, $context)) !== false) {
+            $response = stream_get_contents($stream);
+            fclose($stream);
+            return $response;
+         }
 
-        return file_get_contents($url, false, $context);
+         $this->headers = $http_response_header;
+         
+        return null;
     }
 }

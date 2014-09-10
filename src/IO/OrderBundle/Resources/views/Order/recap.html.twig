@@ -1,0 +1,65 @@
+{% extends "IODefaultBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="container">
+    <div id="order_step">
+        <ul>
+            <li class="active">Etape 1 : Mon panier</li>
+            <li>Etape 2 : Connexion</li>
+            <li>Etape 3 : Paiement</li>
+            <li>Etape 4 : Validation</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container recap">
+    <h2>Mon panier</h2>
+    <div class="product-list">
+        <div class="row row-header">
+            <div class="col-md-offset-3 col-md-3">
+                Article
+            </div>
+            <div class="col-md-2">
+                Nombre
+            </div>
+            <div class="col-md-2">
+                Prix
+            </div>
+        </div>
+    {% for data in cart.products|ordonate_products %}
+    {% set product = data.product %}
+    {% set count = data.count %}
+        <div class="row">
+            <div class="col-md-3">
+                <img class=" img-rounded" src="{{ product.product_id|product_media|apiMedia }}" alt="" />
+            </div>
+            <div class="col-md-3">
+                <strong>{{ product.name }}</strong>
+                <em>{{ product.extra }}</em>
+            </div>
+            <div class="col-md-2">
+                {{ count }} x {{ product.price|number_format(2, ',', ' ') }}€
+            </div>
+            <div class="col-md-2">
+                {{ (count * product.price)|number_format(2, ',', ' ') }}€
+            </div>
+        </div>
+    {% endfor %}
+        <div class="row">
+            <div class="col-md-8">
+                <span class="right">Total TTC</span>
+            </div>
+            <div class="col-md-2">
+                <span class="total">{{ cart.total|number_format(2, ',', ' ') }}€</span>
+            </div>
+        </div>
+    </div>
+
+    <form action="{{ path('order_valid_recap') }}" method="POST">
+        <div>
+            <a href="{{ path('menu') }}" class="btn btn-default">Retour à la carte</a>
+            <button href="#" class="btn btn-primary">Valider ma commande</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

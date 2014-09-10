@@ -6,6 +6,7 @@ use IO\DefaultBundle\Controller\DefaultController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use \Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use JMS\DiExtraBundle\Annotation\Inject;
 
 class OrderController extends BaseController
@@ -14,10 +15,10 @@ class OrderController extends BaseController
     /**
      * Stockage Service
      * 
-     * @Inject("io.stockage_service")
-     * @var \IO\OrderBundle\Service\StockageService
+     * @Inject("io.storage_service")
+     * @var \IO\OrderBundle\Service\StorageService
      */
-    public $stockage;
+    public $storage;
 
     /**
      * ApiClient Service
@@ -34,6 +35,13 @@ class OrderController extends BaseController
     public function menuAction(Request $request)
     {
         $menu = $this->getMenu($request->query->has('reset'));
+        
+        // not validated
+        $cart = $this->storage->getCart();
+        if ($cart && $cart['validated']) {
+            $cart['validated'] = false;
+            $this->storage->setCart($cart);
+        }
 
         return array(
             'menu' => $menu,
@@ -47,14 +55,14 @@ class OrderController extends BaseController
     public function addProductAction(Request $request)
     {
         $menu = $this->getMenu($request->query->has('reset'));
-        $cart = $this->stockage->getCart();
+        $cart = $this->storage->getCart();
         $productId = $request->request->get('product_id');
         if ($productId) {
             $options = $request->request->get('options');
 
             $newCart = $this->apiClient->addProduct($cart, $productId, $options);
             if ($newCart) {
-                $this->stockage->setCart($newCart);
+                $this->storage->setCart($newCart);
             }
         }
         return array(
@@ -69,14 +77,14 @@ class OrderController extends BaseController
     public function removeProductAction(Request $request)
     {
         $menu = $this->getMenu($request->query->has('reset'));
-        $cart = $this->stockage->getCart();
+        $cart = $this->storage->getCart();
         $productId = $request->request->get('product_id');
         if ($productId && $cart) {
             $extra = $request->request->get('extra');
 
             $newCart = $this->apiClient->removeProduct($cart, $productId, $extra);
             if ($newCart) {
-                $this->stockage->setCart($newCart);
+                $this->storage->setCart($newCart);
             }
         }
 
@@ -86,12 +94,42 @@ class OrderController extends BaseController
     }
 
     /**
-     * @Route("/panier", name="cart")
+     * @Route("/panier", name="order_recap")
      * @Template()
      */
-    public function cartAction()
+    public function recapAction(Request $request)
     {
+        $cart = $this->storage->getCart();
+        if ($cart === null || empty($cart['products'])) {
+            $this->redirect($this->generateUrl('menu'));
+        }
+        
+        if ($request->isMethod('POST')) {
+            $orderType = $request->request->get('order_type');
+            $this->storage->set('order_type', $orderType);
+            $orderPostcode = intval($request->request->get('order_postcode'));
+            $this->storage->set('order_postcode', $orderPostcode);
+        }
         return array();
+    }
+    
+
+    /**
+     * @Route("/panier/confirm", name="order_valid_recap")
+     * @Method("POST")
+     */
+    public function validRecapAction(Request $request)
+    {
+        $cart = $this->storage->getCart();
+        $orderType = $this->storage->get('order_type');
+        if ($cart === null || empty($cart['products']) || $orderType === null) {
+            $this->redirect($this->generateUrl('menu'));
+        }
+        
+        $cart['validated'] = true;
+        $this->storage->setCart($cart);
+        
+        return $this->redirect($this->generateUrl('auth'));
     }
 
     /**
@@ -101,10 +139,10 @@ class OrderController extends BaseController
      */
     protected function getMenu($reset = false)
     {
-        $menu = $this->stockage->getMenu();
+        $menu = $this->storage->getMenu();
         if (!is_array($menu) || $reset) {
             $menu = $this->apiClient->loadMenu();
-            $this->stockage->setMenu($menu);
+            $this->storage->setMenu($menu);
         }
 
         return $menu;

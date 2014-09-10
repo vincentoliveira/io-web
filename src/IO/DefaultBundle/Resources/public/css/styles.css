@@ -182,3 +182,65 @@ body {
     margin-top: 20px;
     text-transform: uppercase;
 }
+
+/*
+ * STEPS
+ */
+#order_step {
+}
+
+#order_step ul {
+    list-style: none;
+    padding: 0;
+}
+
+#order_step ul > li {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+#order_step ul > li.active {
+    font-weight: bold;
+}
+
+#order_step ul > li+li:before {
+    padding: 0 5px;
+    color: #888;
+    content: ">\00a0";
+}
+
+/*
+ * Recap
+ */
+.recap .radio-inline {
+    margin-right: 30px;
+}
+.recap .form-group-sm {
+    display: inline-block;
+}
+.recap .product-list .row-header {
+    font-weight: bold;
+}
+.recap .product-list div {
+    padding: 5px;
+}
+.recap .product-list img {
+    height: 64px;
+    width: auto;
+}
+.recap .product-list strong {
+    display: block;
+}
+
+.recap .product-list .right {
+    display: block;
+    text-align: right;
+}
+.recap .product-list .total {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.login-form .btn, .register-form .btn {
+    float: right;
+}
