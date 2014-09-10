@@ -36,6 +36,11 @@ class AuthController extends BaseController
      */
     public function authAction()
     {
+        $client = $this->stockage->getClient();
+        if ($client !== null) {
+            return $this->redirect($this->generateUrl('login_success'));
+        } 
+        
         $loginForm = $this->createForm(new LoginType());
         $registerForm = $this->createForm(new RegisterType());
 
@@ -82,12 +87,19 @@ class AuthController extends BaseController
         $cart = $this->stockage->getCart();
         $client = $this->stockage->getClient();
         if ($client !== null && $cart !== null && isset($cart['order_type'])) {
-            echo '<pre>';
-            print_r($client);
-            die;
+            return $this->redirect($this->generateUrl('payment_index'));
         } else {
             return $this->redirect($this->generateUrl('menu'));
         }
     }
 
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logoutAction()
+    {
+        $this->stockage->setClient(null);
+        return $this->redirect($this->generateUrl('menu'));
+    }
 }

@@ -38,6 +38,7 @@ class OrderTwigExtension extends \Twig_Extension
     {
         return array(
             'cart' => $this->storage->getCart(),
+            'client' => $this->storage->getClient(),
             'order_type' => $this->storage->get('order_type'),
         );
     }

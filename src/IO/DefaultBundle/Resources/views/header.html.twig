@@ -15,6 +15,9 @@
                 <li><a href="{{ path('menu') }}"><i class="glyphicon glyphicon-cutlery"></i> La carte</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                {% if client %}
+                <li><p class="navbar-text">Bonjour {{ client.user.identity.firstname }}</p></li>
+                {% endif %}
                 <li><a href="{{ path('order_recap') }}"><i class="glyphicon glyphicon-shopping-cart"></i> {{ cart.products|default([])|length }} article{% if cart and cart.products|length > 1 %}s{% endif %}</a></li>
             </ul>
         </div>
