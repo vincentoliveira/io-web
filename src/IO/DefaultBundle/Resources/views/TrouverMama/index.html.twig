@@ -1,0 +1,33 @@
+{% extends "IODefaultBundle::layout.html.twig" %}
+
+{% block body_class %}
+body body-trouver
+{% endblock body_class %}
+
+{% block content %}
+<div class="container contact-page">
+    <div class="contact-map">
+        {{ googlemap }}
+    </div>
+    <div class="contact-info">
+        <div class="contact-over">
+            <span class="contact-trouvez">
+                <h2><strong>TROUVEZ<br/>LA MAMA !</strong></h2>
+                <p>09 RUE DE SAINT MIHIEL<br/>75015 PARIS</p>
+            </span>
+            <span class="contact-transport">
+                <h4 class="ratp metro">M</h3>
+                    <p>Passy, Ranelagh, Charles Michels, La Muette, Mirabeau</p>
+                    <h5 class="ratp">BUS</h4>
+                <p>22, 52, 62, 70, 72</p>
+                <h5 class="ratp">RER</h4>
+                    <p>Ligne C<br/>Avenue du Président Kennedy<br/>Maison de Radio France</p>
+            </span>
+            <span class="contact-sonnez">
+                <h2><strong>SONNEZ<br/>LA MAMA ?</strong></h2>
+                <p>06.99.45.47.94<br/>.</p>
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock content %}

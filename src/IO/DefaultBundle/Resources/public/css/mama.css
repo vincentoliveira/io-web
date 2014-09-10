@@ -198,38 +198,49 @@ body {
     width: 85%;
 }
 
+.container > .navbar-header{
+    width: 100%;
+}
+
 #site-header .brand {
     display: inline-block;
     vertical-align: middle;
 }
 #site-header .brand img {
-    width: 150px;
-    height: 150px;
-    padding: 8px;
+    width: 90%;
+    height: auto;
+    padding: 4px;
     display: inline-block;
     vertical-align: middle;
 }
 #site-header .scotch {
     position: absolute;
+    top: 2px;
     left: 50%;
     z-index: 20;
+    height: 25%;
 }
 
 #site-header .header-btns{
     display: inline-block;
+    padding-top: 9px;
+    padding-bottom: 9px;
     vertical-align: middle;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    box-shadow: 3px 3px 3px black;
-    padding-left: 10px;
+    box-shadow: 1px 1px 1px 1px #111;
+    position: relative;
+    top:17%;
+}
 
 #site-header .navbar-nav{
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    box-shadow: 3px 3px 3px black;
+    //background: rgba(0, 0, 0, 0.2);
+    //border-radius: 8px;
+    //box-shadow: 3px 3px 3px black;
+    width: 100%;
 }
 
-}
+
 #site-header .header-links {
     background: white;
 }
@@ -244,8 +255,8 @@ body {
         padding: 0;
     }
 
-
-
+    
+    
     #site-header .navbar-nav>li { 
         text-align: center;
         width:16%;
@@ -254,14 +265,14 @@ body {
 
 #site-header .navbar-nav>li { 
     font-family: "Aller_Bd";
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     vertical-align: middle;
 }
 
 #site-header .navbar-nav>li>a>strong { 
     text-transform: uppercase;
-    display: block;
+    display: inline-block;
 }
 
 #site-header .navbar-nav>li>a {
@@ -295,7 +306,7 @@ body{
 }
 
 .body1 {
-    background-image: url(../images/home_slide1.jpg);
+    background: url(../images/home_slide1.jpg) no-repeat center fixed;
 }
 
 .body2 {
@@ -306,8 +317,12 @@ body{
     background-image: url(../images/home_slide3.jpg);
 }
 
-.body-mama {
-    background-image: url(../images/bg_rice.jpg);
+.body-responsable {
+    background: url(../images/bg_rice.jpg) center fixed;
+}
+
+.body-trouver {
+    background: url(../images/bg-trouver-mama.jpg) center fixed;
 }
 
 .article-liste
@@ -408,3 +423,66 @@ a.expand{
     height: 100%;
 }*/
 
+.contact-page{
+    margin-top: 175px;
+    margin-bottom: 130px;
+    width: 92%;
+    margin-left: auto;
+    color: white;
+    text-align: center;
+}
+
+.contact-map{
+    height: 45%;
+    width: 100%;
+}
+
+.contact-info{
+    background: url(../images/tampon.jpg) center;
+    //height: 55%;
+}
+.contact-info strong{
+    font-family: '28_Days_Later';
+    font-size: 30px;
+    font-weight: 600;
+}
+.contact-over{
+    background: rgba(0, 0, 0, 0.7);
+    //height: 100%;
+}
+.contact-trouvez{
+    display: inline-block;
+    width: 30%;
+    padding-left: 0px;
+}
+.contact-transport{
+    display: inline-block;
+    width: 25%;
+    vertical-align: middle;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.contact-sonnez{
+    display: inline-block;
+    width: 30%;
+    padding-right: 0px;
+}
+
+.ratp{
+    border: 2px solid white;
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+    font-weight: 400;
+    border-radius: 13px;
+    margin-left: 45%;
+    padding-top: 5px;
+}
+.ratp p{
+    font-weight: 100;
+    font-size: 12px;
+}
+.metro{
+    font-size: 17px;
+    padding-top: 1px;
+}

@@ -13,16 +13,16 @@
             <a class="brand" href="{{ path('homepage') }}">
                 <img src="{{ asset("bundles/iodefault/images/logo.jpg") }}" alt="MamaStreet" />
             </a>
-            <div class="header-btns">
+            <div class="header-btns container">
                 <ul class="nav navbar-nav">
                     <li {%if current_route == 'mama_responsable'%} class="active" {%endif%}>
-                        <a href="{{ path('mama_responsable') }}">MAMA RESPONSABLE</a></li>
+                        <a href="{{ path('mama_responsable') }}">MAMA<br/>RESPONSABLE</a></li>
                     <li {%if current_route == 'menu'%} class="active" {%endif%}>
                         <a href="{{ path('menu') }}">AUTHENTIC FOOD<br/>Menus</a></li>
-                    <li {%if current_route == 'menu'%} class="active" {%endif%}>
-                        <a href="{{ path('menu') }}">OU TROUVER LA MAMA<br/>Contact</a></li>
-                    <li {%if current_route == 'menu'%} class="active" {%endif%}>
-                        <a href="{{ path('menu') }}">KIDNAP MAMA<br/>Traiteur</a></li>
+                    <li {%if current_route == 'trouver_mama'%} class="active" {%endif%}>
+                        <a href="{{ path('trouver_mama') }}">OU TROUVER<br/>LA MAMA<br/>Contact</a></li>
+                    <li {%if current_route == 'kidnap_mama'%} class="active" {%endif%}>
+                        <a href="{{ path('kidnap_mama') }}">KIDNAP MAMA<br/>Traiteur</a></li>
                     <li {%if current_route == 'menu'%} class="active" {%endif%}>
                         <a href="{{ path('menu') }}">BANGKOK EXPERIENCE<br/>Blog</a></li>
                     <li {%if current_route == 'menu'%} class="active" {%endif%}>
