@@ -5,14 +5,28 @@ body body-trouver
 {% endblock body_class %}
 
 {% block content %}
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+    function initialiser() {
+        console.log("LOAD MAP");
+        var latlng = new google.maps.LatLng(48.867142, 2.352469);
+        var options = {
+            center: latlng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var gmap = new google.maps.Map(document.getElementById("gmap"), options);
+        console.log("LOAD MAP");
+    }
+</script>
 <div class="container contact-page">
-    <div class="contact-map">
-        {{ googlemap }}
-    </div>
+    <!--div id="gmap" class="contact-map" onload="initialiser();">
+    </div-->
     <div class="contact-info">
         <div class="contact-over">
             <span class="contact-trouvez">
-                <h2><strong>TROUVEZ<br/>LA MAMA !</strong></h2>
+                <h2><strong>TROUVEZ<br/>LA MAMA</strong></h2>
                 <p>09 RUE DE SAINT MIHIEL<br/>75015 PARIS</p>
             </span>
             <span class="contact-transport">
@@ -24,7 +38,7 @@ body body-trouver
                     <p>Ligne C<br/>Avenue du Président Kennedy<br/>Maison de Radio France</p>
             </span>
             <span class="contact-sonnez">
-                <h2><strong>SONNEZ<br/>LA MAMA ?</strong></h2>
+                <h2><strong>SONNEZ<br/>LA MAMA</strong></h2>
                 <p>06.99.45.47.94<br/>.</p>
             </span>
         </div>

@@ -1,8 +1,68 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
 {% block body_class %}
-body body-trouver
+body body-traiteur
 {% endblock body_class %}
 
 {% block content %}
+<div class="traiteur-page">
+    <div class="traiteur-info">
+        <img src="bundles/iodefault/images/kidnap.jpg"/>
+        <h3><strong>Kidnap Mama</strong></h3>
+        <p>Oportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.<br/>
+            Accedebant enim eius asperitati, ubi inminuta vel laesa amplitudo imperii dicebatur, et iracundae suspicionum quantitati proximorum cruentae blanditiae exaggerantium incidentia et dolere inpendio simulantium, si principis periclitetur vita, a cuius salute velut filo pendere statum orbis terrarum fictis vocibus exclamabant.<br/>
+            Intellectum est enim mihi quidem in multis, et maxime in me ipso, sed paulo ante in omnibus, cum M. Marcellum senatui reique publicae concessisti, commemoratis praesertim offensionibus, te auctoritatem huius ordinis dignitatemque rei publicae tuis vel doloribus vel suspicionibus anteferre. Ille quidem fructum omnis ante actae vitae hodierno die maximum cepit, cum summo consensu senatus, tum iudicio tuo gravissimo et maximo. Ex quo profecto intellegis quanta in dato beneficio sit laus, cum in accepto sit tanta gloria.<br/>
+            Exsistit autem hoc loco quaedam quaestio subdifficilis, num quando amici novi, digni amicitia, veteribus sint anteponendi, ut equis vetulis teneros anteponere solemus. Indigna homine dubitatio! Non enim debent esse amicitiarum sicut aliarum rerum satietates; veterrima quaeque, ut ea vina, quae vetustatem ferunt, esse debet suavissima; verumque illud est, quod dicitur, multos modios salis simul edendos esse, ut amicitiae munus expletum sit.<p>
+    </div>
+    <div class="traiteur-form">
+        <form method="post" {{ form_enctype(form) }}>
+            {{ form_errors(form) }}
+            <h4><strong>Commande traiteur</strong></h4>
+            <div>
+                <div class="inline-block">
+                    <p>{{ form_label(form.nom, "Nom") }}</p>
+                    {{ form_errors(form.nom) }}
+                    {{ form_widget(form.nom) }}
+                </div>
+                <div class="inline-block">
+                    <p>{{ form_label(form.prenom, "Prénom") }}</p>
+                    {{ form_errors(form.prenom) }}
+                    {{ form_widget(form.prenom) }}
+                </div>
+            </div>
+            <div>
+                <p>{{ form_label(form.adress, "Adresse") }}</p>
+                {{ form_errors(form.adress) }}
+                {{ form_widget(form.adress) }}
+            </div>
+            <div>
+                <p>{{ form_label(form.phone, "Téléphone") }}</p>
+                {{ form_errors(form.phone) }}
+                {{ form_widget(form.phone) }}
+            </div>
+            <div>
+                <p>{{ form_label(form.place, "Lieu") }}</p>
+                {{ form_errors(form.place) }}
+                {{ form_widget(form.place) }}
+                <p>{{ form_label(form.number, "Nombre de personnes") }}</p>
+                {{ form_errors(form.number) }}
+                {{ form_widget(form.number) }}
+            </div>
+            <div>
+                <p>{{ form_label(form.placeadress, "Adresse") }}</p>
+                {{ form_errors(form.placeadress) }}
+                {{ form_widget(form.placeadress) }}
+            </div>
+            <div>
+                <p>{{ form_label(form.description,
+                    "Décrivez rapidement l'évènement que vous souhaitez organiser") }}</p>
+                {{ form_errors(form.description) }}
+                {{ form_widget(form.description) }}
+            </div>
+            {{ form_rest(form) }}
+            <input type="submit" class="btn btn-primary" />
+            <h4><strong>On vous répond en 24h !</strong></h4>
+        </form>
+    </div>
+</div>
 {% endblock content %}
