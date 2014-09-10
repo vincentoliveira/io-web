@@ -88,7 +88,7 @@ body {
 }
 
 #site-footer {
-    margin-top: -102px;
+    margin-top: 50px;
     z-index: 200;
     position: relative;
     vertical-align: bottom;
