@@ -21,7 +21,7 @@ class RegisterType extends AbstractType
                     'attr' => array('class' => 'form-control'),
                     'constraints' => new \Symfony\Component\Validator\Constraints\NotBlank(array(
                         'message' => 'Veuillez renseigner votre prénom',
-                    )),
+                            )),
                     'required' => true,
                 ))
                 ->add('lastname', 'text', array(
@@ -29,7 +29,18 @@ class RegisterType extends AbstractType
                     'attr' => array('class' => 'form-control'),
                     'constraints' => new \Symfony\Component\Validator\Constraints\NotBlank(array(
                         'message' => 'Veuillez renseigner votre nom',
+                            )),
+                    'required' => true,
+                ))
+                ->add('birthdate', 'date', array(
+                    'label' => 'Date de naissance (jj/mm/aaaa)',
+                    'format' => 'dd/MM/yyyy',
+                    'widget' => 'single_text',
+                    'attr' => array('class' => 'form-control date-masked'),
+                    'constraints' => new \Symfony\Component\Validator\Constraints\NotBlank(array(
+                        'message' => 'Veuillez renseigner votre date de naissance',
                     )),
+                    'years' => range(date('Y') - 18, 1900),
                     'required' => true,
                 ))
                 ->add('email', 'email', array(
@@ -37,8 +48,21 @@ class RegisterType extends AbstractType
                     'attr' => array('class' => 'form-control'),
                     'constraints' => new \Symfony\Component\Validator\Constraints\NotBlank(array(
                         'message' => 'Veuillez renseigner votre adresse email',
-                    )),
+                            )),
                     'required' => true,
+                ))
+                ->add('plainPassword', 'repeated', array(
+                    'type' => 'password',
+                    'invalid_message' => 'Les mots de passe doivent correspondre',
+                    'options' => array('required' => true),
+                    'first_options' => array(
+                        'label' => 'Mot de passe',
+                        'attr' => array('class' => 'form-control'),
+                    ),
+                    'second_options' => array(
+                        'label' => 'Mot de passe (validation)',
+                        'attr' => array('class' => 'form-control'),
+                    ),
                 ))
         ;
     }
@@ -48,6 +72,7 @@ class RegisterType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        
     }
 
     /**

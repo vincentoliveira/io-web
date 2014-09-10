@@ -40,6 +40,7 @@ class OrderController extends BaseController
         $cart = $this->storage->getCart();
         if ($cart && isset($cart['order_type'])) {
             unset($cart['order_type']);
+            $this->storage->setCart($cart);
         }
 
         return array(

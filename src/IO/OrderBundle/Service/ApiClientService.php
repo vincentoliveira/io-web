@@ -156,6 +156,27 @@ class ApiClientService
         return $result['client_token'];
     }
 
+    
+    /**
+     * Register new user
+     * 
+     * @param array $data
+     * @return client token or null
+     */
+    public function register(array $data)
+    {
+        $baseUrl = $this->getBaseApiUrl();
+            
+        $url = sprintf("%s/client/create.json", $baseUrl);
+        $jsonResults = $this->restCall($url, $data, "POST");
+        $result = json_decode($jsonResults, true);
+        if (!isset($result['client_token'])) {
+            return null;
+        }
+        
+        return $result['client_token'];
+    }
+    
     /**
      * Rest call. Return response.
      * 

@@ -66,4 +66,6 @@ function hideShowPostcode() {
 $(document).ready(function() {
     enableButtons();
     hideShowPostcode();
+    
+    $(".date-masked").mask("99/99/9999");
 });

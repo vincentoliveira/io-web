@@ -1,6 +1,7 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
 {% block content %}
+{% if cart and cart.order_type is defined %}
 <div class="container">
     <div id="order_step">
         <ul>
@@ -11,6 +12,7 @@
         </ul>
     </div>
 </div>
+{% endif %}
 <div class="container">
     <div class="col-md-6">
         <h2>Connexion</h2>
@@ -29,7 +31,8 @@
     </div>
     <div class="col-md-6">
         <h2>Inscription</h2>
-        <form method="POST" action="#" class="register-form">
+        <form method="POST" action="{{ path('register') }}" class="register-form">
+            {{ form_errors(registerForm) }}
             <div class="form-group">
             {{ form_row(registerForm.firstname) }}
             </div>
@@ -37,7 +40,16 @@
             {{ form_row(registerForm.lastname) }}
             </div>
             <div class="form-group">
+            {{ form_row(registerForm.birthdate) }}
+            </div>
+            <div class="form-group">
             {{ form_row(registerForm.email) }}
+            </div>
+            <div class="form-group">
+            {{ form_row(registerForm.plainPassword.first) }}
+            </div>
+            <div class="form-group">
+            {{ form_row(registerForm.plainPassword.second) }}
             </div>
             {{ form_rest(registerForm) }}
             <button class="btn btn-default">Inscription</button>

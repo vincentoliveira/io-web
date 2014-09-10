@@ -56,6 +56,11 @@ class AuthController extends BaseController
      */
     public function loginAction(Request $request)
     {
+        $client = $this->stockage->getClient();
+        if ($client !== null) {
+            return $this->redirect($this->generateUrl('login_success'));
+        } 
+        
         $loginForm = $this->createForm(new LoginType());
 
         if ($request->isMethod("POST")) {
@@ -78,6 +83,43 @@ class AuthController extends BaseController
             'registerForm' => $registerForm->createView(),
         );
     }
+    
+    /**
+     * @Route("/register", name="register")
+     * @Template("IOOrderBundle:Auth:auth.html.twig")
+     */
+    public function registerAction(Request $request)
+    {
+        $client = $this->stockage->getClient();
+        if ($client !== null) {
+            return $this->redirect($this->generateUrl('login_success'));
+        } 
+        
+        $registerForm = $this->createForm(new RegisterType());
+        
+        if ($request->isMethod("POST")) {
+            $registerForm->submit($request);
+            if ($registerForm->isValid()) {
+                $data = $registerForm->getData();
+                $data['birthdate'] = $data['birthdate']->format('d/m/Y');
+                $client = $this->apiClient->register($data);
+                if ($client === null) {
+                    $error = new FormError("Une erreur s'est produite.");
+                    $registerForm->addError($error);
+                } else {
+                    $this->stockage->setClient($client);
+                    return $this->redirect($this->generateUrl('login_success'));
+                }
+            }
+        }
+
+        $loginForm = $this->createForm(new LoginType());
+        return array(
+            'loginForm' => $loginForm->createView(),
+            'registerForm' => $registerForm->createView(),
+        );
+    }
+    
 
     /**
      * @Route("/login_success", name="login_success")

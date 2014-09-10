@@ -16,7 +16,15 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if client %}
-                <li><p class="navbar-text">Bonjour {{ client.user.identity.firstname }}</p></li>
+                <li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bonjour {{ client.user.identity.firstname }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                    <li><a href="{{ path('login') }}">Connexion</a></li>
                 {% endif %}
                 <li><a href="{{ path('order_recap') }}"><i class="glyphicon glyphicon-shopping-cart"></i> {{ cart.products|default([])|length }} article{% if cart and cart.products|length > 1 %}s{% endif %}</a></li>
             </ul>
