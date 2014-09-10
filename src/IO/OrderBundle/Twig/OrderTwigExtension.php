@@ -26,10 +26,10 @@ class OrderTwigExtension extends \Twig_Extension
     /**
      * Stockage Service
      * 
-     * @Inject("io.stockage_service")
-     * @var \IO\OrderBundle\Service\StockageService
+     * @Inject("io.storage_service")
+     * @var \IO\OrderBundle\Service\StorageService
      */
-    public $stockage;
+    public $storage;
 
     /**
      * {@inheritDoc}
@@ -37,8 +37,8 @@ class OrderTwigExtension extends \Twig_Extension
     public function getGlobals()
     {
         return array(
-            'cart' => $this->stockage->getCart(),
-            'order_type' => $this->stockage->get('order_type'),
+            'cart' => $this->storage->getCart(),
+            'order_type' => $this->storage->get('order_type'),
         );
     }
 
@@ -119,7 +119,7 @@ class OrderTwigExtension extends \Twig_Extension
      */
     public function productMediaFilter($productId)
     {
-        $menu = $this->stockage->getMenu();
+        $menu = $this->storage->getMenu();
         foreach ($menu as $category) {
             foreach ($category['products'] as $product) {
                 if ($product['id'] === $productId) {

@@ -15,10 +15,10 @@ class OrderController extends BaseController
     /**
      * Stockage Service
      * 
-     * @Inject("io.stockage_service")
-     * @var \IO\OrderBundle\Service\StockageService
+     * @Inject("io.storage_service")
+     * @var \IO\OrderBundle\Service\StorageService
      */
-    public $stockage;
+    public $storage;
 
     /**
      * ApiClient Service
@@ -35,6 +35,12 @@ class OrderController extends BaseController
     public function menuAction(Request $request)
     {
         $menu = $this->getMenu($request->query->has('reset'));
+        
+        // not validated
+        $cart = $this->storage->getCart();
+        if ($cart && isset($cart['order_type'])) {
+            unset($cart['order_type']);
+        }
 
         return array(
             'menu' => $menu,
@@ -48,14 +54,14 @@ class OrderController extends BaseController
     public function addProductAction(Request $request)
     {
         $menu = $this->getMenu($request->query->has('reset'));
-        $cart = $this->stockage->getCart();
+        $cart = $this->storage->getCart();
         $productId = $request->request->get('product_id');
         if ($productId) {
             $options = $request->request->get('options');
 
             $newCart = $this->apiClient->addProduct($cart, $productId, $options);
             if ($newCart) {
-                $this->stockage->setCart($newCart);
+                $this->storage->setCart($newCart);
             }
         }
         return array(
@@ -70,14 +76,14 @@ class OrderController extends BaseController
     public function removeProductAction(Request $request)
     {
         $menu = $this->getMenu($request->query->has('reset'));
-        $cart = $this->stockage->getCart();
+        $cart = $this->storage->getCart();
         $productId = $request->request->get('product_id');
         if ($productId && $cart) {
             $extra = $request->request->get('extra');
 
             $newCart = $this->apiClient->removeProduct($cart, $productId, $extra);
             if ($newCart) {
-                $this->stockage->setCart($newCart);
+                $this->storage->setCart($newCart);
             }
         }
 
@@ -92,16 +98,16 @@ class OrderController extends BaseController
      */
     public function recapAction(Request $request)
     {
-        $cart = $this->stockage->getCart();
+        $cart = $this->storage->getCart();
         if ($cart === null || empty($cart['products'])) {
             $this->redirect($this->generateUrl('menu'));
         }
         
         if ($request->isMethod('POST')) {
             $orderType = $request->request->get('order_type');
-            $this->stockage->set('order_type', $orderType);
+            $this->storage->set('order_type', $orderType);
             $orderPostcode = intval($request->request->get('order_postcode'));
-            $this->stockage->set('order_postcode', $orderPostcode);
+            $this->storage->set('order_postcode', $orderPostcode);
         }
         return array();
     }
@@ -113,10 +119,16 @@ class OrderController extends BaseController
      */
     public function validRecapAction(Request $request)
     {
+        $cart = $this->storage->getCart();
+        if ($cart === null || empty($cart['products'])) {
+            $this->redirect($this->generateUrl('menu'));
+        }
+        
         $orderType = $request->request->get('order_type');
         $orderPostcode = intval($request->request->get('order_postcode'));
-        $this->stockage->set('order_type', $orderType);
-        $this->stockage->set('order_postcode', $orderPostcode);        
+        $cart['order_type'] = $orderType;
+        $cart['order_postcode'] = $orderPostcode;       
+        $this->storage->setCart($cart);
         
         return $this->redirect($this->generateUrl('auth'));
     }
@@ -128,10 +140,10 @@ class OrderController extends BaseController
      */
     protected function getMenu($reset = false)
     {
-        $menu = $this->stockage->getMenu();
+        $menu = $this->storage->getMenu();
         if (!is_array($menu) || $reset) {
             $menu = $this->apiClient->loadMenu();
-            $this->stockage->setMenu($menu);
+            $this->storage->setMenu($menu);
         }
 
         return $menu;

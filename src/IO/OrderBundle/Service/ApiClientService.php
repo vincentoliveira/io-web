@@ -15,8 +15,7 @@ use JMS\DiExtraBundle\Annotation\Inject;
 class ApiClientService
 {
  
-    protected $response;
-    protected $code;
+    protected $headers;
     
     /**
      * Container
@@ -149,7 +148,7 @@ class ApiClientService
             
         $url = sprintf("%s/client/auth.json", $baseUrl);
         $jsonResults = $this->restCall($url, $data, "POST");
-        $result = @json_decode($jsonResults, true);
+        $result = json_decode($jsonResults, true);
         if (!isset($result['client_token'])) {
             return null;
         }
@@ -179,14 +178,14 @@ class ApiClientService
         );
         
         $context = stream_context_create($opts);
-
-        $header = null;
         if (($stream = @fopen($url, 'r', false, $context)) !== false) {
             $response = stream_get_contents($stream);
             fclose($stream);
             return $response;
          }
 
-        return $http_response_header;
+         $this->headers = $http_response_header;
+         
+        return null;
     }
 }

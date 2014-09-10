@@ -9,13 +9,14 @@ use Symfony\Component\HttpFoundation\Session\Session;
  * Description of StockageService
  *
  * @author vincent
- * @Service("io.stockage_service")
+ * @Service("io.storage_service")
  */
-class StockageService
+class StorageService
 {
 
     private static $_session_menu = 'io_menu';
     private static $_session_cart = 'io_cart';
+    private static $_session_client = 'io_client';
 
     /**
      *
@@ -90,5 +91,24 @@ class StockageService
     public function setCart($cart)
     {
         return $this->getSession()->set(self::$_session_cart, $cart);
+    }
+
+
+    /**
+     * Get client
+     * 
+     * @return array
+     */
+    public function getClient()
+    {
+        return $this->getSession()->get(self::$_session_client);
+    }
+
+    /**
+     * Set client
+     */
+    public function setClient($cart)
+    {
+        return $this->getSession()->set(self::$_session_client, $cart);
     }
 }

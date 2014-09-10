@@ -17,8 +17,8 @@ class AuthController extends BaseController
     /**
      * Stockage Service
      * 
-     * @Inject("io.stockage_service")
-     * @var \IO\OrderBundle\Service\StockageService
+     * @Inject("io.storage_service")
+     * @var \IO\OrderBundle\Service\StorageService
      */
     public $stockage;
 
@@ -56,14 +56,13 @@ class AuthController extends BaseController
         if ($request->isMethod("POST")) {
             $loginForm->submit($request);
             if ($loginForm->isValid()) {
-                $token = $this->apiClient->authenticate($loginForm->getData());
-                if ($token === null) {
+                $client = $this->apiClient->authenticate($loginForm->getData());
+                if ($client === null) {
                     $error = new FormError("La combinaison email/mot de passe est incorrecte.");
                     $loginForm->addError($error);
                 } else {
-                    echo '<pre>';
-                    print_r($token);
-                    die;
+                    $this->stockage->setClient($client);
+                    return $this->redirect($this->generateUrl('login_success'));
                 }
             }
         }
@@ -73,6 +72,22 @@ class AuthController extends BaseController
             'loginForm' => $loginForm->createView(),
             'registerForm' => $registerForm->createView(),
         );
+    }
+
+    /**
+     * @Route("/login_success", name="login_success")
+     */
+    public function loginSuccessAction()
+    {
+        $cart = $this->stockage->getCart();
+        $client = $this->stockage->getClient();
+        if ($client !== null && $cart !== null && isset($cart['order_type'])) {
+            echo '<pre>';
+            print_r($client);
+            die;
+        } else {
+            return $this->redirect($this->generateUrl('menu'));
+        }
     }
 
 }
