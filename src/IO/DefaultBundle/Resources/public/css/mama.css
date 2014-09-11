@@ -70,21 +70,94 @@ and open the template in the editor.
     src: url(../fonts/Lato-Regular.ttf);
 }
 
-/*HEADER*/
-
 html,
 body {
     height: 100%;
 }
-
-#site-header {
-    z-index: 200;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+/*HEADER*/
+.navbar {
     background: none;
-    border: none;
+    border: none;;
+}
+
+.navbar-container {
+    background: url('../images/header-bg.jpg') repeat-x top;
+    box-shadow: 0 2px 15px 4px rgba(0,0,0,0.8);
+}
+
+.navbar .navbar-header {
+    margin: 0 20px;
+}
+
+.navbar .navbar-header .brand {
+    display: inline-block;
+    color: #560705;
+    font-weight: bolder;
+    margin-top: 16px;
+}
+
+
+.navbar .scotch {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    height: 35px;
+}
+
+.navbar .navbar-nav {
+    background: url('../images/header-bg.jpg') repeat-x top;
+    margin: 20px 0 20px 20px;
+    padding: 0;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.navbar .navbar-nav > li > a {
+    color: #000;
+    text-align: center;
+}
+
+.navbar .navbar-nav > li > a {
+    font-family: "Aller_Bd";
+    font-weight: 300;
+}
+
+.navbar .navbar-nav > li.active > a {
+    color: #fff;
+    background: none;
+}
+.navbar .navbar-nav > li.active > a:hover {
+    background: none;
+    color: #560705;
+}
+.navbar .navbar-nav > li > a:hover {
+    color: #560705;
+}
+
+@media(max-width: 991px) {
+    .navbar .navbar-header {
+        margin: 0;
+    }
+    
+    .navbar .navbar-nav > li > a {
+        font-size: 13px;
+    }
+}
+@media(max-width: 767px) {
+    .navbar .navbar-nav {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+    .navbar .navbar-collapse {
+        padding: 0;
+    }
+    
+    .navbar .navbar-nav > li > a {
+        color: #ccc;
+    }
 }
 
 #site-footer {
@@ -94,13 +167,7 @@ body {
     vertical-align: bottom;
 }
 
-.carousel,
-.item,
-.active {
-    height: 100%;
-}
-
-.carousel-inner {
+.carousel, .carousel-inner, .carousel-control {
     height: 100%;
 }
 
@@ -187,113 +254,6 @@ body {
     }
 }
 
-@media (min-width:768px) {
-    #site-header .container {
-        background:none;
-    }
-}
-
-#site-header .container {
-    background: url('../images/header-bg.jpg') repeat-x top;
-    box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.8);
-    width: 85%;
-}
-
-.container > .navbar-header{
-    width: 100%;
-}
-
-#site-header .brand {
-    display: inline-block;
-    vertical-align: middle;
-}
-#site-header .brand img {
-    width: 90%;
-    height: auto;
-    padding: 4px;
-    display: inline-block;
-    vertical-align: middle;
-}
-#site-header .scotch {
-    position: absolute;
-    top: 2px;
-    left: 50%;
-    z-index: 20;
-    height: 25%;
-}
-
-#site-header .header-btns{
-    display: inline-block;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    vertical-align: middle;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
-    position: relative;
-    top:17%;
-}
-
-#site-header .navbar-nav{
-    //background: rgba(0, 0, 0, 0.2);
-    //border-radius: 8px;
-    //box-shadow: 3px 3px 3px black;
-    width: 100%;
-}
-
-
-#site-header .header-links {
-    background: white;
-}
-
-@media (min-width:768px) {
-    #site-header .header-links {
-        background: rgba(80, 40, 20, 0.2);
-        border-radius: 10px;
-        box-shadow: 0px 2px 15px -2px rgba(0, 0, 0, 0.7);
-        margin: 40px 0px 40px 150px;
-        height: 70px !important;
-        padding: 0;
-    }
-
-    
-    
-    #site-header .navbar-nav>li { 
-        text-align: center;
-        width:16%;
-    }
-}
-
-#site-header .navbar-nav>li { 
-    font-family: "Aller_Bd";
-    font-size: 13px;
-    font-weight: 300;
-    vertical-align: middle;
-}
-
-#site-header .navbar-nav>li>a>strong { 
-    text-transform: uppercase;
-    display: inline-block;
-}
-
-#site-header .navbar-nav>li>a {
-    color: #000000;
-    padding: 3px 3px;
-    text-align: center;
-}
-
-#site-header .navbar-nav>li>a:hover {
-    color: white;
-}
-
-.navbar-nav>.active>a {
-    color: white !important;
-    background: none !important;
-}
-.navbar-nav>.active>a:focus {
-    color: white;
-    background: none;
-}
 /*Body Styles: backgrounds*/
 body{
     width: 100%;
@@ -426,8 +386,6 @@ a.expand{
 
 /*----------------CONTACT*/
 .contact-page{
-    margin-top: 175px;
-    margin-bottom: 130px;
     width: 90%;
     margin-left: auto;
     color: white;
@@ -491,8 +449,6 @@ a.expand{
 
 /*-----------------TRAITEUR*/
 .traiteur-page{
-    margin-top: 175px;
-    margin-bottom: 130px;
     width: 85%;
     margin-left: auto;
     color: black;
