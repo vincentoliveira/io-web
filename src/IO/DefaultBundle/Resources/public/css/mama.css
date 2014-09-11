@@ -480,3 +480,12 @@ a.expand{
 .inline-block{
     display: inline-block;
 }
+
+
+
+
+
+
+
+
+#map-canvas { height: 400px; width: 100%; margin: 0; padding: 0;}
