@@ -101,7 +101,8 @@ body {
     position: absolute;
     top: 0px;
     left: 50%;
-    height: 35px;
+    height: 32px;
+    margin-top: 3px;
 }
 
 .navbar .navbar-nav {
@@ -109,7 +110,7 @@ body {
     margin: 20px 0 20px 20px;
     padding: 0;
     border-radius: 8px;
-    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.5);
 }
 
 .navbar .navbar-nav > li > a {
@@ -138,7 +139,7 @@ body {
     .navbar .navbar-header {
         margin: 0;
     }
-    
+
     .navbar .navbar-nav > li > a {
         font-size: 13px;
     }
@@ -153,25 +154,16 @@ body {
     .navbar .navbar-collapse {
         padding: 0;
     }
-    
+
     .navbar .navbar-nav > li > a {
         color: #ccc;
     }
 }
 
-#site-footer {
-    margin-top: 50px;
-    z-index: 200;
-    position: relative;
-    vertical-align: bottom;
-}
-
 .carousel, .carousel-inner, .carousel-control {
     height: 100%;
 }
-
 /* Background images are set within the HTML using inline CSS, not here */
-
 .fill {
     width: 100%;
     height: 100%;
@@ -182,15 +174,12 @@ body {
     -o-background-size: cover;
 }
 
-
 .carousel .carousel-caption {
     top: 30%;
 }
-
 .carousel .carousel-indicators {
     bottom: 105px;
 }
-
 .carousel .carousel-separator {
     background: url(../images/separation.png) no-repeat center;
     height: 18px;
@@ -223,9 +212,6 @@ body {
     padding: 10px;
 
 }
-
-
-
 .carousel-indicators li {
     display: inline-block;
     width: 20px;
@@ -238,7 +224,6 @@ body {
     border: 2px solid #fff;
     border-radius: 10px;
 }
-
 .carousel-indicators .active {
     width: 20px;
     height: 20px;
@@ -289,11 +274,6 @@ body{
 }
 
 /*-----------------RESPONSABLE*/
-.article-liste
-{
-    margin-top: 175px;
-    margin-bottom: 130px;
-}
 .article
 {
     position: relative;
@@ -319,8 +299,8 @@ body{
     position: absolute;
     left: 40%;
     top: 100px;//tmp
-    background: rgba(0, 0, 0, 0.7);
-    border: 3px solid white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid white;
     border-radius: 0px;
     color: white;
     text-align: center;
@@ -454,37 +434,132 @@ a.expand{
 }
 .traiteur-page strong{
     font-family: 'Juergen';
+    font-weight: normal;
+    font-size: 24px;
 }
 
 .traiteur-info{
-    background: url('../images/header-bg.jpg');
+    background: url('../images/carton-clair.jpg') center;
+    box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
     display: inline-block;
-    width: 42%;
+    width: 40%;
     border-radius: 8px;
-    padding: 10px;
-    vertical-align: middle;
-    height: 100%;
+    padding: 10px 25px;
+    vertical-align: top;
+    min-height: 700px;
 }
-
 .traiteur-form{
-    background: url('../images/header-bg.jpg');
+    background: url('../images/carton-clair.jpg') center;
+    box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
     display:inline-block;
     width: 43%;
     border-radius: 8px;
-    padding: 10px;
-    vertical-align: middle;
-    height: 100%;
+    padding: 10px 25px;
+    vertical-align: top;
+    margin-left: 28px;
+    min-height: 700px;
+}
+@media (max-width:480px) {
+    .traiteur-page {
+        width: 100%;
+    }
+    .traiteur-info{
+        display: block;
+        width: 85%;
+    }
+    .traiteur-form{
+        display: block;
+        width: 85%;
+        margin-left: 0;
+    }
 }
 
 .inline-block{
     display: inline-block;
 }
 
+#scotch-kidnap-1 {
+    position: absolute;
+    left: 8.2%;
+    top: 560px;
+    transform: rotate(271deg);
+    width: auto;
+    height: 40px;
+}
+#scotch-kidnap-2 {
+    position: absolute;
+    left: 41.5%;
+    top: 182px;
+    transform: rotate(32deg);
+    width: auto;
+    height: 34px;
+}
+#scotch-kidnap-3 {
+    position: absolute;
+    left: 44.5%;
+    top: 413px;
+    transform: rotate(88deg);
+    width: auto;
+    height: 42px;
+}
 
+/*----------------------FOOTER*/
+#site-footer {
+    margin-top: 20px;
+    z-index: 200;
+    //position: relative;
+    vertical-align: bottom;
+    color: black;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+#site-footer .container{
+    box-shadow: 0px -2px 15px 4px rgba(0,0,0,0.8);
+    vertical-align: bottom;
+}
+#site-footer .text{
+    padding-top: 19px;
+}
 
+.social-network {
+    background: url('../images/scotch2.png') no-repeat;
+    background-position: center;
+    margin-top: 16px;
+    padding: 1px;
+}
+.social-network .scotch {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+}
+.logo{
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: 64px;
+    z-index: -1;
+}
+.logo:hover {
+    z-index: 10;
+}
+.facebook {
+    left: 15px;
+}
+.twitter {
+    left: 64px;
+}
+.tripadvisor {
+    left: 113px;
+}
+.pinterest {
+    left: 162px;
+}
 
-
-
+#site-footer .container{
+    background: url('../images/header-bg.jpg') repeat-x bottom;
+    vertical-align: middle;
+}
 
 
 #map-canvas { height: 400px; width: 100%; margin: 0; padding: 0;}

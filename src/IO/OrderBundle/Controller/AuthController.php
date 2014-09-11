@@ -39,7 +39,7 @@ class AuthController extends BaseController
         $client = $this->stockage->getClient();
         if ($client !== null) {
             return $this->redirect($this->generateUrl('login_success'));
-        } 
+        }
         
         $loginForm = $this->createForm(new LoginType());
         $registerForm = $this->createForm(new RegisterType());
