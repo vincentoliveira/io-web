@@ -6,27 +6,27 @@
                     {#<img class="scotch" src="{{ asset("bundles/iodefault/images/scotch2.png") }}"/>
                     #}<a href="http://www.facebook.com">
                         <img src="{{ asset("bundles/iodefault/images/logo-facebook-2.png") }}"/>
-                        <img class="facebook logo" src="{{ asset("bundles/iodefault/images/logo-facebook-1.png") }}"/>
-                    </a>
+                        {#<img class="facebook logo" src="{{ asset("bundles/iodefault/images/logo-facebook-1.png") }}"/>
+                    #}</a>
                     <a href="https://twitter.com">
-                        <img class="twitter logo" src="{{ asset("bundles/iodefault/images/logo-twitter-1.png") }}"/>
-                        <img src="{{ asset("bundles/iodefault/images/logo-twitter-2.png") }}"/>
+                        {#<img class="twitter logo" src="{{ asset("bundles/iodefault/images/logo-twitter-1.png") }}"/>
+                        #}<img src="{{ asset("bundles/iodefault/images/logo-twitter-2.png") }}"/>
                     </a>
                     <a href="http://www.tripadvisor.fr">
                         <img src="{{ asset("bundles/iodefault/images/logo-tripadvisor-2.png") }}"/>
-                        <img class="tripadvisor logo" src="{{ asset("bundles/iodefault/images/logo-tripadvisor-1.png") }}"/>
-                    </a>
+                        {#<img class="tripadvisor logo" src="{{ asset("bundles/iodefault/images/logo-tripadvisor-1.png") }}"/>
+                    #}</a>
                     <a href="https://fr.pinterest.com">
                         <img src="{{ asset("bundles/iodefault/images/logo-pinterest-2.png") }}"/>
-                        <img class="pinterest logo" src="{{ asset("bundles/iodefault/images/logo-pinterest-1.png") }}"/>
-                    </a>
+                        {#<img class="pinterest logo" src="{{ asset("bundles/iodefault/images/logo-pinterest-1.png") }}"/>
+                    #}</a>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-6 text" id="restaurant_address" >
+            <div class="hidden-xs col-md-2 col-sm-6 text" id="restaurant_address" >
                 <p>ADRESSE DU RESTAURANT<br/>TEL.: 06 99 45 47 94</p>
             </div>
             <div class="hidden-sm hidden-xs col-md-2 col-sm-6 text">
-                <p>MENTIONS LEGALES</p>
+                <a class="mentions-link" href="{{ path('mentions_legales') }}">MENTIONS LEGALES</a>
                 <p>PLAN DU SITE</p>
             </div>
             <div class="hidden-sm hidden-xs col-md-3 col-sm-6">

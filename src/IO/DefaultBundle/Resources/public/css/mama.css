@@ -5,7 +5,7 @@ and open the template in the editor.
 */
 /* 
     Created on : 5 sept. 2014, 15:10:01
-    Author     : Romain
+    Author     : Romain, Louis
 */
 
 /*CHARGEMENT DES POLICES*/
@@ -81,7 +81,7 @@ body {
 }
 
 .navbar-container {
-    background: url('../images/header-bg.jpg') repeat-x top;
+    background: url('../images/header-bg.jpg') repeat top;
     box-shadow: 0 2px 15px 4px rgba(0,0,0,0.8);
 }
 
@@ -238,7 +238,7 @@ body {
     }
 }
 
-/*Body Styles: backgrounds*/
+/*-----------------BACKGROUNDS*/
 body{
     width: 100%;
     height: 100%;
@@ -265,14 +265,15 @@ body{
 .body-responsable {
     background: url(../images/bg_rice.jpg) center fixed;
 }
-
 .body-trouver {
     background: url(../images/bg-trouver-mama.jpg) center fixed;
 }
 .body-traiteur {
     background: url(../images/bg-traiteur.jpg) center fixed;
 }
-
+.body-panier {
+    background: url(../images/bg-panier.jpg) center fixed;
+}
 /*-----------------RESPONSABLE*/
 .article
 {
@@ -298,10 +299,10 @@ body{
 {
     position: absolute;
     left: 40%;
-    top: 100px;//tmp
+    top: 100px;
     background-color: rgba(0, 0, 0, 0.6);
     border: 2px solid white;
-    border-radius: 0px;
+    border-radius: 8px;
     color: white;
     text-align: center;
     z-index: 2;
@@ -426,10 +427,11 @@ a.expand{
     padding-top: 1px;
 }
 
+
 /*-----------------TRAITEUR*/
 .traiteur-page{
     width: 85%;
-    margin-left: auto;
+    margin: auto;
     color: black;
 }
 .traiteur-page strong{
@@ -442,7 +444,7 @@ a.expand{
     background: url('../images/carton-clair.jpg') center;
     box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
     display: inline-block;
-    width: 40%;
+    width: 47%;
     border-radius: 8px;
     padding: 10px 25px;
     vertical-align: top;
@@ -452,11 +454,11 @@ a.expand{
     background: url('../images/carton-clair.jpg') center;
     box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
     display:inline-block;
-    width: 43%;
+    width: 47%;
     border-radius: 8px;
     padding: 10px 25px;
     vertical-align: top;
-    margin-left: 28px;
+    margin-left: 5%;
     min-height: 700px;
 }
 @media (max-width:480px) {
@@ -479,29 +481,36 @@ a.expand{
 }
 
 #scotch-kidnap-1 {
-    position: absolute;
-    left: 8.2%;
-    top: 560px;
+    position: relative;
+    left: -103px;
+    top: -250px;
+    -ms-transform: rotate(271deg); /* IE 9 */
+    -webkit-transform: rotate(271deg); /* Chrome, Safari, Opera */
     transform: rotate(271deg);
     width: auto;
     height: 40px;
 }
 #scotch-kidnap-2 {
     position: absolute;
-    left: 41.5%;
-    top: 182px;
+    left: 38.6%;
+    top: 180px;
+    -ms-transform: rotate(32deg); /* IE 9 */
+    -webkit-transform: rotate(32deg); /* Chrome, Safari, Opera */
     transform: rotate(32deg);
     width: auto;
     height: 34px;
 }
 #scotch-kidnap-3 {
-    position: absolute;
-    left: 44.5%;
-    top: 413px;
+    position: relative;
+    left: -110px;
+    top: -300px;
+    -ms-transform: rotate(88deg); /* IE 9 */
+    -webkit-transform: rotate(88deg); /* Chrome, Safari, Opera */
     transform: rotate(88deg);
     width: auto;
     height: 42px;
 }
+
 
 /*----------------------FOOTER*/
 #site-footer {
@@ -527,6 +536,7 @@ a.expand{
     background-position: center;
     margin-top: 16px;
     padding: 1px;
+    box-shadow: 0px 11px 15px -16px;
 }
 .social-network .scotch {
     position: absolute;
@@ -544,7 +554,7 @@ a.expand{
     z-index: 10;
 }
 .facebook {
-    left: 15px;
+    content: url('../images/logo-facebook-2.png');
 }
 .twitter {
     left: 64px;
@@ -561,5 +571,123 @@ a.expand{
     vertical-align: middle;
 }
 
+/*----------------------MENU*/
+#menu {
+    border: none;
+}
+#menu h3 {
+    font-family: 'Juergen';
+    text-transform: uppercase;
+    text-align: left;
+    color: white;
+    color: white;
+    font-size: 35px;
+    margin-left: 20px;
+}
 
-#map-canvas { height: 400px; width: 100%; margin: 0; padding: 0;}
+#menu .category-description {
+    color: white;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+#menu .product-content {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#menu .product-content p {
+    color: #666;
+    font-weight: 600;
+    font-size: 13px;
+}
+#menu .product {
+    padding: 0;
+    width: 32%;
+    margin-left: 1%;
+    margin-bottom: 12x;
+    background-color: rgba(0,0,0,0);
+}
+
+#menu .product img{
+    width: 100%;
+    height: auto;
+}
+
+#menu .nav-pills > li.active > a {
+    color: rgb(10, 10, 10);
+}
+#menu a:hover, #menu a:focus {
+    color: #000;
+    text-decoration: none;
+}
+#menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.product .btn-add-product {
+    display: block;
+    border-radius: 0px;
+    border: 0;
+    background-color: rgba(27, 27, 27, 0.7);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+/*----------------------CART*/
+#cart {
+    padding: 40px 15px 40px 15px;
+    color: white;
+    background-color: rgba(0, 0,0,0.7);
+}
+#cart h3 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+#cart .section {
+    border-top: 1px solid #fff;
+}
+#cart .nb-products {
+    color: #999999;
+}
+#cart .btn {
+    border-radius: 0px;
+    border: 0;
+    background-color: rgba(27, 27, 27, 0.7);
+    font-weight: 700;
+    font-size: 17px;
+}
+#cart .total {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+
+/*----------------------MISC*/
+#map-canvas {
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#mentions {
+    border-radius: 8px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 85%;
+    margin: auto;
+    padding: 20px 10px;
+    min-height: 600px;
+}
+.mentions-link {
+    color: black;
+}
+.mentions-link:hover {
+    color: black;
+    text-decoration: none;
+}
