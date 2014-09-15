@@ -38,7 +38,7 @@ class OrderController extends BaseController
         
         // not validated
         $cart = $this->storage->getCart();
-        if ($cart && $cart['validated']) {
+        if ($cart && isset($cart['validated']) && $cart['validated']) {
             $cart['validated'] = false;
             $this->storage->setCart($cart);
         }

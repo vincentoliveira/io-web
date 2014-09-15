@@ -1,13 +1,14 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
+{% block body_class %}body body-panier{% endblock body_class %}
 {% block content %}
-<div class="container">
+<div id="recap-panel" class="container">
     <div id="order_step">
         <ul>
-            <li class="active">Etape 1 : Mon panier</li>
-            <li>Etape 2 : Connexion</li>
-            <li>Etape 3 : Paiement</li>
-            <li>Etape 4 : Validation</li>
+            <li class="active">Étape 1 : <strong>Mon panier</strong></li>
+            <li>Étape 2 : <strong>Connexion</strong></li>
+            <li>Étape 3 : <strong>Paiement</strong></li>
+            <li>Étape 4 : <strong>Validation</strong></li>
         </ul>
     </div>
 </div>
@@ -40,16 +41,16 @@
             <div class="col-md-2">
                 {{ count }} x {{ product.price|number_format(2, ',', ' ') }}€
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 price">
                 {{ (count * product.price)|number_format(2, ',', ' ') }}€
             </div>
         </div>
     {% endfor %}
-        <div class="row">
+        <div id="totalttc" class="row">
             <div class="col-md-8">
                 <span class="right">Total TTC</span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 price">
                 <span class="total">{{ cart.total|number_format(2, ',', ' ') }}€</span>
             </div>
         </div>

@@ -93,9 +93,14 @@ body {
     display: inline-block;
     color: #560705;
     font-weight: bolder;
-    margin-top: 16px;
+    margin-top: -10px;
+    margin-bottom: -10px;
 }
 
+.navbar .navbar-header .brand img{
+    height: auto;
+    width: 164px;
+}
 
 .navbar .scotch {
     position: absolute;
@@ -116,11 +121,11 @@ body {
 .navbar .navbar-nav > li > a {
     color: #000;
     text-align: center;
-}
-
-.navbar .navbar-nav > li > a {
     font-family: "Aller_Bd";
     font-weight: 300;
+}
+.navbar .navbar-nav > li > a strong{
+    font-weight: 600;
 }
 
 .navbar .navbar-nav > li.active > a {
@@ -163,6 +168,8 @@ body {
 .carousel, .carousel-inner, .carousel-control {
     height: 100%;
 }
+
+
 /* Background images are set within the HTML using inline CSS, not here */
 .fill {
     width: 100%;
@@ -259,7 +266,7 @@ body{
 }
 
 .body3 {
-    background-image: url(../images/home_slide3.jpg);
+    background-image: url(../images/bg-kidnap.jpg);
 }
 
 .body-responsable {
@@ -275,22 +282,35 @@ body{
     background: url(../images/bg-panier.jpg) center fixed;
 }
 /*-----------------RESPONSABLE*/
+#responsable .container {
+    margin-left: 40px;
+    margin-right: 40px;
+}
 .article
 {
     position: relative;
     border-radius: 8px;
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
-    width: 85%;
-    margin: auto;
+    width: 48%;
+    margin: 5px;
+    display: inline-block;
+    vertical-align: top;
+}
+@media (max-width:768px){
+    .article {
+        display: block;
+        width: 100%;
+    }
 }
 .article-vignette
 {
     width: 100%;
     height: auto;
-    padding:  8px;
+    max-height: 300px;
+    padding:  8px 44px;
 }
-.article-vignette img
+.article-vignette img, .article-vignette object
 {
     width: 100%;
     height: auto;
@@ -378,8 +398,6 @@ a.expand{
 }
 
 .contact-info{
-    background: url(../images/tampon.jpg) center;
-    //height: 55%;
 }
 .contact-info strong{
     font-family: '28_Days_Later';
@@ -435,7 +453,7 @@ a.expand{
     color: black;
 }
 .traiteur-page strong{
-    font-family: 'Juergen';
+    font-family: '28_Days_Later';
     font-weight: normal;
     font-size: 24px;
 }
@@ -544,26 +562,41 @@ a.expand{
     left: 20px;
 }
 .logo{
+    background: url(../images/Logos.png) no-repeat scroll 0px transparent;
     width: 45px;
     height: 45px;
-    position: absolute;
-    left: 64px;
-    z-index: -1;
-}
-.logo:hover {
-    z-index: 10;
+    z-index: 5;
+    display: inline-block;
+    margin: 5px;
 }
 .facebook {
-    content: url('../images/logo-facebook-2.png');
+    background-position: 0px 0px;
+}
+.facebook:hover {
+    background-position: 0px -45px;
 }
 .twitter {
-    left: 64px;
+    background-position: -45px 0px;
+}
+.twitter:hover {
+    background-position: -45px -45px;
 }
 .tripadvisor {
-    left: 113px;
+    background-position: -90px 0px;
+}
+.tripadvisor:hover {
+    background-position: -90px -45px;
 }
 .pinterest {
-    left: 162px;
+    background-position: -135px 0px;
+}
+.pinterest:hover {
+    background-position: -135px -45px;
+}
+
+.city {
+    height: auto;
+    width: 189px;
 }
 
 #site-footer .container{
@@ -576,16 +609,15 @@ a.expand{
     border: none;
 }
 #menu h3 {
-    font-family: 'Juergen';
+    font-family: '28_Days_Later';
     text-transform: uppercase;
     text-align: left;
-    color: white;
     color: white;
     font-size: 35px;
     margin-left: 20px;
 }
 
-#menu .category-description {
+#menu .category p {
     color: white;
     margin-left: 20px;
     font-size: 16px;
@@ -599,12 +631,13 @@ a.expand{
     color: #666;
     font-weight: 600;
     font-size: 13px;
+    min-height: 80px;
 }
 #menu .product {
     padding: 0;
     width: 32%;
     margin-left: 1%;
-    margin-bottom: 12x;
+    margin-bottom: 12px;
     background-color: rgba(0,0,0,0);
 }
 
@@ -614,9 +647,9 @@ a.expand{
 }
 
 #menu .nav-pills > li.active > a {
-    color: rgb(10, 10, 10);
+    background-color: rgb(10, 10, 10);
 }
-#menu a:hover, #menu a:focus {
+#menu a:hover, #menu a:focus, #menu a:active {
     color: #000;
     text-decoration: none;
 }
@@ -664,6 +697,71 @@ a.expand{
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+#cart a {
+    color: #fff;
+}
+
+
+/*----------------------RECAP*/
+#recap-panel {
+    margin: 25px;
+    max-width: 890px;
+    height: 75px;
+    margin: auto;
+    position: relative;
+    top: -20px;
+    z-index: -1;
+    background: url('../images/bg-step.jpg');
+    box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
+}
+@media(max-width: 991px) {
+    #recap-panel {
+        margin: 0;
+    }
+}
+#order_step {
+    padding: 17px;
+    color: #531;
+    font-weight: 700;
+    font-family: "Aller_Bd";
+}
+#order_step .active {
+    color: #310;
+}
+#order_step strong {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.recap {
+    width: 75%;
+    margin: auto;
+    background: url('../images/carton-clair.jpg');
+    box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
+    border-radius: 8px;
+    color: black;
+    font-family: "Aller_Bd";
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.recap h2 {
+    font-family: '28_Days_Later';
+    font-size: 35px;
+    margin-left: 20px;
+}
+
+.recap .product-list .row-header {
+    border-bottom: 1px solid #000;
+}
+
+#totalttc {
+    font-weight: bold;
+    border-top: 1px solid #000;
     text-transform: uppercase;
 }
 

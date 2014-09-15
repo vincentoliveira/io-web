@@ -3,34 +3,29 @@
         <div class="row">
             <div class="col-md-3 col-md-sn">
                 <div class="social-network">
-                    {#<img class="scotch" src="{{ asset("bundles/iodefault/images/scotch2.png") }}"/>
-                    #}<a href="http://www.facebook.com">
-                        <img src="{{ asset("bundles/iodefault/images/logo-facebook-2.png") }}"/>
-                        {#<img class="facebook logo" src="{{ asset("bundles/iodefault/images/logo-facebook-1.png") }}"/>
-                    #}</a>
-                    <a href="https://twitter.com">
-                        {#<img class="twitter logo" src="{{ asset("bundles/iodefault/images/logo-twitter-1.png") }}"/>
-                        #}<img src="{{ asset("bundles/iodefault/images/logo-twitter-2.png") }}"/>
+                    <a class="logo facebook" href="http://www.facebook.com">
+                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
                     </a>
-                    <a href="http://www.tripadvisor.fr">
-                        <img src="{{ asset("bundles/iodefault/images/logo-tripadvisor-2.png") }}"/>
-                        {#<img class="tripadvisor logo" src="{{ asset("bundles/iodefault/images/logo-tripadvisor-1.png") }}"/>
-                    #}</a>
-                    <a href="https://fr.pinterest.com">
-                        <img src="{{ asset("bundles/iodefault/images/logo-pinterest-2.png") }}"/>
-                        {#<img class="pinterest logo" src="{{ asset("bundles/iodefault/images/logo-pinterest-1.png") }}"/>
-                    #}</a>
+                    <a class="logo twitter" href="https://twitter.com">
+                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>
+                    <a class="logo tripadvisor" href="http://www.tripadvisor.fr">
+                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>
+                    <a class="logo pinterest" href="https://fr.pinterest.com">
+                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>
                 </div>
             </div>
             <div class="hidden-xs col-md-2 col-sm-6 text" id="restaurant_address" >
                 <p>ADRESSE DU RESTAURANT<br/>TEL.: 06 99 45 47 94</p>
             </div>
             <div class="hidden-sm hidden-xs col-md-2 col-sm-6 text">
-                <a class="mentions-link" href="{{ path('mentions_legales') }}">MENTIONS LEGALES</a>
+                <a class="mentions-link" href="{{ path('mentions_legales') }}">MENTIONS LÉGALES</a>
                 <p>PLAN DU SITE</p>
             </div>
             <div class="hidden-sm hidden-xs col-md-3 col-sm-6">
-                <img src="{{ asset("bundles/iodefault/images/City.jpg") }}"/>
+                <img class="city" src="{{ asset("bundles/iodefault/images/City.png") }}"/>
             </div>
             <div class="col-md-2 col-sm-6 text">&copy; MAMA STREET 2014<br/>tous droits réservés</div>
         </div>
