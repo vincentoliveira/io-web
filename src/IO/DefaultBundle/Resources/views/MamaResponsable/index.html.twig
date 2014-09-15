@@ -7,9 +7,9 @@ body body-responsable
 {% block content %}
 <div id="responsable" class="container">
     <div class="article" id="article1">
-        <div class="article-vignette">
-            <object type="application/x-shockwave-flash" width="425" height="355" data="http://www.youtube.com/v/_etwz7NkemE&hl=fr">
-                <param name="movie" value="http://www.youtube.com/v/_etwz7NkemE&hl=fr" />
+        <div class="article-vignette embed-responsive embed-responsive-16by9">
+            <object class="embed-responsive-item" type="application/x-shockwave-flash" width="425" height="355" data="https://www.youtube.com/watch?v=PvDD2IpT3XM">
+                <param name="movie" value="https://www.youtube.com/watch?v=PvDD2IpT3XM" />
                 <param name="wmode" value="transparent" />
             </object>
         </div>
@@ -17,36 +17,40 @@ body body-responsable
         <p class="article-text">{{ articles[0].short }}</p>
         <p class="article-text article-content">{{ articles[0].content }}</p>
         <a class="btn default_btn article-btn" href="#">Lire plus</a>
+        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
     </div>
     <div class="article" id="article2">
-        <a class="btn default_btn article-btn" href="#">Lire plus</a>
         <div class="article-vignette">
-            <object type="application/x-shockwave-flash" width="425" height="355" data="http://www.youtube.com/v/_etwz7NkemE&hl=fr">
-                <param name="movie" value="http://vimeo.com/105945731" />
+            <object type="application/x-shockwave-flash" width="425" height="355" data="http%3A//vimeo.com/76979871">
+                <param name="movie" value="http%3A//vimeo.com/76979871" />
                 <param name="wmode" value="transparent" />
             </object>
         </div>
         <h5><strong class="article-text">{{ articles[1].title }}</strong></h5>
         <p class="article-text">{{ articles[1].short }}</p>
         <p class="article-text article-content">{{ articles[1].content }}</p>
+        <a class="btn default_btn article-btn" href="#">Lire plus</a>
+        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
     </div>
     <div class="article" id="article3">
-        <a class="btn default_btn article-btn" href="#">Lire plus</a>
         <div class="article-vignette">
             <img src="{{ asset(articles[2].img) }}"/>
         </div>
         <h5><strong class="article-text">{{ articles[2].title }}</strong></h5>
         <p class="article-text">{{ articles[2].short }}</p>
         <p class="article-text article-content">{{ articles[2].content }}</p>
+        <a class="btn default_btn article-btn" href="#">Lire plus</a>
+        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
     </div>
     <div class="article" id="article4">
-        <a class="btn default_btn article-btn" href="#">Lire plus</a>
         <div class="article-vignette">
             <img src="{{ asset(articles[3].img) }}"/>
         </div>
         <h5><strong class="article-text">{{ articles[3].title }}</strong></h5>
         <p class="article-text">{{ articles[3].short }}</p>
         <p class="article-text article-content">{{ articles[3].content }}</p>
+        <a class="btn default_btn article-btn" href="#">Lire plus</a>
+        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
     </div>
 </div>
 {% endblock content %}
