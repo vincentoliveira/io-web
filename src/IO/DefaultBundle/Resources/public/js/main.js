@@ -43,6 +43,7 @@ function enableButtons() {
         });
     });
     
+    hideShowPostcode();
     $("input[name=order_type]").change(function() {
         hideShowPostcode();
         
@@ -76,7 +77,6 @@ function hideShowPostcode() {
 
 $(document).ready(function() {
     enableButtons();
-    hideShowPostcode();
     
     $('.has-tooltip').tooltip()
     $(".date-masked").mask("99/99/9999");
