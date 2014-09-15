@@ -150,6 +150,13 @@ body {
     .navbar .navbar-header {
         margin: 0px;
     }
+    .navbar .navbar-collapse {
+        margin: 20px 0 0px 150px;
+    }
+    .navbar .navbar-nav > li > a {
+        font-size: 1.0em;
+        font-weight: 300;
+    }
 }
 
 @media(max-width: 767px) {
