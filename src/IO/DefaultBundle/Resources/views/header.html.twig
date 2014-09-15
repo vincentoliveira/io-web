@@ -10,7 +10,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
             <a class="brand" href="{{ path('homepage') }}">
                 <img class="hidden-xs" src="{{ asset("bundles/iodefault/images/logo.jpg") }}" alt="MamaStreet" />
                 <span class="visible-xs">MAMA STREET</span>
@@ -27,21 +26,21 @@
                 <li{%if current_route == 'trouver_mama'%} class="active"{%endif%}>
                     <a href="{{ path('trouver_mama') }}">OU TROUVER<br/>LA MAMA<br/>Contact</a>
                 </li>
-                <li class="hidden-sm  hidden-xs{%if current_route == 'kidnap_mama'%} active{%endif%}">
+                <li class="{%if current_route == 'kidnap_mama'%} active{%endif%}">
                     <a href="{{ path('kidnap_mama') }}">KIDNAP MAMA<br/>Traiteur</a>
                 </li>
                 <li>
                     <a href="{{ path('menu') }}">BANGKOK EXPERIENCE<br/>Blog</a>
                 </li>
                 {% if client %}
-                <li class="dropdown hidden-md hidden-sm hidden-xs">
+                <li class="dropdown hidden-md hidden-sm">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">BONJOUR {{ client.user.identity.firstname|upper }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('logout') }}">Déconnexion</a></li>
                     </ul>
                 </li>
                 {% else %}
-                    <li class="hidden-md hidden-sm hidden-xs"><a href="{{ path('login') }}">BE A MAMA !<br/>Connexion</a></li>
+                    <li class="hidden-md hidden-sm"><a href="{{ path('login') }}">BE A MAMA !<br/>Connexion</a></li>
                 {% endif %}
             </ul>
         </div>

@@ -12,6 +12,42 @@
     </div>
 </div>
 <div class="container">
-    <h2>Payment</h2>
+    <h2>Paiement</h2>
+    
+    {% if error is defined %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+    
+    <div class="receipt">
+        <strong>{{ restaurantName|default('InnovOrder') }}</strong>
+        <em>Le {{ null|date('d/m/Y') }}, à {{ null|date('h:i:s') }}</em>
+        <ul>
+        {% for data in cart.products|ordonate_products %}
+        {% set product = data.product %}
+        {% set count = data.count %}
+            <li>
+                <span>{{ count }} {{ product.name }} - {{ product.extra }}</span>
+                <em>{{ (count * product.price)|number_format(2, ',', ' ') }}€</em>
+            </li>
+        {% endfor %}
+            <li class="total">
+                <span>Total HT</span>
+                <em>{{ cart.no_tax_total|number_format(2, ',', ' ') }}€</em>
+            </li>
+            <li>
+                <span>TVA</span>
+                <em>{{ cart.vat_amount|number_format(2, ',', ' ') }}€</em>
+            </li>
+            <li class="total">
+                <span>Total TTC</span>
+                <em>{{ cart.total|number_format(2, ',', ' ') }}€</em>
+            </li>
+        </ul>
+    </div>
+    
+    <form method="POST" action="{{ path('payment_validate_without_payment') }}">
+        <a class="btn btn-default" href="#">Paiement en ligne (CB, Visa, MasterCard)</a>
+        <button class="btn btn-default">Paiement à la réception</button>
+    </form>
 </div>
 {% endblock content %}

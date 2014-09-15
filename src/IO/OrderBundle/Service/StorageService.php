@@ -2,11 +2,12 @@
 
 namespace IO\OrderBundle\Service;
 
-use JMS\DiExtraBundle\Annotation\Service;
 use Symfony\Component\HttpFoundation\Session\Session;
+use JMS\DiExtraBundle\Annotation\Service;
+use JMS\DiExtraBundle\Annotation\Inject;
 
 /**
- * Description of StockageService
+ * Description of StorageService
  *
  * @author vincent
  * @Service("io.storage_service")
@@ -17,6 +18,14 @@ class StorageService
     private static $_session_menu = 'io_menu';
     private static $_session_cart = 'io_cart';
     private static $_session_client = 'io_client';
+    
+    /**
+     * Container
+     * 
+     * @Inject("service_container")
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
+    public $container;
 
     /**
      *
@@ -41,7 +50,8 @@ class StorageService
      */
     public function get($name)
     {
-        return$this->getSession()->get($name);
+        $token = $this->container->getParameter('io_auth_token');
+        return$this->getSession()->get($token . $name);
     }
 
     /**
@@ -53,7 +63,8 @@ class StorageService
      */
     public function set($name, $value)
     {
-        return$this->getSession()->set($name, $value);
+        $token = $this->container->getParameter('io_auth_token');
+        return$this->getSession()->set($token . $name, $value);
     }
     
     /**
@@ -63,7 +74,7 @@ class StorageService
      */
     public function getMenu()
     {
-        return $this->getSession()->get(self::$_session_menu);
+        return $this->get(self::$_session_menu);
     }
 
     /**
@@ -71,7 +82,7 @@ class StorageService
      */
     public function setMenu($menu)
     {
-        return $this->getSession()->set(self::$_session_menu, $menu);
+        return $this->set(self::$_session_menu, $menu);
     }
 
 
@@ -82,7 +93,7 @@ class StorageService
      */
     public function getCart()
     {
-        return $this->getSession()->get(self::$_session_cart);
+        return $this->get(self::$_session_cart);
     }
 
     /**
@@ -90,7 +101,7 @@ class StorageService
      */
     public function setCart($cart)
     {
-        return $this->getSession()->set(self::$_session_cart, $cart);
+        return $this->set(self::$_session_cart, $cart);
     }
 
 
@@ -101,7 +112,7 @@ class StorageService
      */
     public function getClient()
     {
-        return $this->getSession()->get(self::$_session_client);
+        return $this->get(self::$_session_client);
     }
 
     /**
@@ -109,6 +120,6 @@ class StorageService
      */
     public function setClient($cart)
     {
-        return $this->getSession()->set(self::$_session_client, $cart);
+        return $this->set(self::$_session_client, $cart);
     }
 }
