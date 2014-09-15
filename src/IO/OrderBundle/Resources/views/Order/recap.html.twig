@@ -16,41 +16,39 @@
     <h2>Mon panier</h2>
     <div class="product-list">
         <div class="row row-header">
-            <div class="col-md-offset-3 col-md-3">
+            <div class="col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-md-4 col-sm-4 col-xs-4">
                 Article
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-2 col-xs-2">
                 Nombre
             </div>
-            <div class="col-md-2">
-                Prix
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <span class="right">Prix</span>
             </div>
         </div>
     {% for data in cart.products|ordonate_products %}
     {% set product = data.product %}
     {% set count = data.count %}
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-3 col-xs-3">
                 <img class=" img-rounded" src="{{ product.product_id|product_media|apiMedia }}" alt="" />
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 col-sm-4 col-xs-4">
                 <strong>{{ product.name }}</strong>
                 <em>{{ product.extra }}</em>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-2 col-xs-2">
                 {{ count }} x {{ product.price|number_format(2, ',', ' ') }}€
             </div>
-            <div class="col-md-2">
-                {{ (count * product.price)|number_format(2, ',', ' ') }}€
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <span class="right">{{ (count * product.price)|number_format(2, ',', ' ') }}€</span>
             </div>
         </div>
     {% endfor %}
         <div class="row">
-            <div class="col-md-8">
-                <span class="right">Total TTC</span>
-            </div>
-            <div class="col-md-2">
-                <span class="total">{{ cart.total|number_format(2, ',', ' ') }}€</span>
+            <div class="col-md-11 col-sm-11 col-xs-11">
+                <span class="right total">Total HT : {{ cart.no_tax_total|number_format(2, ',', ' ') }}€</span>
+                <span class="right total">Total TTC : {{ cart.total|number_format(2, ',', ' ') }}€</span>
             </div>
         </div>
     </div>
