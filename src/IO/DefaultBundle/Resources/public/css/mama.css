@@ -96,7 +96,6 @@ body {
     margin-top: 16px;
 }
 
-
 .navbar .scotch {
     position: absolute;
     top: 0px;
@@ -105,12 +104,22 @@ body {
     margin-top: 3px;
 }
 
-.navbar .navbar-nav {
-    background: rgba(80, 40, 20, 0.2);
-    margin: 20px 0 20px 20px;
+.navbar .navbar-collapse {
+    margin: 20px 0 0px 170px;
     padding: 0;
-    border-radius: 8px;
+}
+
+.navbar .navbar-nav {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgba(80, 40, 20, 0.2);
     box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+.navbar .navbar-nav > li {
+    width: 16.6%
 }
 
 .navbar .navbar-nav > li > a {
@@ -135,15 +144,6 @@ body {
     color: #560705;
 }
 
-@media(max-width: 991px) {
-    .navbar .navbar-header {
-        margin: 0;
-    }
-
-    .navbar .navbar-nav > li > a {
-        font-size: 13px;
-    }
-}
 @media(max-width: 767px) {
     .navbar .navbar-nav {
         background: rgba(0, 0, 0, 0.8);
