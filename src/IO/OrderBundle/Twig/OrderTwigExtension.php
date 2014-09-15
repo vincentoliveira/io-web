@@ -24,7 +24,7 @@ class OrderTwigExtension extends \Twig_Extension
     public $container;
 
     /**
-     * Stockage Service
+     * Storage Service
      * 
      * @Inject("io.storage_service")
      * @var \IO\OrderBundle\Service\StorageService
@@ -40,6 +40,7 @@ class OrderTwigExtension extends \Twig_Extension
             'cart' => $this->storage->getCart(),
             'client' => $this->storage->getClient(),
             'order_type' => $this->storage->get('order_type'),
+            'restaurantName' => $this->container->getParameter('io_restaurant_name'),
         );
     }
 
