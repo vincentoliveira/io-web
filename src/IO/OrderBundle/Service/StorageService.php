@@ -7,7 +7,7 @@ use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation\Inject;
 
 /**
- * Description of StockageService
+ * Description of StorageService
  *
  * @author vincent
  * @Service("io.storage_service")

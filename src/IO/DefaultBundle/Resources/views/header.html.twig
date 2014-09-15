@@ -7,11 +7,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('homepage') }}">InnovOrder</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">{{ restaurantName|default('InnovOrder') }}</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('homepage') }}"><i class="glyphicon glyphicon-home"></i> </a></li>
                 <li><a href="{{ path('menu') }}"><i class="glyphicon glyphicon-cutlery"></i> La carte</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

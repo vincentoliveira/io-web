@@ -13,7 +13,7 @@ class OrderController extends BaseController
 {
 
     /**
-     * Stockage Service
+     * Storage Service
      * 
      * @Inject("io.storage_service")
      * @var \IO\OrderBundle\Service\StorageService
@@ -38,7 +38,7 @@ class OrderController extends BaseController
         
         // not validated
         $cart = $this->storage->getCart();
-        if ($cart && $cart['validated']) {
+        if ($cart && isset($cart['validated']) && $cart['validated']) {
             $cart['validated'] = false;
             $this->storage->setCart($cart);
         }
@@ -62,6 +62,7 @@ class OrderController extends BaseController
 
             $newCart = $this->apiClient->addProduct($cart, $productId, $options);
             if ($newCart) {
+                $newCart['validated'] = false;
                 $this->storage->setCart($newCart);
             }
         }
@@ -84,6 +85,7 @@ class OrderController extends BaseController
 
             $newCart = $this->apiClient->removeProduct($cart, $productId, $extra);
             if ($newCart) {
+                $newCart['validated'] = false;
                 $this->storage->setCart($newCart);
             }
         }
@@ -107,13 +109,15 @@ class OrderController extends BaseController
         if ($request->isMethod('POST')) {
             $orderType = $request->request->get('order_type');
             $this->storage->set('order_type', $orderType);
+            $deliveryTime = $request->request->get('order_delivery_date');
+            $deliveryDate = \DateTime::createFromFormat('H:i', $deliveryTime);
+            $this->storage->set('client_delivery_date', $deliveryDate);
             $orderPostcode = intval($request->request->get('order_postcode'));
             $this->storage->set('order_postcode', $orderPostcode);
         }
         return array();
     }
     
-
     /**
      * @Route("/panier/confirm", name="order_valid_recap")
      * @Method("POST")
