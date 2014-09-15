@@ -18,5 +18,6 @@ parameters:
     debug_redirects:        false
     use_assetic_controller: true
 
+    io_restaurant_name: ~
     io_auth_token:      ~
     io_api_base_url:    ~

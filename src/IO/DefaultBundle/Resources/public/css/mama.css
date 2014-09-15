@@ -93,36 +93,51 @@ body {
     display: inline-block;
     color: #560705;
     font-weight: bolder;
-    margin-top: -10px;
-    margin-bottom: -10px;
+    //margin-top: -10px;
+    //margin-bottom: -10px;
 }
 
 .navbar .navbar-header .brand img{
     height: auto;
     width: 164px;
 }
-
 .navbar .scotch {
     position: absolute;
     top: 0px;
     left: 50%;
-    height: 32px;
-    margin-top: 3px;
+}
+
+.navbar .navbar-collapse {
+    margin: 30px 0 0px 170px;
+    padding: 0;
 }
 
 .navbar .navbar-nav {
-    background: rgba(80, 40, 20, 0.2);
-    margin: 20px 0 20px 20px;
+    width: 100%;
+    margin: 0;
     padding: 0;
-    border-radius: 8px;
+    background: rgba(80, 40, 20, 0.2);
     box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+.navbar .navbar-nav > li {
+    width: 16.6%;
 }
 
 .navbar .navbar-nav > li > a {
-    color: #000;
-    text-align: center;
+    font-size: 1.1em;
     font-family: "Aller_Bd";
-    font-weight: 300;
+    font-weight: 700;
+    line-height: 20px;
+    color: #000;
+    text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    text-align: center;
+    padding: 10px 10px;
+}
+.navbar .navbar-nav > li > a > strong {
+    display: block;
+    text-transform: uppercase;
 }
 .navbar .navbar-nav > li > a strong{
     font-weight: 600;
@@ -142,14 +157,26 @@ body {
 
 @media(max-width: 991px) {
     .navbar .navbar-header {
-        margin: 0;
+        margin: 0px;
     }
-
+    .navbar .navbar-collapse {
+        margin: 20px 0 0px 150px;
+    }
     .navbar .navbar-nav > li > a {
-        font-size: 13px;
+        font-size: 1.0em;
+        font-weight: 300;
     }
 }
+
 @media(max-width: 767px) {
+    .navbar .navbar-header .brand {
+        margin-top: 10px;
+        font-size: 1.3em;
+    }
+    .navbar .navbar-container, .navbar .navbar-collapse {
+        padding: 0;
+        margin: 0;
+    }
     .navbar .navbar-nav {
         background: rgba(0, 0, 0, 0.8);
         padding: 0;
@@ -159,7 +186,9 @@ body {
     .navbar .navbar-collapse {
         padding: 0;
     }
-
+    .navbar .navbar-nav>li {
+        width: 100%;
+    }
     .navbar .navbar-nav > li > a {
         color: #ccc;
     }

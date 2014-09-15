@@ -1,0 +1,22 @@
+{% extends "IODefaultBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="container">
+    <div id="order_step">
+        <ul>
+            <li>Etape 1 : Mon panier</li>
+            <li>Etape 2 : Connexion</li>
+            <li>Etape 3 : Paiement</li>
+            <li class="active">Etape 4 : Validation</li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <h2>Validation</h2>
+    
+    <h3>Votre commande numéro #{{ validated_cart.id }} a bien été enregistrée.</h3>
+    
+    <p>Un email de confirmation a été envoyé à l'adresse : {{ client.user.email }}</p>
+    <p>Merci de votre confiance, bon appétit et à bientôt !</p>
+</div>
+{% endblock content %}

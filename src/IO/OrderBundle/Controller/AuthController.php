@@ -15,12 +15,12 @@ class AuthController extends BaseController
 {
 
     /**
-     * Stockage Service
+     * Storage Service
      * 
      * @Inject("io.storage_service")
      * @var \IO\OrderBundle\Service\StorageService
      */
-    public $stockage;
+    public $storage;
 
     /**
      * ApiClient Service
@@ -36,7 +36,7 @@ class AuthController extends BaseController
      */
     public function authAction()
     {
-        $client = $this->stockage->getClient();
+        $client = $this->storage->getClient();
         if ($client !== null) {
             return $this->redirect($this->generateUrl('login_success'));
         }
@@ -56,7 +56,7 @@ class AuthController extends BaseController
      */
     public function loginAction(Request $request)
     {
-        $client = $this->stockage->getClient();
+        $client = $this->storage->getClient();
         if ($client !== null) {
             return $this->redirect($this->generateUrl('login_success'));
         } 
@@ -71,7 +71,7 @@ class AuthController extends BaseController
                     $error = new FormError("La combinaison email/mot de passe est incorrecte.");
                     $loginForm->addError($error);
                 } else {
-                    $this->stockage->setClient($client);
+                    $this->storage->setClient($client);
                     return $this->redirect($this->generateUrl('login_success'));
                 }
             }
@@ -90,7 +90,7 @@ class AuthController extends BaseController
      */
     public function registerAction(Request $request)
     {
-        $client = $this->stockage->getClient();
+        $client = $this->storage->getClient();
         if ($client !== null) {
             return $this->redirect($this->generateUrl('login_success'));
         } 
@@ -107,7 +107,7 @@ class AuthController extends BaseController
                     $error = new FormError("Une erreur s'est produite.");
                     $registerForm->addError($error);
                 } else {
-                    $this->stockage->setClient($client);
+                    $this->storage->setClient($client);
                     return $this->redirect($this->generateUrl('login_success'));
                 }
             }
@@ -126,8 +126,8 @@ class AuthController extends BaseController
      */
     public function loginSuccessAction()
     {
-        $cart = $this->stockage->getCart();
-        $client = $this->stockage->getClient();
+        $cart = $this->storage->getCart();
+        $client = $this->storage->getClient();
         if ($client !== null && $cart !== null && $cart['validated']) {
             return $this->redirect($this->generateUrl('payment_index'));
         } else {
@@ -141,7 +141,7 @@ class AuthController extends BaseController
      */
     public function logoutAction()
     {
-        $this->stockage->setClient(null);
+        $this->storage->setClient(null);
         return $this->redirect($this->generateUrl('menu'));
     }
 }

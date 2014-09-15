@@ -43,12 +43,24 @@ function enableButtons() {
         });
     });
     
+    hideShowPostcode();
     $("input[name=order_type]").change(function() {
         hideShowPostcode();
         
         var form = $(this).parents('form');
         var url = form.attr("action");
-        console.log(form);
+        $.post(url, form.serialize());
+    });
+    
+    $('input[name=order_delivery_date]').change(function() {
+        var form = $(this).parents('form');
+        var url = form.attr("action");
+        $.post(url, form.serialize());
+    });
+    
+    $('input[name=order_postcode]').change(function() {
+        var form = $(this).parents('form');
+        var url = form.attr("action");
         $.post(url, form.serialize());
     });
 }
@@ -65,7 +77,7 @@ function hideShowPostcode() {
 
 $(document).ready(function() {
     enableButtons();
-    hideShowPostcode();
     
+    $('.has-tooltip').tooltip()
     $(".date-masked").mask("99/99/9999");
 });

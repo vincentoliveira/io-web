@@ -176,6 +176,36 @@ class ApiClientService
         
         return $result['client_token'];
     }
+
+    
+    /**
+     * Validate cart
+     * 
+     * @param array $data
+     * @return client token or null
+     */
+    public function validateCart($cart, $client, $deliveryDate, $orderType)
+    {
+        $baseUrl = $this->getBaseApiUrl();
+            
+        $restaurantToken = $this->getRestaurantToken();
+        $data = array(
+            'restaurant_token' => $restaurantToken,
+            'client_token' => $client['token'],
+            'cart_id' => $cart['id'],
+            'delivery_date' => $deliveryDate->format('Y-m-d H:i:s'),
+            'order_type' => $orderType,
+        );
+        
+        $url = sprintf("%s/order/cart/validate.json", $baseUrl);
+        $jsonResults = $this->restCall($url, $data, "POST");
+        $result = json_decode($jsonResults, true);
+        if (!isset($result['cart'])) {
+            return null;
+        }
+        
+        return $result['cart'];
+    }
     
     /**
      * Rest call. Return response.
