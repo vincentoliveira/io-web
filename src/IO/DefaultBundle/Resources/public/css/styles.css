@@ -299,3 +299,16 @@ body {
 .receipt li em {
     display: inline-block;
 }
+
+@media (max-width:440px){
+    .receipt {
+        padding: 5px;
+        width: 100%;
+    }
+    .receipt li.total {
+        width: 100%;
+    }
+    .receipt li span {
+        width: 70%;
+    }
+}

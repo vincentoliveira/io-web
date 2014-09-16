@@ -196,6 +196,8 @@ body {
     }
 }
 
+
+/*-------------------------CAROUSEL*/
 .carousel, .carousel-inner, .carousel-control {
     height: 100%;
 }
@@ -281,7 +283,9 @@ body {
 body{
     width: 100%;
     height: 100%;
-    background-position: top;
+    background-position: center top;
+    background: fixed;
+    background-color: #ba8;
     padding: 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -290,7 +294,7 @@ body{
 }
 
 .body1 {
-    background: url(../images/home_slide1.jpg) no-repeat center fixed;
+    background: url(../images/home_slide1.jpg) center top no-repeat fixed #ba8;
 }
 
 .body2 {
@@ -302,20 +306,20 @@ body{
 }
 
 .body-responsable {
-    background: url(../images/bg_rice.jpg) center fixed;
+    background: url(../images/bg_rice.jpg) fixed #ba8;
 }
 .body-trouver {
-    background: url(../images/bg-trouver-mama.jpg) center fixed;
+    background: url(../images/bg-trouver-mama.jpg) fixed #ba8;
 }
 .body-traiteur {
-    background: url(../images/bg-traiteur.jpg) center fixed;
+    background: url(../images/bg-traiteur.jpg) fixed #ba8;
 }
 
 .body-recap {
-    background: url(../images/bg-panier.jpg) center fixed;
+    background: url(../images/bg-panier.jpg) fixed #ba8;
 }
 .body-menu {
-    background: url(../images/bg_rice.jpg) center fixed;
+    background: url(../images/bg_rice.jpg) fixed #ba8;
 }
 
 /*-----------------RESPONSABLE*/
@@ -355,9 +359,14 @@ body{
 .article-vignette object, .article-vignette iframe
 {
     width: 100%;
-    height: auto;
     max-height: 300px;
     //padding-top: 8px;
+}
+@media (max-width:768px){
+    .article-vignette, .article-vignette img, .article-vignette object, .article-vignette iframe{
+        border-radius: 8px;
+        padding: 0px;
+    }
 }
 .article-btn
 {
@@ -428,6 +437,20 @@ body{
     padding-right: 0px;
 }
 
+@media (max-width:480px){
+    .contact-trouvez{
+        width: 100%;
+    }
+    .contact-transport{
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .contact-sonnez{
+        width: 100%;
+    }
+}
+
 .ratp{
     border: 2px solid white;
     width: 26px;
@@ -487,11 +510,12 @@ body{
     }
     .traiteur-info{
         display: block;
-        width: 85%;
+        width: 100%;
+        margin-bottom: 20px;
     }
     .traiteur-form{
         display: block;
-        width: 85%;
+        width: 100%;
         margin-left: 0;
     }
 }
@@ -648,12 +672,14 @@ body{
     height: auto;
 }
 
-#menu .nav-pills > li.active > a {
-    background-color: rgb(10, 10, 10);
+#menu .nav-pills > li.active > a, #menu .nav-pills > li.active > a:hover {
+    background-color: #222;
+    color: #fff;
 }
 #menu a:hover, #menu a:focus, #menu a:active {
     color: #000;
     text-decoration: none;
+    background-color: #DDD;
 }
 #menu a {
     color: #fff;
@@ -684,7 +710,7 @@ body{
 #cart {
     padding: 40px 15px 40px 15px;
     color: white;
-    background-color: rgba(0, 0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 #cart h3 {
     font-weight: 700;
@@ -755,9 +781,10 @@ body{
     border-radius: 8px;
     color: black;
     font-family: "Aller_Bd";
-    padding-bottom: 40px;
+    /*padding-bottom: 40px;*/
     padding-left: 4%;
     padding-right: 4%;
+    padding-bottom: 30px;
 }
 @media(max-width: 675px) {
     .recap {
@@ -766,7 +793,7 @@ body{
     }
 }
 
-.recap h2 {
+.recap h2, .auth h2 {
     font-family: '28_Days_Later';
     font-size: 35px;
     margin-left: 20px;
@@ -782,12 +809,14 @@ body{
     text-transform: uppercase;
 }
 
-.recap .btn-primary, .recap .btn-primary:active {
+.recap .btn-primary, .recap .btn-primary:active,
+.auth .btn-primary, .auth .btn-primary:active{
     color: #2E0805;
     background-color: rgba(0,0,0,0);
     border: none;
 }
-.recap .btn-default, .recap .btn-default:active {
+.recap .btn-default, .recap .btn-default:active,
+.auth .btn-default, .auth .btn-default:active{
     color: #563405;
     background-color: rgba(0,0,0,0);
     border: none
@@ -796,7 +825,7 @@ body{
     padding: 1px 5px;
 }
 
-.recap .btn {
+.recap .btn, .auth .btn {
     background: url('../images/scotch2.png') no-repeat;
     border: 0px none;
     border-radius: 0px;
@@ -805,12 +834,18 @@ body{
     min-height: 64px;
     min-width: 274px;
     font-size: 21px;
+    float: right;
+}
+
+.recap a, .recap a:hover, .recap a:focus,
+.auth a, .auth a:hover, .auth a:focus{
+    color: #563405;
 }
 
 #scotch-recap-1 {
     position: relative;
-    left: -115px;
-    top: -322px;
+    left: -125px;
+    top: -130px;
     -ms-transform: rotate(271deg); /* IE 9 */
     -webkit-transform: rotate(271deg); /* Chrome, Safari, Opera */
     transform: rotate(271deg);
@@ -819,11 +854,11 @@ body{
 }
 #scotch-recap-2 {
     position: relative;
-    left: -103px;
-    top: -250px;
-    -ms-transform: rotate(271deg); /* IE 9 */
-    -webkit-transform: rotate(271deg); /* Chrome, Safari, Opera */
-    transform: rotate(271deg);
+    left: 96%;
+    top: -72px;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
     width: auto;
     height: 40px;
 }
@@ -847,18 +882,46 @@ body{
 }
 
 
-/*----------------------AUTH*/
-.auth-block {
+/*----------------------AUTH PAYMENT RECEIPT*/
+.auth {
     background: url('../images/carton-clair.jpg');
     box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
     border-radius: 8px;
     color: black;
-    padding-bottom: 15px;
+    font-family: "Aller_Bd";
+    /*padding-bottom: 40px;*/
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 30px;
 }
-.auth-form a {
-    color: #008;
+@media(max-width: 675px) {
+    .auth {
+        width: 100%;
+        min-width: 100%;
+    }
+    .full-ms{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+.receipt {
+    text-align: center;
 }
 
+#scotch-payment {
+    position: absolute;
+    left: 323px;
+    top: 236px;
+    -ms-transform: rotate(366deg); /* IE 9 */
+    -webkit-transform: rotate(366deg); /* Chrome, Safari, Opera */
+    transform: rotate(366deg);
+    width: auto;
+    height: 42px;
+}
+
+#payment .btn {
+    float: left;
+}
 
 /*----------------------MISC*/
 #map-canvas {
@@ -893,4 +956,18 @@ body{
     padding: 20px 10px;
     min-height: 200px;
     margin-bottom: 250px;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #000;
+    background-color: rgba(0,0,0,0.1);
+}
+.navbar-nav > li > .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu > li > a {
+    color: #000;
+    font-weight: bold;
 }

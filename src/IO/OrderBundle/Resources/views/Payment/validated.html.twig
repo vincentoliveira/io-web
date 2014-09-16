@@ -1,7 +1,8 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
+{% block body_class %}body body-recap{% endblock body_class %}
 {% block content %}
-<div class="container">
+<div id="recap-panel" class="container">
     <div id="order_step">
         <ul>
             <li>Etape 1 : Mon panier</li>
@@ -11,7 +12,7 @@
         </ul>
     </div>
 </div>
-<div class="container">
+<div class="container recap">
     <h2>Validation</h2>
     
     <h3>Votre commande numéro #{{ validated_cart.id }} a bien été enregistrée.</h3>
