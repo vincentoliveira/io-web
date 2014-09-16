@@ -16,6 +16,7 @@ class StorageService
 {
 
     private static $_session_menu = 'io_menu';
+    private static $_session_menu_next_update = 'io_menu_lastupdate';
     private static $_session_cart = 'io_cart';
     private static $_session_client = 'io_client';
     
@@ -51,7 +52,7 @@ class StorageService
     public function get($name)
     {
         $token = $this->container->getParameter('io_auth_token');
-        return$this->getSession()->get($token . $name);
+        return $this->getSession()->get($token . $name);
     }
 
     /**
@@ -64,7 +65,7 @@ class StorageService
     public function set($name, $value)
     {
         $token = $this->container->getParameter('io_auth_token');
-        return$this->getSession()->set($token . $name, $value);
+        return $this->getSession()->set($token . $name, $value);
     }
     
     /**
@@ -74,7 +75,14 @@ class StorageService
      */
     public function getMenu()
     {
-        return $this->get(self::$_session_menu);
+        $nextUpdate = $this->get(self::$_session_menu_next_update);
+        $now = new \DateTime();
+        if ($nextUpdate && $nextUpdate > $now) {
+            return $this->get(self::$_session_menu);
+        } else {
+            echo 'reset';
+            return null;
+        }
     }
 
     /**
@@ -82,9 +90,11 @@ class StorageService
      */
     public function setMenu($menu)
     {
+        $nextUpdate = new \DateTime();
+        $nextUpdate->add(new \DateInterval('PT1M'));
+        $this->set(self::$_session_menu_next_update, $nextUpdate);
         return $this->set(self::$_session_menu, $menu);
     }
-
 
     /**
      * Get cart
