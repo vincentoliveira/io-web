@@ -73,14 +73,13 @@ class StorageService
      * 
      * @return array
      */
-    public function getMenu()
+    public function getMenu($force = false)
     {
         $nextUpdate = $this->get(self::$_session_menu_next_update);
         $now = new \DateTime();
-        if ($nextUpdate && $nextUpdate > $now) {
+        if (!$force || ($nextUpdate && $nextUpdate > $now)) {
             return $this->get(self::$_session_menu);
         } else {
-            echo 'reset';
             return null;
         }
     }
