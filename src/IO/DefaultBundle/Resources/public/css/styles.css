@@ -74,10 +74,14 @@ body {
     font-size: 0.8em;
 }
 
+/*.my-col-md-4 {
+    width: 33.3%;
+}*/
+
 @media (min-width:480px){
-    .product {
-        width: 49%;
-    }
+    /*.my-col-md-4 {
+        width: 50%;
+    }*/
 
     .product img {
         height: 150px;
@@ -85,9 +89,9 @@ body {
 }
 
 @media (min-width:768px){
-    .product {
+    /*.my-col-md-4 {
         width: 33%;
-    }
+    }*/
 
     .product img {
         height: 150px;
@@ -232,8 +236,9 @@ body {
     padding: 5px;
 }
 .recap .product-list img {
-    height: 64px;
+    max-height: 64px;
     width: auto;
+    max-width: 100%;
 }
 .recap .product-list strong {
     display: block;
@@ -250,6 +255,7 @@ body {
 .recap .price {
     text-align: right;
 }
+    
 
 /* Login form */
 .login-form .btn, .register-form .btn {

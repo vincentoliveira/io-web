@@ -1,28 +1,17 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
 {% block body_class %}
-body body-responsable
+body body-traiteur
 {% endblock body_class %}
 
 {% block content %}
 <div id="mentions" class="container">
+    <h2>Mentions légales</h2>
     in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/FileLoader.php line 104
-    at FileLoader->import('@IODefaultBundle/Controller/', 'annotation', false, '/home/romain/dev-mamastreet/app/config/routing.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 155
-    at YamlFileLoader->parseImport(object(RouteCollection), array('resource' => '@IODefaultBundle/Controller/', 'type' => 'annotation', 'prefix' => '/'), '/home/romain/dev-mamastreet/app/config/routing.yml', '/home/romain/dev-mamastreet/app/config/routing.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 91
-    at YamlFileLoader->load('/home/romain/dev-mamastreet/app/config/routing.yml', null) in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/FileLoader.php line 90
-    at FileLoader->import('routing.yml', null, false, '/home/romain/dev-mamastreet/app/config/routing_dev.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 155
-    at YamlFileLoader->parseImport(object(RouteCollection), array('resource' => 'routing.yml'), '/home/romain/dev-mamastreet/app/config/routing_dev.yml', '/home/romain/dev-mamastreet/app/config/routing_dev.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 91
-    at YamlFileLoader->load('/home/romain/dev-mamastreet/app/config/routing_dev.yml', null) in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/FileLoader.php line 90
-    at FileLoader->import('/home/romain/dev-mamastreet/app/config/routing_dev.yml', null, false, '/home/romain/dev-mamastreet/app/cache/dev/assetic/routing.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 155
-    at YamlFileLoader->parseImport(object(RouteCollection), array('resource' => '/home/romain/dev-mamastreet/app/config/routing_dev.yml'), '/home/romain/dev-mamastreet/app/cache/dev/assetic/routing.yml', '/home/romain/dev-mamastreet/app/cache/dev/assetic/routing.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 91
-    at YamlFileLoader->load('/home/romain/dev-mamastreet/app/cache/dev/assetic/routing.yml', null) in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/DelegatingLoader.php line 52
-    at DelegatingLoader->load('/home/romain/dev-mamastreet/app/cache/dev/assetic/routing.yml', null) in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Routing/DelegatingLoader.php line 58
-    at DelegatingLoader->load('/home/romain/dev-mamastreet/app/cache/dev/assetic/routing.yml', null) in /home/romain/dev-mamastreet/app/cache/dev/classes.php line 1511
-    at Router->getRouteCollection() in /home/romain/dev-mamastreet/app/cache/dev/classes.php line 1305
-    at Router->getMatcherDumperInstance() in /home/romain/dev-mamastreet/app/cache/dev/classes.php line 1267
-    at Router->getMatcher() in /home/romain/dev-mamastreet/app/cache/dev/classes.php line 1250
-    at Router->matchRequest(object(Request)) in /home/romain/dev-mamastreet/app/cache/dev/classes.php line 1961
-    at RouterListener->onKernelRequest(object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher))
-    at call_user_func(array(object(RouterListener), 'onKernelRequest'), object(GetResponseEvent), 'kernel.request', object(ContainerAwareEventDispatcher)) in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/WrappedListener.php line 59
+    <br/>at FileLoader->import('@IODefaultBundle/Controller/', 'annotation', false, '/home/romain/dev-mamastreet/app/config/routing.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 155
+    <br/>at YamlFileLoader->parseImport(object(RouteCollection), array('resource' => '@IODefaultBundle/Controller/', 'type' => 'annotation', 'prefix' => '/'), '/home/romain/dev-mamastreet/app/config/routing.yml', '/home/romain/dev-mamastreet/app/config/routing.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 91
+    <br/>at YamlFileLoader->load('/home/romain/dev-mamastreet/app/config/routing.yml', null) in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/FileLoader.php line 90
+    <br/>at FileLoader->import('routing.yml', null, false, '/home/romain/dev-mamastreet/app/config/routing_dev.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 155
+    <br/>at YamlFileLoader->parseImport(object(RouteCollection), array('resource' => 'routing.yml'), '/home/romain/dev-mamastreet/app/config/routing_dev.yml', '/home/romain/dev-mamastreet/app/config/routing_dev.yml') in /home/romain/dev-mamastreet/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php line 91
 </div>
 {% endblock content %}

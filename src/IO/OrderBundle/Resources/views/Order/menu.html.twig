@@ -1,6 +1,6 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
-{% block body_class %}body body-responsable{% endblock body_class %}
+{% block body_class %}body body-menu{% endblock body_class %}
 {% block content %}
 <div class="container">
     <div id="menu" class="col-md-9">
@@ -15,17 +15,19 @@
                 <h3>{{ category.name }}</h3>
                 <p>{{ category.description }}</p>
                 {% for product in category.products %}
-                <div class="product" id="product24">
+                <div class="col col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="product" id="product24">
                     {% if product.media is defined %}
-                    <img src="{{ product.media.path|apiMedia }}" alt="{{ product.name }}">
+                        <img src="{{ product.media.path|apiMedia }}" alt="{{ product.name }}">
                     {% else %}
                     {% endif %}
-                    <div class="product-content">
-                        <strong>{{ product.name }}</strong>
-                        <em>{{ product.price|number_format(2, ',', ' ') }}€</em>
-                        <p>{{ product.description }}</p>
+                        <div class="product-content">
+                            <strong>{{ product.name }}</strong>
+                            <em>{{ product.price|number_format(2, ',', ' ') }}€</em>
+                            <p>{{ product.description }}</p>
+                        </div>
+                        <a class="btn btn-primary btn-add-product" href="#cart" product-id="{{ product.id }}" action-url="{{ path('add_product') }}">Ajouter</a>
                     </div>
-                    <a class="btn btn-primary btn-add-product" href="#cart" product-id="{{ product.id }}" action-url="{{ path('add_product') }}">Ajouter</a>
                 </div>
                 {% endfor %}
             </div>

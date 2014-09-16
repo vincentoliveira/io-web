@@ -1,6 +1,6 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
-{% block body_class %}body body-panier{% endblock body_class %}
+{% block body_class %}body body-recap{% endblock body_class %}
 {% block content %}
 <div id="recap-panel" class="container">
     <div id="order_step">
@@ -17,13 +17,15 @@
     <h2>Mon panier</h2>
     <div class="product-list">
         <div class="row row-header">
-            <div class="col-md-offset-3 col-md-3">
+            <div class="col-md-offset-2 col-md-4
+                 col-sm-offset-3 col-sm-4
+                 col-xs-offset-3 col-xs-4">
                 Article
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 Nombre
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 price">
                 Prix
             </div>
         </div>
@@ -31,17 +33,17 @@
     {% set product = data.product %}
     {% set count = data.count %}
         <div class="row">
-            <div class="col-md-3">
-                <img class=" img-rounded" src="{{ product.product_id|product_media|apiMedia }}" alt="" />
+            <div class="col-md-2 col-sm-3 col-xs-3">
+                <img class="img-rounded" src="{{ product.product_id|product_media|apiMedia }}" alt="" />
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 col-sm-4 col-xs-4">
                 <strong>{{ product.name }}</strong>
                 <em>{{ product.extra }}</em>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3 col-sm-3 col-xs-3">
                 {{ count }} x {{ product.price|number_format(2, ',', ' ') }}€
             </div>
-            <div class="col-md-2 price">
+            <div class="col-md-2 col-sm-2 col-xs-2 price">
                 {{ (count * product.price)|number_format(2, ',', ' ') }}€
             </div>
         </div>
@@ -58,9 +60,13 @@
 
     <form action="{{ path('order_valid_recap') }}" method="POST">
         <div>
-            <a href="{{ path('menu') }}" class="btn btn-default">Retour à la carte</a>
+            <button href="{{ path('menu') }}" class="btn btn-default">Retour a la carte</button>
             <button href="#" class="btn btn-primary">Valider ma commande</button>
         </div>
     </form>
+    <img id="scotch-recap-1" class="hidden-sm hidden-xs"
+         src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
+    <img id="scotch-recap-2" class="hidden-sm hidden-xs"
+         src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
 </div>
 {% endblock content %}
