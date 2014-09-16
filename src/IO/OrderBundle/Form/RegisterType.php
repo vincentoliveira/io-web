@@ -34,7 +34,7 @@ class RegisterType extends AbstractType
                 ))
                 ->add('birthdate', 'date', array(
                     'label' => 'Date de naissance (jj/mm/aaaa)',
-                    'format' => 'dd/MM/yyyy',
+                    'format' => 'yyyy-MM-dd',
                     'widget' => 'single_text',
                     'attr' => array('class' => 'form-control date-masked'),
                     'constraints' => new \Symfony\Component\Validator\Constraints\NotBlank(array(

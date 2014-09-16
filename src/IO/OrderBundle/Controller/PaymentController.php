@@ -31,6 +31,14 @@ class PaymentController extends BaseController
     public $apiClient;
 
     /**
+     * MangoPay Service
+     * 
+     * @Inject("io.mango_pay_service")
+     * @var \IO\OrderBundle\Service\MangoPayService
+     */
+    public $mangoPay;
+
+    /**
      * @Route("/", name="payment_index")
      * @Template()
      */
@@ -43,6 +51,19 @@ class PaymentController extends BaseController
         }
         return array();
     }
+
+    /**
+     * @Route("/payment", name="payment_payment")
+     * @Template()
+     */
+    public function paymentAction()
+    {
+        $users = $this->mangoPay->getAllUsers();
+        
+        echo '<pre>';
+        print_r($users);
+        die;
+    }
     
     /**
      * @Route("/validate/no_payment", name="payment_validate_without_payment")
@@ -53,7 +74,7 @@ class PaymentController extends BaseController
     {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
-        if ($client === null || $cart === null || !$cart['validated']) {
+        if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
             return $this->redirect($this->generateUrl('menu'));
         }
                     

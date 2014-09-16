@@ -46,7 +46,7 @@
     </div>
     
     <form method="POST" action="{{ path('payment_validate_without_payment') }}">
-        <a class="btn btn-default" href="#">Paiement en ligne (CB, Visa, MasterCard)</a>
+        <a class="btn btn-default" href="{{ path('payment_payment') }}">Paiement en ligne (CB, Visa, MasterCard)</a>
         <button class="btn btn-default">Paiement à la réception</button>
     </form>
 </div>
