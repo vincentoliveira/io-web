@@ -1,7 +1,8 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
+{% block body_class %}body body-recap{% endblock body_class %}
 {% block content %}
-<div class="container">
+<div id="recap-panel" class="container">
     <div id="order_step">
         <ul>
             <li>Etape 1 : Mon panier</li>
@@ -11,13 +12,13 @@
         </ul>
     </div>
 </div>
-<div class="container">
+<div id="payment" class="container recap">
     <h2>Paiement</h2>
-    
+
     {% if error is defined %}
     <p class="error">{{ error }}</p>
     {% endif %}
-    
+
     <div class="receipt">
         <strong>{{ restaurantName|default('InnovOrder') }}</strong>
         <em>Le {{ null|date('d/m/Y') }}, à {{ null|date('h:i:s') }}</em>
@@ -44,10 +45,12 @@
             </li>
         </ul>
     </div>
-    
+
     <form method="POST" action="{{ path('payment_validate_without_payment') }}">
-        <a class="btn btn-default" href="#">Paiement en ligne (CB, Visa, MasterCard)</a>
-        <button class="btn btn-default">Paiement à la réception</button>
+        <a class="btn btn-default" href="#">Paiement en ligne{# (CB, Visa, MasterCard)#}</a>
+        <button class="btn btn-default">Paiement a la reception</button>
     </form>
+    <img id="scotch-payment" class="hidden-sm hidden-xs"
+         src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
 </div>
 {% endblock content %}

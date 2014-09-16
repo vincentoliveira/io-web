@@ -14,8 +14,8 @@
     </div>
 </div>
 {% endif %}
-<div class="container">
-    <div class="col-md-5 auth-block">
+<div class="container full-ms">
+    <div class="auth col-md-5">
         <h2>Connexion</h2>
         <form method="POST" action="{{ path('login') }}" class="login-form">
             {{ form_errors(loginForm) }}
@@ -28,9 +28,10 @@
             {{ form_rest(loginForm) }}
             <a href="#">Mot de passe oublié</a>
             <button class="btn btn-default">Connexion</button>
+            <div class="clearfix"></div>
         </form>
     </div>
-    <div class="col-md-offset-1 col-md-6 auth-block">
+    <div class="col-md-offset-1 col-md-6 auth">
         <h2>Inscription</h2>
         <form method="POST" action="{{ path('register') }}" class="register-form">
             {{ form_errors(registerForm) }}
@@ -54,6 +55,7 @@
             </div>
             {{ form_rest(registerForm) }}
             <button class="btn btn-default">Inscription</button>
+            <div class="clearfix"></div>
         </form>
     </div>
 </div>
