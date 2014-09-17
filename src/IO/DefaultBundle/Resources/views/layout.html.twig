@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
     <head>
-        <title>{% block title %}InnovOrder{% endblock %}</title>
+        <title>{% block title %}{{ restaurantName|default('InnovOrder') }}{% endblock %}</title>
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         {% block meta %}
