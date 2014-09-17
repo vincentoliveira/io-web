@@ -3,15 +3,17 @@
 namespace IO\DefaultBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class HomepageControlleur extends DefaultController
+class HomepageController extends DefaultController
 {
 
     /**
      * @Route("/", name="homepage")
+     * @Template("IODefaultBundle:Homepage:index.html.twig")
      */
     public function indexAction()
     {
-        return $this->redirect($this->generateUrl('menu'));
+        return array();
     }
 }

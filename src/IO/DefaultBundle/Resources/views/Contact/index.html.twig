@@ -1,0 +1,53 @@
+{% extends "IODefaultBundle::layout.html.twig" %}
+
+{% block content %}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript">
+    function initialize() {
+        var LatLng = new google.maps.LatLng(48.8675514, 2.3469909);
+        var mapOptions = {
+            center: LatLng,
+            zoom: 14
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: LatLng,
+            map: map,
+            title: "La Maison du Croque-Monsieur"
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div id="contact" class="container contact-page">
+    <h3>Où ET QUAND NOUS RENCONTRER</h3>
+    <div id="map-canvas" class="col-md-9"></div>
+    <div class="contact-info col-md-3">
+        <div>
+            <h4>ADRESSE</h4>
+            <p>108 rue Réaumur<br/>75002 PARIS</p>
+        </div>
+        <div>
+            <h4>TéLéPHONE</h4>
+            <p>00.00.00.00.00</p>
+        </div>
+        <div>
+            <h4>Horaires</h4>
+            <p>Du Lundi au Vendredi : 7h30 - 21h00<br/>
+                Du Samedi au Dimanche : 10h00 - 21h00</p>
+        </div>
+        <div>
+            <h4>Transports</h4>
+            <p><span class="metro m3">M3</span>Sentier <br/>
+                <span class="metro m4">M4</span>Réaumur-Sébastopol <br/>
+                <span class="metro m8">M8</span>, <span class="metro m9">M9</span>Bonne-Nouvelle <br/>
+                <span class="bus b20">20</span>, <span class="bus b39">39</span>,
+                <span class="bus b48">48</span>, <span class="bus b67">67</span>,
+                <span class="bus b74">74</span>, <span class="bus b85">85</span>
+                Réaumur-Montmartre</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
