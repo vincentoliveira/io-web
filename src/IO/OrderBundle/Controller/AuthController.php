@@ -101,7 +101,7 @@ class AuthController extends BaseController
             $registerForm->submit($request);
             if ($registerForm->isValid()) {
                 $data = $registerForm->getData();
-                $data['birthdate'] = $data['birthdate']->format('d/m/Y');
+                $data['birthdate'] = $data['birthdate']->format('Y-m-d');
                 $client = $this->apiClient->register($data);
                 if ($client === null) {
                     $error = new FormError("Une erreur s'est produite.");
