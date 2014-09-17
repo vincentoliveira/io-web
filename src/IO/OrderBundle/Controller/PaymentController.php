@@ -39,6 +39,14 @@ class PaymentController extends BaseController
     public $mangoPay;
 
     /**
+     * MangoPay Service
+     * 
+     * @Inject("io.mailer_service")
+     * @var \IO\OrderBundle\Service\MailerService
+     */
+    public $mailerSv;
+
+    /**
      * @Route("/", name="payment_index")
      * @Template()
      */
@@ -106,6 +114,7 @@ class PaymentController extends BaseController
         }
         
         // TODO: send email
+        $this->mailerSv->clientOrderConfirmation($cart, $client);
         
         $this->storage->setCart(null);
         
