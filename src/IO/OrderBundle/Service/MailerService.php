@@ -5,7 +5,7 @@ namespace IO\OrderBundle\Service;
 use Symfony\Component\HttpFoundation\Session\Session;
 use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation\Inject;
-use Symfony\Component\Templating\EngineInterface;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 /**
  * Description of MailerService
