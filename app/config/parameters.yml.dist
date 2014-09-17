@@ -21,3 +21,12 @@ parameters:
     io_restaurant_name: ~
     io_auth_token:      ~
     io_api_base_url:    ~
+
+    mango_api_base_url:         ~
+    mango_api_client_id:        ~
+    mango_api_client_password:  ~
+    mango_api_temporary_folder: ~
+
+    mango_innovorder_wallet_id: ~
+    mango_innovorder_user_id:   ~
+

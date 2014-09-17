@@ -176,6 +176,26 @@ class ApiClientService
         
         return $result['client_token'];
     }
+    
+    /**
+     * Anthenticate user
+     * 
+     * @param array $data
+     * @return client token or null
+     */
+    public function editUser(array $data)
+    {
+        $baseUrl = $this->getBaseApiUrl();
+            
+        $url = sprintf("%s/client/edit/%d.json", $baseUrl, $data['id']);
+        $jsonResults = $this->restCall($url, $data, "PUT");
+        $result = json_decode($jsonResults, true);
+        if (!isset($result['client'])) {
+            return null;
+        }
+        
+        return $result['client'];
+    }
 
     
     /**
@@ -235,7 +255,7 @@ class ApiClientService
             return $response;
          }
 
-         $this->headers = $http_response_header;
+         $this->headers = isset($http_response_header) ? $http_response_header : FALSE;
          
         return null;
     }

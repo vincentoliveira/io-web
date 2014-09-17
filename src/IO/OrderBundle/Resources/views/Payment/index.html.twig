@@ -20,7 +20,7 @@
     
     <div class="receipt">
         <strong>{{ restaurantName|default('InnovOrder') }}</strong>
-        <em>Le {{ null|date('d/m/Y') }}, à {{ null|date('h:i:s') }}</em>
+        <em>Le {{ null|date('d/m/Y') }}, à {{ null|date('H:i:s') }}</em>
         <ul>
         {% for data in cart.products|ordonate_products %}
         {% set product = data.product %}
@@ -46,7 +46,7 @@
     </div>
     
     <form method="POST" action="{{ path('payment_validate_without_payment') }}">
-        <a class="btn btn-default" href="#">Paiement en ligne (CB, Visa, MasterCard)</a>
+        <a class="btn btn-default" href="{{ path('payment_payment') }}">Paiement en ligne (CB, Visa, MasterCard)</a>
         <button class="btn btn-default">Paiement à la réception</button>
     </form>
 </div>

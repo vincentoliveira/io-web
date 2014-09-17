@@ -144,7 +144,7 @@ class OrderController extends BaseController
     protected function getMenu($reset = false)
     {
         $menu = $this->storage->getMenu();
-        if (!is_array($menu) || $reset) {
+        if (!is_array($menu) || !isset($menu['products']) || $reset) {
             $menu = $this->apiClient->loadMenu();
             $this->storage->setMenu($menu);
         }

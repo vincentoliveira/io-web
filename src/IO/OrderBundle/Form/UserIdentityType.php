@@ -5,8 +5,9 @@ namespace IO\OrderBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use IO\OrderBundle\Enum\CountryEnum;
 
-class RegisterType extends AbstractType
+class UserIdentityType extends AbstractType
 {
 
     /**
@@ -39,7 +40,7 @@ class RegisterType extends AbstractType
                     'attr' => array('class' => 'form-control date-masked'),
                     'constraints' => new \Symfony\Component\Validator\Constraints\NotBlank(array(
                         'message' => 'Veuillez renseigner votre date de naissance',
-                    )),
+                            )),
                     'years' => range(date('Y') - 18, 1900),
                     'required' => true,
                 ))
@@ -51,17 +52,28 @@ class RegisterType extends AbstractType
                             )),
                     'required' => true,
                 ))
-                ->add('plainPassword', 'repeated', array(
-                    'type' => 'password',
-                    'invalid_message' => 'Les mots de passe doivent correspondre',
-                    'options' => array('required' => true),
-                    'first_options' => array(
-                        'label' => 'Mot de passe',
-                        'attr' => array('class' => 'form-control'),
+                ->add('nationality', 'choice', array(
+                    'label' => 'Nationalité',
+                    'attr' => array('class' => 'form-control'),
+                    'choices' => CountryEnum::$countries,
+                    'required' => true,
+                ))
+                ->add('phones', 'collection', array(
+                    'type' => new PhoneType(),
+                    'label' => false,
+                    'options' => array(
+                        'label' => false,
+                        'required' => false,
+                        'attr' => array('class' => 'email-box')
                     ),
-                    'second_options' => array(
-                        'label' => 'Mot de passe (validation)',
-                        'attr' => array('class' => 'form-control'),
+                ))
+                ->add('addresses', 'collection', array(
+                    'type' => new AddressType(),
+                    'label' => false,
+                    'options' => array(
+                        'label' => false,
+                        'required' => true,
+                        'attr' => array('class' => 'email-box')
                     ),
                 ))
         ;
@@ -80,7 +92,7 @@ class RegisterType extends AbstractType
      */
     public function getName()
     {
-        return 'register';
+        return 'identity';
     }
 
 }
