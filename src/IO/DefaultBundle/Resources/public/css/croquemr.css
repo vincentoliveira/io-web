@@ -15,7 +15,7 @@ body {
 
 .navbar {
     height: 120px;
-    background: url(../images/header_bg.png);
+    background: #dacaba url(../images/header_bg.png);
     background-repeat: repeat-x;
     background-position: top left;
     //background-attachment: scroll;
