@@ -27,7 +27,7 @@ class AddressType extends AbstractType
                     'attr' => array('class' => 'form-control form-address-street-street'),
                     'required' => true,
                 ))
-                ->add('post_code', 'text', array(
+                ->add('postcode', 'text', array(
                     'label' => 'Code postal',
                     'attr' => array('class' => 'form-control form-address-city-postcode'),
                     'required' => true,

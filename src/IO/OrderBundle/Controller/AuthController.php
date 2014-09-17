@@ -109,7 +109,7 @@ class AuthController extends BaseController
                     $registerForm->addError($error);
                 } else {
                     $this->storage->setClient($client);
-                    return $this->redirect($this->generateUrl('login_success'));
+                    return $this->redirect($this->generateUrl('profile'));
                 }
             }
         }
@@ -162,6 +162,8 @@ class AuthController extends BaseController
         $client = $this->storage->getClient();
         if ($client !== null && $cart !== null && $cart['validated']) {
             return $this->redirect($this->generateUrl('payment_index'));
+        } elseif (empty($client['user']['nationality']) || empty($client['user']['identity']['address1']['country'])) {
+            return $this->redirect($this->generateUrl('profile'));
         } else {
             return $this->redirect($this->generateUrl('menu'));
         }

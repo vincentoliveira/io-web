@@ -72,7 +72,7 @@ class UserIdentityType extends AbstractType
                     'label' => false,
                     'options' => array(
                         'label' => false,
-                        'required' => false,
+                        'required' => true,
                         'attr' => array('class' => 'email-box')
                     ),
                 ))
