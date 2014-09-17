@@ -253,6 +253,24 @@ body {
     float: right;
 }
 
+/* Profile form */
+.profile-form .form-phone label,
+.profile-form .form-address-street label,
+.profile-form .form-address-city label {
+    display: block;
+}
+.profile-form .form-phone-prefix,
+.profile-form .form-address-street-number,
+.profile-form .form-address-city-postcode {
+    width: 30%;
+    float: left;
+}
+.profile-form .form-phone-number,
+.profile-form .form-address-street-street,
+.profile-form .form-address-city-city {
+    width: 70%;
+}
+
 /* Receipt */
 .receipt {
     margin: 20px 5px;

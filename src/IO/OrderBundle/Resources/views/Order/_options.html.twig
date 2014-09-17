@@ -15,7 +15,7 @@
                     {% for choice in option.choices %}
                     <div class="radio choice">
                         <label>
-                            <input type="radio" name="{{ option.name }}" value="{{ choice.id }}" />
+                            <input type="radio" name="{{ option.name }}" value="{{ choice.id }}" {% if loop.first %}checked {% endif %}/>
                                 {{ choice.name }}{% if choice.price > 0 %}
                             <em>{{ choice.price|number_format(2, ',', ' ') }}€</em>{% endif %}
                         </label>

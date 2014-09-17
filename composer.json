@@ -20,7 +20,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         
         "jms/security-extra-bundle": "1.5.*@dev",
-        "jms/di-extra-bundle": "1.4.*@dev"
+        "jms/di-extra-bundle": "1.4.*@dev",
+        
+        "mangopay/php-sdk-v2": "1.4.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
