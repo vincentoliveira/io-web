@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation\Inject;
 use IO\OrderBundle\Form\LoginType;
 use IO\OrderBundle\Form\RegisterType;
+use IO\OrderBundle\Form\ProfileType;
 
 class AuthController extends BaseController
 {
@@ -117,6 +118,37 @@ class AuthController extends BaseController
         return array(
             'loginForm' => $loginForm->createView(),
             'registerForm' => $registerForm->createView(),
+        );
+    }
+    
+    /**
+     * @Route("/profile", name="profile")
+     * @Template()
+     */
+    public function profileAction(Request $request)
+    {
+        $client = $this->storage->getClient();
+        $client['user']['identity']['birthdate'] = \DateTime::createFromFormat('Y-m-d H:i:s', $client['user']['identity']['birthdate']['date']);
+        $client['user']['identity']['phones'] = [$client['user']['identity']['phone1'], $client['user']['identity']['phone2']];
+        $client['user']['identity']['addresses'] = [$client['user']['identity']['address1']];
+        
+        $form = $this->createForm(new ProfileType(), $client['user']);
+        if ($request->isMethod("POST")) {
+            $form->submit($request);
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $mergeData = array_merge($data, $data['identity']);
+                $mergeData['birthdate'] = $mergeData['birthdate']->format('Y-m-d');
+                $user = $this->apiClient->editUser($mergeData);
+                if ($user) {
+                    $client['user'] = $user;
+                    $this->storage->setClient($client);
+                    return $this->redirect($this->generateUrl('login_success'));
+                }
+            }
+        }
+        return array(
+            'form' => $form->createView(),
         );
     }
     

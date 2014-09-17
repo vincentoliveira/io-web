@@ -20,7 +20,7 @@
     
     <div class="receipt">
         <strong>{{ restaurantName|default('InnovOrder') }}</strong>
-        <em>Le {{ null|date('d/m/Y') }}, à {{ null|date('h:i:s') }}</em>
+        <em>Le {{ null|date('d/m/Y') }}, à {{ null|date('H:i:s') }}</em>
         <ul>
         {% for data in cart.products|ordonate_products %}
         {% set product = data.product %}

@@ -80,7 +80,6 @@ class StorageService
         if ($nextUpdate && $nextUpdate > $now) {
             return $this->get(self::$_session_menu);
         } else {
-            echo 'reset';
             return null;
         }
     }
@@ -91,7 +90,7 @@ class StorageService
     public function setMenu($menu)
     {
         $nextUpdate = new \DateTime();
-        $nextUpdate->add(new \DateInterval('PT1M'));
+        $nextUpdate->add(new \DateInterval('PT10M'));
         $this->set(self::$_session_menu_next_update, $nextUpdate);
         return $this->set(self::$_session_menu, $menu);
     }
