@@ -255,7 +255,7 @@ body {
 .recap .price {
     text-align: right;
 }
-    
+
 
 /* Login form */
 .login-form .btn, .register-form .btn {
@@ -310,5 +310,16 @@ body {
     }
     .receipt li span {
         width: 70%;
+    }
+}
+
+@media (max-width:768px){
+    .category .col-xs-12 {
+        width: 50%;
+    }
+}
+@media (max-width:440px){
+    .category .col-xs-12 {
+        width: 100%;
     }
 }

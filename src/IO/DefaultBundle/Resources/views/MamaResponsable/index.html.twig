@@ -8,7 +8,7 @@ body body-responsable
 <div id="responsable" class="container">
     <div class="article" id="article1">
         <div class="article-vignette">
-            <iframe src="//player.vimeo.com/video/105634070" 
+            <iframe src="{{ asset(articles[0].img) }}?title=0&amp;byline=0&amp;portrait=0&amp;color=998866" 
                     width="500" height="281" frameborder="0" 
                     webkitallowfullscreen mozallowfullscreen allowfullscreen>
             </iframe>
@@ -16,12 +16,12 @@ body body-responsable
         <h5><strong class="article-text">{{ articles[0].title }}</strong></h5>
         <p class="article-text">{{ articles[0].short }}</p>
         <p class="article-text article-content">{{ articles[0].content }}</p>
-        <a class="btn default_btn article-btn" href="#">Lire plus</a>
-        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
+        <a class="toggle-link" href="#">Lire plus</a>
+        <a class="toggle-link moins" href="#">Lire moins</a>
     </div>
     <div class="article" id="article2">
         <div class="article-vignette">
-            <iframe src="//player.vimeo.com/video/105634293"
+            <iframe src="{{ asset(articles[1].img) }}?title=0&amp;byline=0&amp;portrait=0&amp;color=998866"
                     width="500" height="281" frameborder="0" 
                     webkitallowfullscreen mozallowfullscreen allowfullscreen>
 
@@ -30,8 +30,8 @@ body body-responsable
         <h5><strong class="article-text">{{ articles[1].title }}</strong></h5>
         <p class="article-text">{{ articles[1].short }}</p>
         <p class="article-text article-content">{{ articles[1].content }}</p>
-        <a class="btn default_btn article-btn" href="#">Lire plus</a>
-        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
+        <a class="toggle-link" href="#">Lire plus</a>
+        <a class="toggle-link moins" href="#">Lire moins</a>
     </div>
     <div class="article" id="article3">
         <div class="article-vignette">
@@ -40,8 +40,8 @@ body body-responsable
         <h5><strong class="article-text">{{ articles[2].title }}</strong></h5>
         <p class="article-text">{{ articles[2].short }}</p>
         <p class="article-text article-content">{{ articles[2].content }}</p>
-        <a class="btn default_btn article-btn" href="#">Lire plus</a>
-        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
+        <a class="toggle-link" href="#">Lire plus</a>
+        <a class="toggle-link moins" href="#">Lire moins</a>
     </div>
     <div class="article" id="article4">
         <div class="article-vignette">
@@ -50,8 +50,8 @@ body body-responsable
         <h5><strong class="article-text">{{ articles[3].title }}</strong></h5>
         <p class="article-text">{{ articles[3].short }}</p>
         <p class="article-text article-content">{{ articles[3].content }}</p>
-        <a class="btn default_btn article-btn" href="#">Lire plus</a>
-        <a class="btn default_btn article-btn moins" href="#">Lire moins</a>
+        <a class="toggle-link" href="#">Lire plus</a>
+        <a class="toggle-link moins" href="#">Lire moins</a>
     </div>
 </div>
 {% endblock content %}

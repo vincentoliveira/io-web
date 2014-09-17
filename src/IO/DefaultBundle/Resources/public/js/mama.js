@@ -13,10 +13,10 @@ $(document).ready(function() {
         $(this).find('.article-btn').hide();
     });*/
 
-    $('.article').find('.article-btn').click(function(e) {
+    $('.article').find('.toggle-link').click(function(e) {
         $(this).siblings('.article-content').toggle();
         e.preventDefault();
-        $(this).siblings('.article-btn').show();
+        $(this).siblings('.toggle-link').show();
         $(this).hide();
     });
     $('.article').find('.article-content').toggle();
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     // carousel
     $('#welcomeCarousel').carousel({
-        interval: 4000
+        interval: 10000000/*4000*/
     });
 
     $('#welcomeCarousel').bind('slid.bs.carousel', function(event) {

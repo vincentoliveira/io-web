@@ -10,9 +10,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <img id="scotch-titre-header" class="visible-xs"
+                 src="{{ asset("bundles/iodefault/images/scotch2.png") }}"/>
             <a class="brand" href="{{ path('homepage') }}">
                 <img class="hidden-xs" src="{{ asset("bundles/iodefault/images/logo.png") }}" alt="MamaStreet" />
-                <span class="visible-xs">MAMA STREET</span>
+                <span id="xs-title" class="visible-xs">MAMA STREET</span>
             </a>
         </div>
         <div class="collapse navbar-collapse" id="header-navbar-collapse">
@@ -21,16 +23,22 @@
                     <a href="{{ path('mama_responsable') }}"><strong>Mama responsable</strong></a>
                 </li>
                 <li{%if current_route == 'menu'%} class="active"{%endif%}>
-                    <a href="{{ path('menu') }}"><strong>Authentic food</strong>Menus</a>
+                    <a href="{{ path('menu') }}"><strong>Authentic food</strong>
+                        <span>Menus</span></a>
                 </li>
                 <li{%if current_route == 'trouver_mama'%} class="active"{%endif%}>
-                    <a href="{{ path('trouver_mama') }}"><strong>Où trouver la mama</strong>Contact</a>
+                    <a href="{{ path('trouver_mama') }}">
+                        <strong>Où trouver la mama</strong>
+                        <span class="hidden-sm">Contact</span>
+                    </a>
                 </li>
                 <li class="{%if current_route == 'kidnap_mama'%} active{%endif%}">
-                    <a href="{{ path('kidnap_mama') }}"><strong>Kidnap mama</strong>Traiteur</a>
+                    <a href="{{ path('kidnap_mama') }}"><strong>Kidnap mama</strong>
+                        <span>Traiteur</span></a>
                 </li>
                 <li>
-                    <a href="{{ path('menu') }}"><strong>Bangkok experience</strong>Blog</a>
+                    <a href="{{ path('menu') }}"><strong>Bangkok experience</strong>
+                        <span>Blog</span></a>
                 </li>
                 {% if client %}
                 <li class="dropdown">
@@ -43,7 +51,7 @@
                     </ul>
                 </li>
                 {% else %}
-                    <li><a href="{{ path('login') }}"><strong>Be a mama !</strong>Connexion</a></li>
+                <li><a href="{{ path('login') }}"><strong>Be a mama !</strong>Connexion</a></li>
                 {% endif %}
             </ul>
         </div>
