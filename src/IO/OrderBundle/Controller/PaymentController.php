@@ -12,8 +12,8 @@ use JMS\DiExtraBundle\Annotation\Inject;
  * @Route("/payment")
  * 
  */
-class PaymentController extends BaseController
-{
+class PaymentController extends BaseController {
+
     /**
      * Storage Service
      * 
@@ -50,8 +50,7 @@ class PaymentController extends BaseController
      * @Route("/", name="payment_index")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
@@ -64,28 +63,26 @@ class PaymentController extends BaseController
      * @Route("/payment", name="payment_payment")
      * @Template()
      */
-    public function paymentAction()
-    {
+    public function paymentAction() {
         $users = $this->mangoPay->getAllUsers();
-        
+
         echo '<pre>';
         print_r($users);
         die;
     }
-    
+
     /**
      * @Route("/validate/no_payment", name="payment_validate_without_payment")
      * @Template("IOOrderBundle:Payment:index.html.twig")
      * @Method("POST")
      */
-    public function validateWithoutPaymentAction()
-    {
+    public function validateWithoutPaymentAction() {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
             return $this->redirect($this->generateUrl('menu'));
         }
-                    
+
         $deliveryDate = $this->storage->get('client_delivery_date');
         $orderType = $this->storage->get('order_type');
         $newCart = $this->apiClient->validateCart($cart, $client, $deliveryDate, $orderType);
@@ -94,30 +91,42 @@ class PaymentController extends BaseController
             $this->storage->setCart($newCart);
             return $this->redirect($this->generateUrl('payment_validated'));
         }
-        
+
         return array(
-            'error' => 'Une erreur s\'est produite. veuillez réessayer ultérieurement.',
+            'error' => 'Une erreur s\'est produite. Veuillez réessayer ultérieurement.',
         );
     }
 
-    
     /**
      * @Route("/validated", name="payment_validated")
      * @Template()
      */
-    public function validatedAction()
-    {
+    public function validatedAction() {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated'] || !$cart['delivery_date']) {
             return $this->redirect($this->generateUrl('menu'));
         }
+
+        if (!isset($client['wallet']) || $client['wallet'] === null) {
+            //mango.create user (client info)
+            //mango.create wallet (user id)
+            $wallet = array(
+                "user_id" => "3576455",
+                "wallet_id" => "3576456"
+            );
+            $client['wallet'] = $wallet;
+        }
+        //check wallet amount >= cart total ?
+            //fill wallet
+        //mango.transfert (client.wallet, resto.wallet, inno.wallet)
         
         // TODO: send email
         $this->mailerSv->clientOrderConfirmation($cart, $client);
-        
+
         $this->storage->setCart(null);
-        
+
         return array('validated_cart' => $cart);
     }
+
 }
