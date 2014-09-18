@@ -27,6 +27,6 @@ parameters:
     mango_api_client_password:  ~
     mango_api_temporary_folder: ~
 
-    mango_innovorder_wallet_id: ~
-    mango_innovorder_user_id:   ~
+    mango_restaurant_wallet_id: ~
+    mango_restaurant_user_id:   ~
 

@@ -122,6 +122,10 @@ class OrderTwigExtension extends \Twig_Extension
     public function productMediaFilter($productId)
     {
         $menu = $this->storage->getMenu();
+        if (!$menu) {
+            return null;
+        }
+        
         foreach ($menu as $category) {
             foreach ($category['products'] as $product) {
                 if ($product['id'] === $productId) {
