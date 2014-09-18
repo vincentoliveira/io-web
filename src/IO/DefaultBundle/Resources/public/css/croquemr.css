@@ -225,6 +225,9 @@ h3{
     border-radius: 0;
     background-color: #dacaba;
 }
-.modal-header, .modal-footer  {
+.modal-header  {
     border-bottom: 1px solid #000;
+}
+.modal-footer {
+    border-top: 1px solid #000;
 }
