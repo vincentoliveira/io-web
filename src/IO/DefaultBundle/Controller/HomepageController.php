@@ -4,7 +4,7 @@ namespace IO\DefaultBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class HomepageControlleur extends DefaultController
+class HomepageController extends DefaultController
 {
 
     /**

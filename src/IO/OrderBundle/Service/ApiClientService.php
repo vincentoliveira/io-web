@@ -106,7 +106,7 @@ class ApiClientService
     }
     
     /**
-     * Add product to cart. Create cart if not setted.
+     * Remove product from cart. Create cart if not setted.
      * 
      * @param type $cart
      * @param type $productId
