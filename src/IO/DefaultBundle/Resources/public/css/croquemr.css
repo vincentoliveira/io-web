@@ -47,6 +47,12 @@ h3{
     color: white;
     border-color: black;
 }
+
+.disabled {
+    color: #888;
+    background-color: black;
+    border-color: black;
+}
 /*--------------------------------HEADER*/
 .navbar {
     height: 192px;
@@ -214,11 +220,6 @@ h3{
 .product .btn-add-product{
     border: none;
     border-top: 1px black solid;
-}
-
-#cart .disabled {
-    color: #888;
-    border-radius: 0;
 }
 
 .modal-content {
