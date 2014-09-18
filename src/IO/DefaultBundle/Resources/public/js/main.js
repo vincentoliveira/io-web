@@ -79,5 +79,4 @@ $(document).ready(function() {
     enableButtons();
     
     $('.has-tooltip').tooltip()
-    $(".date-masked").mask("99/99/9999");
 });
