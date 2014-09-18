@@ -1,8 +1,9 @@
 {% extends "IODefaultBundle::layout.html.twig" %}
 
+{% block body_class %}body body-recap{% endblock body_class %}
 {% block content %}
 {% if cart and cart.validated %}
-<div class="container">
+<div id="recap-panel" class="container">
     <div id="order_step">
         <ul>
             <li>Etape 1 : Mon panier</li>
@@ -13,7 +14,7 @@
     </div>
 </div>
 {% endif %}
-<div class="container">
+<div  id="profile" class="container">
         <h2>Profil</h2>
         <form method="POST" action="{{ path('profile') }}" class="profile-form">
             {{ form_errors(form) }}

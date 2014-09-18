@@ -75,6 +75,10 @@ body {
     height: 100%;
 }
 
+.form-control {
+    background-color: #FDA;
+    border: none;
+}
 
 /*------------------HEADER*/
 .navbar {
@@ -997,4 +1001,11 @@ body{
 .dropdown-menu > li > a {
     color: #000;
     font-weight: bold;
+}
+
+#profile{
+    background: url('../images/carton-clair.jpg') center;
+    box-shadow: 0 2px 15px 4px rgba(0,0,0,0.6);
+    border-radius: 8px;
+    padding: 10px 25px;
 }
