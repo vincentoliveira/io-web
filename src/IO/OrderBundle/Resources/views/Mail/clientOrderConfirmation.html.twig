@@ -1,0 +1,13 @@
+<p>
+    Bonjour {{ client.user.identity.firstname }},
+</p>
+<p>
+    Votre commande numéro #{{ cart.id }} ({{ cart.total|number_format(2, ',', ' ') }}€) à bien été prise en compte par votre restaurant.
+</p>
+<p>
+    Nous vous remercions de votre fidélité et nous vous souhaitons un agréable appétit.
+</p>
+<p>
+    {{ restaurantName }}<br/>
+    <em>Commande traité par InnovOrder.</em>
+</p>
