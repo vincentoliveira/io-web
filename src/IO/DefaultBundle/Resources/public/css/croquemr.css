@@ -242,16 +242,46 @@ a, a:hover, a:focus {
 .modal-footer {
     border-top: 1px solid #000;
 }
-
+.media {
+    border-bottom: 1px black solid;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
 
 /*---------------------------TRAITEUR*/
 .traiteur-block {
     display: inline-block;
-    padding: 10px 25px;
+    padding: 0px 25px;
     vertical-align: top;
     min-height: 700px;
 }
 .traiteur-block img {
     width: 100%;
     height: auto;
+    padding: 20px;
+    padding-top: 0;
+}
+
+
+/*----------------------------FOOTER*/
+.footer {
+    font-family:'Rokkitt';
+    background-color: #1a1a1a;
+    color: #999;
+}
+.footer h5 {
+    color: #CCC;
+    text-transform: uppercase;
+    border-bottom: 1px #777 dotted;
+}
+
+.footer img {
+    width: 100%;
+    height: auto;
+}
+
+.footer .foot {
+    text-align: center;
+    border-top: 1px #777 dotted;
+    text-transform: uppercase;
 }
