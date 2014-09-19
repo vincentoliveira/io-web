@@ -6,12 +6,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use \Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class ContactController extends DefaultController
+class MapController extends DefaultController
 {
 
     /**
-     * @Route("/contact", name="contact")
-     * @Template("IODefaultBundle:Contact:index.html.twig")
+     * @Route("/ounoustrouver", name="map")
+     * @Template("IODefaultBundle:Contact:map.html.twig")
      */
     public function indexAction()
     {

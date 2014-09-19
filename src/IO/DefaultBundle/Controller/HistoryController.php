@@ -5,12 +5,12 @@ namespace IO\DefaultBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class AboutController extends DefaultController
+class HistoryController extends DefaultController
 {
 
     /**
-     * @Route("/about", name="about")
-     * @Template("IODefaultBundle:About:index.html.twig")
+     * @Route("/notrehistoire", name="history")
+     * @Template("IODefaultBundle:About:history.html.twig")
      */
     public function indexAction()
     {
