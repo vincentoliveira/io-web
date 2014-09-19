@@ -149,19 +149,6 @@ class PaymentController extends BaseController {
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated'] || !$cart['delivery_date']) {
             return $this->redirect($this->generateUrl('menu'));
         }
-
-        if (!isset($client['wallet']) || $client['wallet'] === null) {
-            //mango.create user (client info)
-            //mango.create wallet (user id)
-            $wallet = array(
-                "user_id" => "3576455",
-                "wallet_id" => "3576456"
-            );
-            $client['wallet'] = $wallet;
-        }
-        //check wallet amount >= cart total ?
-            //fill wallet
-        //mango.transfert (client.wallet, resto.wallet, inno.wallet)
         
         // TODO: send email
         $this->mailerSv->clientOrderConfirmation($cart, $client);
