@@ -2,6 +2,7 @@
 
 namespace IO\OrderBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use IO\DefaultBundle\Controller\DefaultController as BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -64,11 +65,52 @@ class PaymentController extends BaseController {
      * @Template()
      */
     public function paymentAction() {
-        $users = $this->mangoPay->getAllUsers();
+        $cart = $this->storage->getCart();
+        $client = $this->storage->getClient();
+        
+        if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
+            return $this->redirect($this->generateUrl('menu'));
+        }
+        
+        if (!isset($client['user']['wallet']) ||
+                empty($client['user']['wallet']['user_id']) ||
+                empty($client['user']['wallet']['wallet_id'])) {
+            $wallet = $this->mangoPay->createUserAndWallet($client['user']);
+            if (!$wallet) {
+                // TODO: Erreur... on arrête tout !
+            }
+            
+            //TODO: save wallet in InnovOrder API
+        } else {
+            $wallet = $client['user']['wallet'];
+        }
+        
+        $payment = $this->mangoPay->createPayIn($client['user'], $cart);
+        
+        return $this->redirect($payment->ExecutionDetails->RedirectURL);
+    }
 
-        echo '<pre>';
-        print_r($users);
-        die;
+    /**
+     * @Route("/payment/callback", name="payment_payment_callback")
+     * @Template()
+     */
+    public function paymentCallbackAction(Request $request)
+    {
+        $transactionId = $request->query->get('transactionId');
+        if ($transactionId === null) {
+            return $this->redirect($this->generateUrl('menu'));
+        }
+        
+        $payIn = $this->mangoPay->getPayIn($transactionId);
+        $cart = $this->storage->getCart();
+        if ($payIn === null || $payIn->Tag !== $this->mangoPay->getOrderTag($cart)){
+            return $this->redirect($this->generateUrl('menu'));
+        }
+        
+        // TODO payment call
+        $this->apiClient->paymentResult($cart, $payIn->Status);
+        
+        return $this->redirect($this->generateUrl('payment_validated'));
     }
 
     /**

@@ -228,6 +228,17 @@ class ApiClientService
     }
     
     /**
+     * 
+     * 
+     * @param array $cart
+     * @param \MangoPay\PayIn $payInStatus
+     */
+    public function paymentResult($cart, \MangoPay\PayIn $payInStatus)
+    {
+        return null;
+    }
+    
+    /**
      * Rest call. Return response.
      * 
      * @param string $url
