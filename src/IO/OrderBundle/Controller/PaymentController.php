@@ -81,12 +81,18 @@ class PaymentController extends BaseController {
             }
             
             //TODO: save wallet in InnovOrder API
+            
+            $client['user']['wallet'] = $wallet;
         } else {
             $wallet = $client['user']['wallet'];
         }
         
         $payment = $this->mangoPay->createPayIn($client['user'], $cart);
         
+        
+        echo '<pre>';
+        print_r($client['user']);
+        die;
         return $this->redirect($payment->ExecutionDetails->RedirectURL);
     }
 

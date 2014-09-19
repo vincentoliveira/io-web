@@ -118,6 +118,8 @@ class MangoPayService
     
     public function createUserAndWallet($io_user)
     {
+        echo '<pre>';
+        print_r('create User+Wallet ');
         $io_wallet = array();
         if (!isset($io_user['wallet']) ||
                 empty($io_user['wallet']['user_id'])) {
@@ -137,6 +139,8 @@ class MangoPayService
             }
             $io_wallet['wallet_id'] = $mango_user->Id;
         }
+        echo '<pre>';
+        print_r('return User Wallet ');
         
         return $io_wallet;
     }
@@ -148,7 +152,25 @@ class MangoPayService
      */
     public function createUser($io_user)
     {
-        return null;
+        $user = new \MangoPay\UserNatural();
+        $user->Tag = "io-client-mango-user";
+        $user->Email = $io_user['email'];
+        $user->FirstName = $io_user['identity']['firstname'];
+        $user->LastName = $io_user['identity']['lastname'];
+        $user->Address = $io_user['identity']['address1']['number'].' '.
+                $io_user['identity']['address1']['street'].' '.
+                $io_user['identity']['address1']['postcode'].' '.
+                $io_user['identity']['address1']['city'];
+        $user->Birthday = $io_user['identity']['birthdate']['date'];
+        $user->Nationality = $io_user['identity']['nationality'];
+        $user->CountryOfResidence = $io_user['identity']['address1']['country'];
+        
+        $this->api->Users->Create($user);
+        
+        echo '<pre>';
+        print_r('create User ');
+        print_r($user);
+        return $user;
     }
     
     /**
@@ -158,7 +180,19 @@ class MangoPayService
      */
     public function createWallet($io_user)
     {
-        return null;
+        if (!isset($io_user['wallet']['user_id'])){
+            return null;
+        }
+        $wallet = new \MangoPay\Wallet();
+        $wallet->Tag = "io-client-wallet-" . $io_user['wallet']['user_id'];
+        $wallet->Currency = $this->getCurrency();
+        $wallet->Description = "io-client-wallet-" . $io_user['wallet']['user_id'];
+        $wallet->Owners = $io_user['wallet']['user_id'];
+        
+        echo '<pre>';
+        print_r('create Wallet ');
+        print_r($wallet);
+        return $wallet;
     }
     
     /**
