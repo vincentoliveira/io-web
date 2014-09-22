@@ -1,6 +1,6 @@
 <div class="navbar navbar-default" role="navigation">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header hidden-sm">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -12,8 +12,8 @@
             </a>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                {#<li><a href="{{ path('homepage') }}"> Accueil</a></li>#}
+            <ul class="nav navbar-nav col-sm-9">
+                <li class="visible-xs"><a href="{{ path('homepage') }}"> Accueil</a></li>
                 <li><a href="{{ path('history') }}"> Notre histoire</a></li>
                 <li><a href="{{ path('menu') }}"> La carte</a></li>
                 <li><a href="{{ path('traiteur') }}">Traiteur</a></li>
@@ -22,20 +22,27 @@
                 <li><a href="{{ path('homepage') }}"> Blog</a></li>
                 <li><a href="{{ path('join') }}"> Franchise</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if client %}
+            <ul class="nav navbar-nav navbar-right col-sm-3">
                 <li>
+                    <a href="{{ path('order_recap') }}">
+                        <i class="glyphicon glyphicon-shopping-cart"></i> {{ cart.products|default([])|length }} article{% if cart and cart.products|length > 1 %}s{% endif %}
+                    </a>
+                </li>
+                {% if client %}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bonjour {{ client.user.identity.firstname }} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Bonjour {{ client.user.identity.firstname }} <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('profile') }}">Profil</a></li>
                         <li><a href="{{ path('logout') }}">Déconnexion</a></li>
                     </ul>
                 </li>
                 {% else %}
-                    <li><a href="{{ path('login') }}">Connexion</a></li>
+                <li>
+                    <a href="{{ path('login') }}">Connexion</a>
+                </li>
                 {% endif %}
-                <li><a href="{{ path('order_recap') }}"><i class="glyphicon glyphicon-shopping-cart"></i> {{ cart.products|default([])|length }} article{% if cart and cart.products|length > 1 %}s{% endif %}</a></li>
             </ul>
         </div>
     </div>

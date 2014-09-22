@@ -78,5 +78,5 @@ function hideShowPostcode() {
 $(document).ready(function() {
     enableButtons();
     
-    $('.has-tooltip').tooltip()
+    $('.has-tooltip').tooltip();
 });

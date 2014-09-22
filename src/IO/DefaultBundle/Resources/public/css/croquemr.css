@@ -76,7 +76,7 @@ a, a:hover, a:focus {
 }
 
 .navbar .navbar-header .navbar-brand img {
-    height: 110px;
+    width: 100%;
 }
 .navbar-nav {
     margin-top: 40px;
@@ -92,6 +92,55 @@ a, a:hover, a:focus {
     text-transform: uppercase;
 }
 
+@media(min-width:991px){
+    .navbar-header {
+        display: inline-block;
+        width: 20%;
+    }
+    .navbar-collapse.collapse {
+        display: inline-block !important;
+        width: 80%;
+    }
+}
+@media(min-width:768px) and (max-width:991px){
+    .navbar-collapse.collapse {
+        width: 100%;
+    }
+}
+@media(max-width:768px){
+    .collapse.in{
+        display: inline-block;
+    }
+    .navbar {
+        height: auto;
+        min-height: 150px;
+    }
+    .navbar-collapse {
+        border: none;
+        box-shadow: none;
+    }
+    .navbar-collapse {
+        float: right;
+        width: 50%;
+    }
+}
+@media(max-width:520px){
+    .navbar-collapse {
+        width: 100%;
+    }
+    .navbar-header .navbar-brand {
+        display: none;
+    }
+    .navbar {
+        min-height: 75px;
+    }
+}
+
+
+.navbar-nav > li > a {
+    padding: 8px;
+}
+
 
 /*--------------------------HOME*/
 #home {
@@ -102,10 +151,63 @@ a, a:hover, a:focus {
     position: relative;
 }
 #home img {
-    width: 100%;
+    width: 99.3%;
     height: auto;
+    left: 0;
+    top: 0;
+    margin: 2px;
+    animation-duration: 21s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-play-state: running;
+    -webkit-animation-duration: 21s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+    -webkit-animation-play-state: running;
 }
 
+#img-1 {
+    position: absolute;
+    animation-name: carousel1;
+    -webkit-animation-name: carousel1;
+}
+#img-2 {
+    position: absolute;
+    opacity: 0;
+    animation-name: carousel2;
+    -webkit-animation-name: carousel2;
+}
+#img-3 {
+    position: absolute;
+    opacity: 0;
+    animation-name: carousel3;
+    -webkit-animation-name: carousel3;
+}
+/* Standard syntax */
+@keyframes carousel1 {
+    0%   {opacity: 1;}
+    23%  {opacity: 1;}
+    33%  {opacity: 0;}
+    89%  {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes carousel2 {
+    0%   {opacity: 0;}
+    23%  {opacity: 0;}
+    33%  {opacity: 1;}
+    56%  {opacity: 1;}
+    66%  {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes carousel3 {
+    0%   {opacity: 0;}
+    56%  {opacity: 0;}
+    66%  {opacity: 1;}
+    89%  {opacity: 1;}
+    100% {opacity: 0;}
+}
 
 /*--------------------------ABOUT*/
 #about {
@@ -209,7 +311,7 @@ a, a:hover, a:focus {
     border-radius: 8px;
 }
 .product-content {
-        margin: 0px 5px;
+    margin: 0px 5px;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
@@ -284,4 +386,21 @@ a, a:hover, a:focus {
     text-align: center;
     border-top: 1px #777 dotted;
     text-transform: uppercase;
+}
+
+.icone {
+    color: transparent;
+    background-position: 0px -24px;
+    font-size: 24px;
+    padding-left: 12px;
+}
+.icone:hover, .icone:focus {
+    background-position: 0px 0px;
+    color: transparent;
+}
+.facebook {
+    background-image: url(../images/cmr-facebook.jpg);
+}
+.twitter {
+    background-image: url(../images/cmr-twitter.jpg);
 }
