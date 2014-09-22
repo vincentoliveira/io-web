@@ -74,12 +74,16 @@ a, a:hover, a:focus {
     border: none;
     font-family:'Rokkitt';
 }
-
+.navbar .navbar-header .navbar-brand {
+    float: none;
+}
 .navbar .navbar-header .navbar-brand img {
     width: 100%;
+    max-width: 150px;
+    margin-top: 10%;
 }
-.navbar-nav {
-    margin-top: 40px;
+.navbar-nav.down{
+    margin-top: 20px;
 }
 .navbar-nav > li > a {
     padding: 10px;
@@ -92,7 +96,16 @@ a, a:hover, a:focus {
     text-transform: uppercase;
 }
 
-@media(min-width:991px){
+.navbar .glyphicon {
+    font-size: 15px;
+}
+
+@media(min-width:1200px){
+    .navbar-nav.down{
+        margin-top: 58px;
+    }
+}
+@media(min-width:768px){
     .navbar-header {
         display: inline-block;
         width: 20%;
@@ -100,11 +113,6 @@ a, a:hover, a:focus {
     .navbar-collapse.collapse {
         display: inline-block !important;
         width: 80%;
-    }
-}
-@media(min-width:768px) and (max-width:991px){
-    .navbar-collapse.collapse {
-        width: 100%;
     }
 }
 @media(max-width:768px){
@@ -123,13 +131,14 @@ a, a:hover, a:focus {
         float: right;
         width: 50%;
     }
+    .navbar .navbar-header .navbar-brand img {
+        margin-top: 0;
+        width: 50%;
+    }
 }
 @media(max-width:520px){
     .navbar-collapse {
         width: 100%;
-    }
-    .navbar-header .navbar-brand {
-        display: none;
     }
     .navbar {
         min-height: 75px;
@@ -202,6 +211,29 @@ a, a:hover, a:focus {
     100% {opacity: 0;}
 }
 @keyframes carousel3 {
+    0%   {opacity: 0;}
+    56%  {opacity: 0;}
+    66%  {opacity: 1;}
+    89%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+/* Webkit syntax */
+@-webkit-keyframes carousel1 {
+    0%   {opacity: 1;}
+    23%  {opacity: 1;}
+    33%  {opacity: 0;}
+    89%  {opacity: 0;}
+    100% {opacity: 1;}
+}
+@-webkit-keyframes carousel2 {
+    0%   {opacity: 0;}
+    23%  {opacity: 0;}
+    33%  {opacity: 1;}
+    56%  {opacity: 1;}
+    66%  {opacity: 0;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes carousel3 {
     0%   {opacity: 0;}
     56%  {opacity: 0;}
     66%  {opacity: 1;}
@@ -376,6 +408,10 @@ a, a:hover, a:focus {
     text-transform: uppercase;
     border-bottom: 1px #777 dotted;
 }
+.footer a, .footer a:hover, .footer a:focus {
+    color: #999;
+    text-decoration: underline;
+}
 
 .footer img {
     width: 100%;
@@ -393,6 +429,8 @@ a, a:hover, a:focus {
     background-position: 0px -24px;
     font-size: 24px;
     padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 6px;
 }
 .icone:hover, .icone:focus {
     background-position: 0px 0px;
