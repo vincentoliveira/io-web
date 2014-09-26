@@ -154,17 +154,20 @@ a, a:hover, a:focus {
 /*--------------------------HOME*/
 #home {
     width: 80%;
-    border: 1px solid black;
-    padding: 2px;
     top: 0px;
     position: relative;
+    padding-left: 0;
+    padding-right: 0;
 }
-#home img {
-    width: 99.3%;
+#home div {
+    border: 1px solid black;
+}
+#home div img {
+    width: 99.4%;
     height: auto;
     left: 0;
     top: 0;
-    margin: 2px;
+    margin: 0.3%;
     animation-duration: 21s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;

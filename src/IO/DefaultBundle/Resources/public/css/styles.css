@@ -2,13 +2,27 @@
     Created on : Sep 5, 2014, 11:00:37 AM
     Author     : vincent
 */
+html, body {
+    height: 100%;
+}
 
 body {
     padding-top: 70px;
 }
 
+.wrapper {
+    min-height: 100%;
+    position: relative;
+}
+.main {
+    padding-bottom: 240px !important;
+}
+
 .footer {
     margin-top: 50px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .error {
