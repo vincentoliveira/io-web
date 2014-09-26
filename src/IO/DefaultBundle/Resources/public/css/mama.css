@@ -76,7 +76,7 @@ body {
 }
 
 .form-control {
-    background-color: #FDA;
+    background-color: rgba(225,200,175,0.7);
     border: none;
 }
 
@@ -841,12 +841,14 @@ body{
 }
 
 .recap .btn-primary, .recap .btn-primary:active,
+.traiteur-form .btn-primary, .traiteur-form .btn-primary:active,
 .auth .btn-primary, .auth .btn-primary:active{
     color: #2E0805;
     background-color: rgba(0,0,0,0);
     border: none;
 }
 .recap .btn-default, .recap .btn-default:active,
+.traiteur-form .btn-default, .traiteur-form .btn-default:active,
 .auth .btn-default, .auth .btn-default:active{
     color: #563405;
     background-color: rgba(0,0,0,0);
@@ -856,7 +858,7 @@ body{
     padding: 1px 5px;
 }
 
-.recap .btn, .auth .btn {
+.recap .btn, .traiteur-form .btn, .auth .btn {
     background: url('../images/scotch2.png') no-repeat;
     border: 0px none;
     border-radius: 0px;
