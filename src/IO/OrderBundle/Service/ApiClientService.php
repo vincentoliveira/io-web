@@ -233,9 +233,31 @@ class ApiClientService
      * @param array $cart
      * @param \MangoPay\PayIn $payInStatus
      */
-    public function paymentResult($cart, \MangoPay\PayIn $payInStatus)
+    public function paymentResult($cart, \MangoPay\PayIn $payIn)
     {
-        return null;
+        $baseUrl = $this->getBaseApiUrl();
+            
+        $restaurantToken = $this->getRestaurantToken();
+        $status = $payIn->Status == "SUCCEEDED" ? "SUCCESS" : "FAILED";
+        $data = array(
+            'restaurant_token' => $restaurantToken,
+            'type' => 'MangoPay',
+            'order_id' => $cart['id'],
+            'amount' => $payIn->DebitedFunds->Amount / 100,
+            'fees_amount' => $payIn->Fees->Amount / 100,
+            'status' => $status,
+            'date' => date('Y-m-d H:i:s', $payIn->CreationDate),
+            'transaction_id' => $payIn->Id,
+        );
+        
+        $url = sprintf("%s/order/payment.json", $baseUrl);
+        $jsonResults = $this->restCall($url, $data, "POST");
+        $result = json_decode($jsonResults, true);
+        if (!isset($result['order'])) {
+            return null;
+        }
+        
+        return $result['order'];
     }
     
     /**

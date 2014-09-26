@@ -13,7 +13,8 @@ use JMS\DiExtraBundle\Annotation\Inject;
  * @Route("/payment")
  * 
  */
-class PaymentController extends BaseController {
+class PaymentController extends BaseController
+{
 
     /**
      * Storage Service
@@ -51,7 +52,8 @@ class PaymentController extends BaseController {
      * @Route("/", name="payment_index")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
@@ -64,35 +66,39 @@ class PaymentController extends BaseController {
      * @Route("/payment", name="payment_payment")
      * @Template()
      */
-    public function paymentAction() {
+    public function paymentAction()
+    {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
-        
+
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
             return $this->redirect($this->generateUrl('menu'));
         }
-        
+
         if (!isset($client['user']['wallet']) ||
                 empty($client['user']['wallet']['user_id']) ||
                 empty($client['user']['wallet']['wallet_id'])) {
             $wallet = $this->mangoPay->createUserAndWallet($client['user']);
             if (!$wallet) {
-                // TODO: Erreur... on arrête tout !
+                // Erreur... on arrête tout !
+                throw new \Exception('Echec de la création du Wallet MangoPay');
             }
-            
-            //TODO: save wallet in InnovOrder API
-            
+            //save wallet in InnovOrder API
             $client['user']['wallet'] = $wallet;
+
+            $user = $this->apiClient->editUser($client['user']);
+            if ($user === null) {
+                throw new \Exception('Echec de l\'assignation du Wallet InnovOrder');
+            }
+
+            $client['user'] = $user;
+            $this->storage->setClient($client);
         } else {
             $wallet = $client['user']['wallet'];
         }
-        
+
         $payment = $this->mangoPay->createPayIn($client['user'], $cart);
-        
-        
-        echo '<pre>';
-        print_r($client['user']);
-        die;
+
         return $this->redirect($payment->ExecutionDetails->RedirectURL);
     }
 
@@ -106,15 +112,23 @@ class PaymentController extends BaseController {
         if ($transactionId === null) {
             return $this->redirect($this->generateUrl('menu'));
         }
-        
+
         $payIn = $this->mangoPay->getPayIn($transactionId);
         $cart = $this->storage->getCart();
-        if ($payIn === null || $payIn->Tag !== $this->mangoPay->getOrderTag($cart)){
+        if ($payIn === null || $payIn->Tag !== $this->mangoPay->getOrderTag($cart)) {
             return $this->redirect($this->generateUrl('menu'));
         }
         
-        // TODO payment call
-        $this->apiClient->paymentResult($cart, $payIn->Status);
+        // validate order
+        $client = $this->storage->getClient();
+        $this->validateCart($cart, $client);
+
+        //Payment call
+        $order = $this->apiClient->paymentResult($cart, $payIn);
+        if ($order) {
+            $order['validated'] = true;
+            $this->storage->setCart($order);
+        }
         
         return $this->redirect($this->generateUrl('payment_validated'));
     }
@@ -124,13 +138,26 @@ class PaymentController extends BaseController {
      * @Template("IOOrderBundle:Payment:index.html.twig")
      * @Method("POST")
      */
-    public function validateWithoutPaymentAction() {
+    public function validateWithoutPaymentAction()
+    {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
             return $this->redirect($this->generateUrl('menu'));
         }
 
+        $response = $this->validateCart($cart, $client);
+        if ($response) {
+            return $response;
+        }
+        
+        return array(
+            'error' => 'Une erreur s\'est produite. Veuillez réessayer ultérieurement.',
+        );
+    }
+    
+    protected function validateCart($cart, $client)
+    {
         $deliveryDate = $this->storage->get('client_delivery_date');
         $orderType = $this->storage->get('order_type');
         $newCart = $this->apiClient->validateCart($cart, $client, $deliveryDate, $orderType);
@@ -139,26 +166,23 @@ class PaymentController extends BaseController {
             $this->storage->setCart($newCart);
             return $this->redirect($this->generateUrl('payment_validated'));
         }
-
-        return array(
-            'error' => 'Une erreur s\'est produite. Veuillez réessayer ultérieurement.',
-        );
+        
+        return null;
     }
 
     /**
      * @Route("/validated", name="payment_validated")
      * @Template()
      */
-    public function validatedAction() {
+    public function validatedAction()
+    {
         $cart = $this->storage->getCart();
         $client = $this->storage->getClient();
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated'] || !$cart['delivery_date']) {
             return $this->redirect($this->generateUrl('menu'));
         }
-        
-        // TODO: send email
-        $this->mailerSv->clientOrderConfirmation($cart, $client);
 
+        $this->mailerSv->clientOrderConfirmation($cart, $client);
         $this->storage->setCart(null);
 
         return array('validated_cart' => $cart);

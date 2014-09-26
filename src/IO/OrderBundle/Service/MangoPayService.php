@@ -36,7 +36,7 @@ class MangoPayService
     protected function mangoPayApi()
     {
         if ($this->api) {
-            return $api;
+            return $this->api;
         }
         
         $this->api = new MangoPayApi();
@@ -118,8 +118,6 @@ class MangoPayService
     
     public function createUserAndWallet($io_user)
     {
-        echo '<pre>';
-        print_r('create User+Wallet ');
         $io_wallet = array();
         if (!isset($io_user['wallet']) ||
                 empty($io_user['wallet']['user_id'])) {
@@ -128,7 +126,9 @@ class MangoPayService
                 return null;
             }
             $io_wallet['user_id'] = $mango_user->Id;
-            $io_user['user']['wallet'] = $io_wallet;
+            $io_user['wallet'] = $io_wallet;
+        } else {
+            $io_wallet['user_id'] = $io_user['wallet']['user_id'];
         }
         
         if (!isset($io_user['wallet']) ||
@@ -137,10 +137,8 @@ class MangoPayService
             if (!$mango_wallet) {
                 return null;
             }
-            $io_wallet['wallet_id'] = $mango_user->Id;
+            $io_wallet['wallet_id'] = $mango_wallet->Id;
         }
-        echo '<pre>';
-        print_r('return User Wallet ');
         
         return $io_wallet;
     }
@@ -153,7 +151,7 @@ class MangoPayService
     public function createUser($io_user)
     {
         $user = new \MangoPay\UserNatural();
-        $user->Tag = "io-client-mango-user";
+        $user->Tag = "io-client-" . $io_user['id'];
         $user->Email = $io_user['email'];
         $user->FirstName = $io_user['identity']['firstname'];
         $user->LastName = $io_user['identity']['lastname'];
@@ -161,16 +159,14 @@ class MangoPayService
                 $io_user['identity']['address1']['street'].' '.
                 $io_user['identity']['address1']['postcode'].' '.
                 $io_user['identity']['address1']['city'];
-        $user->Birthday = $io_user['identity']['birthdate']['date'];
+        $user->Birthday = strtotime($io_user['identity']['birthdate']['date']);
         $user->Nationality = $io_user['identity']['nationality'];
         $user->CountryOfResidence = $io_user['identity']['address1']['country'];
         
-        $this->api->Users->Create($user);
+        $this->mangoPayApi();
+        $mangoUser = $this->api->Users->Create($user);
         
-        echo '<pre>';
-        print_r('create User ');
-        print_r($user);
-        return $user;
+        return $mangoUser;
     }
     
     /**
@@ -184,15 +180,15 @@ class MangoPayService
             return null;
         }
         $wallet = new \MangoPay\Wallet();
-        $wallet->Tag = "io-client-wallet-" . $io_user['wallet']['user_id'];
+        $wallet->Tag = "io-client-wallet-" . $io_user['id'];
         $wallet->Currency = $this->getCurrency();
-        $wallet->Description = "io-client-wallet-" . $io_user['wallet']['user_id'];
-        $wallet->Owners = $io_user['wallet']['user_id'];
+        $wallet->Description = "InnovOrder Client Wallet";
+        $wallet->Owners = [$io_user['wallet']['user_id']];
         
-        echo '<pre>';
-        print_r('create Wallet ');
-        print_r($wallet);
-        return $wallet;
+        $this->mangoPayApi();
+        $mangoWallet = $this->api->Wallets->Create($wallet);
+        
+        return $mangoWallet;
     }
     
     /**

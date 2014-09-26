@@ -152,4 +152,14 @@ class OrderController extends BaseController
         return $menu;
     }
 
+    /**
+     * @Route("/carte/vider_panier", name="menu_empty_cart")
+     * @Template()
+     */
+    public function emptyAction()
+    {
+        $this->storage->setCart(null);
+        return $this->redirect($this->generateUrl('menu'));
+    }
+
 }
