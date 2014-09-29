@@ -121,7 +121,12 @@ class StorageService
      */
     public function getClient()
     {
-        return $this->get(self::$_session_client);
+        $client = $this->get(self::$_session_client);
+        if (!isset($client['user'])) {
+            return null;
+        }
+        
+        return $client;
     }
 
     /**
