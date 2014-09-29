@@ -156,18 +156,25 @@ class PaymentController extends BaseController
         );
     }
     
+    /**
+     * Validate cart
+     * 
+     * @param type $cart
+     * @param type $client
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     protected function validateCart($cart, $client)
     {
         $deliveryDate = $this->storage->get('client_delivery_date');
         $orderType = $this->storage->get('order_type');
         $newCart = $this->apiClient->validateCart($cart, $client, $deliveryDate, $orderType);
-        if ($newCart) {
-            $newCart['validated'] = true;
-            $this->storage->setCart($newCart);
-            return $this->redirect($this->generateUrl('payment_validated'));
+        if ($newCart === null) {
+            return null;
         }
         
-        return null;
+        $newCart['validated'] = true;
+        $this->storage->setCart($newCart);
+        return $this->redirect($this->generateUrl('payment_validated'));
     }
 
     /**
