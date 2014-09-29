@@ -5,17 +5,9 @@
  */
 
 $(document).ready(function() {
-    // hover article
-    /*$('.article').mouseover(function() {
-        $(this).find('.article-btn').show();
-    });
-    $('.article').mouseout(function() {
-        $(this).find('.article-btn').hide();
-    });*/
-
     $('.article').find('.toggle-link').click(function(e) {
-        $(this).siblings('.article-content').toggle();
         e.preventDefault();
+        $(this).siblings('.article-content').toggle();
         $(this).siblings('.toggle-link').show();
         $(this).hide();
     });
