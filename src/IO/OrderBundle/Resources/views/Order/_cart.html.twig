@@ -1,5 +1,8 @@
 <div id="cart" class="col-md-3" id="cart">
     <h3><i class="glyphicon glyphicon-shopping-cart"></i> Mon panier</h3>
+    {% if cart is not null and cart.products is not empty %}
+    <a class="empty-cart" href="{{ path("menu_empty_cart") }}">Vider mon panier</a>
+    {% endif %}
     <div class="section section-first">
         {% if cart is null or cart.products is empty %}
         <span class="info">Votre panier est vide</span>

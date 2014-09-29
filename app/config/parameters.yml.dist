@@ -21,6 +21,9 @@ parameters:
     io_restaurant_name: ~
     io_auth_token:      ~
     io_api_base_url:    ~
+    io_fees:
+        fixed:          0
+        percent:        6
 
     mango_api_base_url:         ~
     mango_api_client_id:        ~
