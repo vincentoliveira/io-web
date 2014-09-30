@@ -6,13 +6,13 @@ use IO\DefaultBundle\Controller\DefaultController as BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class MamaResponsableController extends BaseController {
+class BlogController extends BaseController {
 
     /**
-     * @Route("/mama", name="mama_responsable")
+     * @Route("/blog", name="blog")
      * @Template()
      */
-    public function indexAction() {
+    public function blogAction() {
         $list = array(
             array('id' => 1, 'title' => "MAMA RESPONSABLE",
                 'short' => "Résumé de l'article",

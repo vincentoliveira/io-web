@@ -12,7 +12,7 @@ class MentionsLegalesController extends BaseController {
      * @Route("/mentionslegales", name="mentions_legales")
      * @Template()
      */
-    public function indexAction() {
+    public function mentionslegalesAction() {
         return array();
     }
 

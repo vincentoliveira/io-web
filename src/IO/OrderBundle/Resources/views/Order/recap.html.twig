@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="container recap">
+<div class="main container recap">
     <h2>Mon panier</h2>
     <div class="product-list">
         <div class="row row-header">
@@ -52,17 +52,13 @@
                 <span class="right total">Total TTC : {{ cart.total|number_format(2, ',', ' ') }}€</span>
             </div>
         </div>
-        <img id="scotch-recap-2" class="hidden-sm hidden-xs"
-             src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
     </div>
 
     <form action="{{ path('order_valid_recap') }}" method="POST">
         <div>
-            <a href="{{ path('menu') }}" class="btn btn-default">Retour a la carte</a>
+            <a href="{{ path('menu') }}" class="btn btn-default">Retour à la carte</a>
             <button href="#" class="btn btn-primary">Valider ma commande</button>
         </div>
     </form>
-    <img id="scotch-recap-1" class="hidden-sm hidden-xs"
-         src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
 </div>
 {% endblock content %}

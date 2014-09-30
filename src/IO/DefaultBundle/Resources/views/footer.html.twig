@@ -1,33 +1,48 @@
-<div id="site-footer">
-    <div class="container">
+<div id="site-footer" class="container">
         <div class="row">
-            <div class="col-md-4 col-md-sn col-sm-5">
+            <div class="col-md-4 col-sm-6">
+                <p><strong>Suivez-nous sur les réseaux sociaux</strong></p>
                 <div class="social-network">
-                    <a class="logo facebook" href="http://www.facebook.com">
-                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
-                    </a>
-                    <a class="logo twitter" href="https://twitter.com">
-                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
-                    </a>
-                    <a class="logo tripadvisor" href="http://www.tripadvisor.fr">
-                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
-                    </a>
-                    <a class="logo pinterest" href="https://fr.pinterest.com">
-                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
-                    </a>
+                    {% if facebook != '' %}
+                    <a class="logo facebook" href="{{facebook}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
+                    {% if twitter != '' %}
+                    <a class="logo twitter" href="{{twitter}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
+                    {% if google != '' %}
+                    <a class="logo google" href="{{google}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
+                    {% if pinterest != '' %}
+                    <a class="logo pinterest" href="{{pinterest}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
+                    {% if tripadvisor != '' %}
+                    <a class="logo tripadvisor" href="{{tripadvisor}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
+                    {% if youtube != '' %}
+                    <a class="logo youtube" href="{{youtube}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
+                    {% if tumblr != '' %}
+                    <a class="logo tumblr" href="{{tumblr}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
+                    {% if instagram != '' %}
+                    <a class="logo instagram" href="{{instagram}}">
+                        <img class="void" src="{{ asset("bundles/iodefault/images/vide.png") }}"/>
+                    </a>{% endif %}
                 </div>
             </div>
-            <div class="hidden-xs col-md-2 col-sm-3 text" id="restaurant_address" >
-                <p>ADRESSE DU RESTAURANT<br/>TEL.: 06 99 45 47 94</p>
+            <div class="col-md-4 col-sm-3" id="restaurant_address" >
+                <p>16 rue Voltaire<br/>92742 Le Kremlin-Bicêtre<br/>Tél.: 06 99 45 47 94</p>
             </div>
-            <div class="hidden-sm hidden-xs col-md-2 col-sm-6 text">
-                <a class="mentions-link" href="{{ path('mentions_legales') }}">MENTIONS LÉGALES</a>
-                <p>PLAN DU SITE</p>
+            <div class="col-md-4 col-sm-3">
+                <a class="mentions-link" href="{{ path('mentions_legales') }}">Mentions légales
+                    <br/>&copy; {{ restaurantName|default('InnovOrder') }} 2014<br/>tous droits réservés</a>
             </div>
-            <div class="hidden-md hidden-sm hidden-xs col-md-2 col-sm-6">
-                <img class="city" src="{{ asset("bundles/iodefault/images/City.png") }}"/>
-            </div>
-            <div class="col-md-2 col-sm-3 text">&copy; MAMA STREET 2014<br/>tous droits réservés</div>
         </div>
-    </div>
 </div>

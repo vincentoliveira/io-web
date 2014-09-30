@@ -7,13 +7,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
-class TrouverMamaController extends BaseController {
+class ContactController extends BaseController {
 
     /**
-     * @Route("/contact", name="trouver_mama")
+     * @Route("/contact", name="contact")
      * @Template()
      */
-    public function indexAction()
+    public function contactAction()
     {
         return array();
     }

@@ -41,6 +41,35 @@ class OrderTwigExtension extends \Twig_Extension
             'client' => $this->storage->getClient(),
             'order_type' => $this->storage->get('order_type'),
             'restaurantName' => $this->container->getParameter('io_restaurant_name'),
+            
+            'backgroundColor' => 'black',/*CA7*/
+            'backgroundFontColor' => 'white',
+            
+            'headerColor' => 'transparent',
+            'headerFontColor' => 'white',
+            
+            'footerColor' => '#222',
+            'footerFontColor' => '#DDD',
+            
+            'decorationColor' => '#D33',
+            'decorationHoverColor' => '#B22',
+            'decorationFontColor' => 'black',
+            'decorationDisabledFontColor' => '#B22',
+            
+            'cartColor' => '#222',
+            'cartFontColor' => '#DDD',
+            
+            'productColor' => '#222',
+            'productFontColor' => '#DDD',
+            
+            'facebook' => 'facebook.com',
+            'twitter' => 'twitter.com',
+            'google' => 'googleplus.com',
+            'pinterest' => '',
+            'tripadvisor' => '',
+            'youtube' => '',
+            'tumblr' => '',
+            'instagram' => 'instagram.com',
         );
     }
 

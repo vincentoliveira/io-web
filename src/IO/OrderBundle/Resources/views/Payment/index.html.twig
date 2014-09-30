@@ -12,7 +12,7 @@
         </ul>
     </div>
 </div>
-<div id="payment" class="container recap">
+<div id="payment" class="main container recap">
     <h2>Paiement</h2>
 
     {% if error is defined %}
@@ -50,7 +50,5 @@
         <a class="btn btn-default" href="#">Paiement en ligne{# (CB, Visa, MasterCard)#}</a>
         <button class="btn btn-default">Paiement a la reception</button>
     </form>
-    <img id="scotch-payment" class="hidden-sm hidden-xs"
-         src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
 </div>
 {% endblock content %}

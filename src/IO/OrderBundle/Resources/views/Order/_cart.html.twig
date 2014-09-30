@@ -1,55 +1,59 @@
 <div class="col-md-3" id="cart">
-    <h3><i class="glyphicon glyphicon-shopping-cart"></i> Mon panier</h3>
-    <div class="section section-first">
+    <div class="cart-half">
+        <h3><i class="glyphicon glyphicon-shopping-cart"></i> Mon panier</h3>
+        <div class="section section-first">
         {% if cart is null or cart.products is empty %}
-        <span class="info">Votre panier est vide</span>
+            <span class="info">Votre panier est vide</span>
         {% else %}
-        <ul class="product-list">
+            <ul class="product-list">
             {% for data in cart.products|ordonate_products %}
                 {% set product = data.product %}
                 {% set count = data.count %}
-            <li>
-                <span class="count"><a class="btn-remove-product" href="#cart" action-url="{{ path('remove_product') }}" product-id="{{ product.product_id }}" extra="{{ product.extra }}">-</a>{{ count }}<a class="btn-add-product" href="#cart" action-url="{{ path('add_product') }}" product-id="{{ product.product_id }}">+</a></span><strong>{{ product.name }}</strong>
-                <em>{{ (count * product.price)|number_format(2, ',', ' ') }}€</em>
-                <span class="extra">{{ product.extra }}</span>
-            </li>
+                <li>
+                    <span class="count"><a class="btn-remove-product" href="#cart" action-url="{{ path('remove_product') }}" product-id="{{ product.product_id }}" extra="{{ product.extra }}">-</a>{{ count }}<a class="btn-add-product" href="#cart" action-url="{{ path('add_product') }}" product-id="{{ product.product_id }}">+</a></span><strong>{{ product.name }}</strong>
+                    <em>{{ (count * product.price)|number_format(2, ',', ' ') }}€</em>
+                    <span class="extra">{{ product.extra }}</span>
+                </li>
             {% endfor %}
-        </ul>
+            </ul>
         {% endif %}
+        </div>
+        <div class="section nb-products">
+            Nombre de produits
+            <em>{{ cart.products|default([])|length }}</em>
+        </div>
+        <div class="section total">
+            Total
+            <em>{{ cart|total_price|number_format(2, ',', ' ') }}€</em>
+        </div>
     </div>
-    <div class="section nb-products">
-        Nombre de produits
-        <em>{{ cart.products|default([])|length }}</em>
-    </div>
-    <div class="section total">
-        Total
-        <em>{{ cart|total_price|number_format(2, ',', ' ') }}€</em>
-    </div>
-    <h3><i class="glyphicon glyphicon-phone"></i> Commander</h3>
-    <div class="section section-first">
-        <form action="{{ path('order_recap') }}" method="POST">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="order_type" value="emporter" required {% if order_type == "emporter" %}checked{% endif %} />
-                    A emporter
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="order_type" value="livraison" {% if order_type == "livraison" %}checked{% endif %} disabled />
-                    En livraison
-                    <a class="has-tooltip" data-toggle="tooltip" data-placement="right" title="Cette option n'est pas encore disponible" href="#" ><i class="glyphicon glyphicon-warning-sign"></i> </a>
-                </label>
-            </div>
-            <div class="form-group order-datetime">
-                <label for="order_delivery_date">Heure de reception/livraison</label>
-                <input type="time" class="form-control" name="order_delivery_date" required />
-            </div>
-            <div class="form-group order-postcode">
-                <label for="order_postcode">Code postal</label>
-                <input type="text" class="form-control" name="order_postcode" />
-            </div>
-            <button class="btn btn-primary{% if cart is null or cart.products is empty %} disabled{% endif %}">Valider ma commande</button>
-        </form>
+    <div class="cart-half">
+        <h3><i class="glyphicon glyphicon-phone"></i> Commander</h3>
+        <div class="section-form">
+            <form action="{{ path('order_recap') }}" method="POST">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="order_type" value="emporter" required {% if order_type == "emporter" %}checked{% endif %} />
+                        A emporter
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="order_type" value="livraison" {% if order_type == "livraison" %}checked{% endif %} disabled />
+                        En livraison
+                        <a class="has-tooltip" data-toggle="tooltip" data-placement="right" title="Cette option n'est pas encore disponible" href="#" ><i class="glyphicon glyphicon-warning-sign"></i> </a>
+                    </label>
+                </div>
+                <div class="form-group order-datetime">
+                    <label for="order_delivery_date">Heure de reception/livraison</label>
+                    <input type="time" class="form-control" name="order_delivery_date" required />
+                </div>
+                <div class="form-group order-postcode">
+                    <label for="order_postcode">Code postal</label>
+                    <input type="text" class="form-control" name="order_postcode" />
+                </div>
+                <button class="btn btn-primary{% if cart is null or cart.products is empty %} disabled{% endif %}">Valider ma commande</button>
+            </form>
+        </div>
     </div>
 </div>

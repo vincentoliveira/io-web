@@ -2,28 +2,31 @@
     Created on : Sep 5, 2014, 11:00:37 AM
     Author     : vincent
 */
-
-body {
-    padding-top: 70px;
+html, body {
+    height: 100%;
 }
 
 .footer {
     margin-top: 50px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.main {
+    padding-bottom: 100px;
 }
 
 .error {
     color: #ff0000;
 }
 
+.nav-pills > li + li {
+    margin-left: 0;
+}
+
 /*
  * MENU
  */
-@media(min-width: 992px) {
-    #menu {
-        border-right: 1px solid black;
-    }
-}
-
 #menu h3 {
     text-transform: uppercase;
     text-align: left;
@@ -37,10 +40,15 @@ body {
 .product {
     float: left;
     width: 100%;
-    padding: 5px;
-    margin: 1px 1px 0 0;
+    padding: 0;
+    margin: 0 0 15px 0;
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+}
+.product-content {
+    padding-left: 5px;
+    padding-right: 5px;
+    min-height: 140px;
 }
 
 .product strong {
@@ -58,7 +66,7 @@ body {
 
 .product img {
     display: block;
-    width: auto;
+    width: 100%;
     margin: auto;
 }
 
@@ -83,9 +91,9 @@ body {
         width: 50%;
     }*/
 
-    .product img {
+    /*.product img {
         height: 150px;
-    }
+    }*/
 }
 
 @media (min-width:768px){
@@ -93,9 +101,9 @@ body {
         width: 33%;
     }*/
 
-    .product img {
+    /*.product img {
         height: 150px;
-    }
+    }*/
 }
 
 /*
@@ -112,7 +120,6 @@ body {
 }
 
 #cart .section {
-    margin: 10px 0 0;
     padding: 10px 0 0;
     border-top: 1px solid #000;
     text-align: left;
@@ -215,7 +222,6 @@ body {
 }
 
 #order_step ul > li+li:before {
-    padding: 0 5px;
     /*color: #888;*/
     content: ">\00a0";
 }
@@ -333,10 +339,15 @@ body {
 
 @media (max-width:768px){
     .category .col-xs-12 {
+        width: 33.3333%;
+    }
+}
+@media (max-width:560px){
+    .category .col-xs-12 {
         width: 50%;
     }
 }
-@media (max-width:440px){
+@media (max-width:360px){
     .category .col-xs-12 {
         width: 100%;
     }

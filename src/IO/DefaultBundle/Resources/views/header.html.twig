@@ -4,47 +4,48 @@
     <div class="container navbar-container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#header-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img id="scotch-titre-header" class="visible-xs"
-                 src="{{ asset("bundles/iodefault/images/scotch2.png") }}"/>
             <a class="brand" href="{{ path('homepage') }}">
-                <img class="hidden-xs" src="{{ asset("bundles/iodefault/images/logo.png") }}" alt="MamaStreet" />
-                <span id="xs-title" class="visible-xs">MAMA STREET</span>
+                {%if current_route != 'home'%}
+                <img class="hidden-xs"
+                     src="{{ asset("bundles/iodefault/images/logo.png") }}"
+                     alt="MamaStreet" />
+                {%endif%}
+                <span id="xs-title" class="visible-xs">
+                    {{ restaurantName|default('InnovOrder') }}
+                </span>
             </a>
         </div>
-        <div class="collapse navbar-collapse" id="header-navbar-collapse">
+        <div class="collapse navbar-collapse col-md-9" id="header-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li{%if current_route == 'mama_responsable'%} class="active"{%endif%}>
-                    <a href="{{ path('mama_responsable') }}"><strong>Mama responsable</strong></a>
+                <li{%if current_route == 'home'%} class="active"{%endif%}>
+                    <a href="{{ path('home') }}">Accueil</a>
                 </li>
+
                 <li{%if current_route == 'menu'%} class="active"{%endif%}>
-                    <a href="{{ path('menu') }}"><strong>Authentic food</strong>
-                        <span>Menus</span></a>
+                    <a href="{{ path('menu') }}">La carte</a>
                 </li>
-                <li{%if current_route == 'trouver_mama'%} class="active"{%endif%}>
-                    <a href="{{ path('trouver_mama') }}">
-                        <strong>Où trouver la mama</strong>
-                        <span class="hidden-sm">Contact</span>
-                    </a>
+                <li{%if current_route == 'contact'%} class="active"{%endif%}>
+                    <a href="{{ path('contact') }}">Contact</span></a>
                 </li>
-                <li class="{%if current_route == 'kidnap_mama'%} active{%endif%}">
-                    <a href="{{ path('kidnap_mama') }}"><strong>Kidnap mama</strong>
-                        <span>Traiteur</span></a>
+                <li {%if current_route == 'traiteur'%} class="active"{%endif%}>
+                    <a href="{{ path('traiteur') }}">Traiteur</a>
                 </li>
-                <li>
-                    <a href="{{ path('menu') }}"><strong>Bangkok experience</strong>
-                        <span>Blog</span></a>
+                <li{%if current_route == 'blog'%} class="active"{%endif%}>
+                    <a href="{{ path('blog') }}">Blog</a>
                 </li>
                 {% if client %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <strong>Bonjour {{ client.user.identity.firstname|upper }}
-                            <span class="caret"></span></strong>
+                        Bonjour {{ client.user.identity.firstname|upper }}
+                            <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('profile') }}">Profil</a></li>
@@ -52,10 +53,9 @@
                     </ul>
                 </li>
                 {% else %}
-                <li><a href="{{ path('login') }}"><strong>Be a mama !</strong>Connexion</a></li>
+                <li><a href="{{ path('login') }}">Connexion</a></li>
                 {% endif %}
             </ul>
         </div>
-        <img class="scotch hidden-sm hidden-xs" src="{{ asset("bundles/iodefault/images/scotch1.png") }}"/>
     </div>
 </nav>

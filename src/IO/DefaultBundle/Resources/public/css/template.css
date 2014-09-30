@@ -1,0 +1,431 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 sept. 2014, 15:10:01
+    Author     : Romain, Louis
+*/
+
+/*CHARGEMENT DES POLICES*/
+
+@font-face {
+    font-family: '28_Days_Later';
+    src: url(../fonts/28_Days_Later.ttf);
+}
+@font-face {
+    font-family: 'Aller_Bd';
+    src: url(../fonts/Aller_Bd.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Bdlt';
+    src: url(../fonts/Aller_Bdlt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_lt';
+    src: url(../fonts/Aller_lt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Lt';
+    src: url(../fonts/Aller_Lt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Ltlt';
+    src: url(../fonts/Aller_LTlt.ttf);
+}
+
+@font-face {
+    font-family: 'Aller_Rg';
+    src: url(../fonts/Aller_Rg.ttf);
+}
+
+@font-face {
+    font-family: 'AllerDisplay';
+    src: url(../fonts/AllerDisplay.ttf);
+}
+
+@font-face {
+    font-family: 'Juergen';
+    src: url(../fonts/Juergen.ttf);
+} 
+
+@font-face {
+    font-family: 'Lato-Black';
+    src: url(../fonts/Lato-Black.ttf);
+}
+
+
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url(../fonts/Lato-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url(../fonts/Lato-Regular.ttf);
+}
+
+.form-control {
+    background-color: white;
+}
+
+/*------------------HEADER*/
+.navbar {
+    background: none;
+    border: none;;
+}
+
+.navbar .navbar-header .brand {
+    display: inline-block;
+}
+
+.navbar .navbar-header .brand img{
+    height: auto;
+    width: 164px;
+}
+
+.navbar .navbar-collapse {
+    margin: 30px 0 0px 170px;
+    padding: 0;
+}
+
+.navbar .navbar-nav {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.navbar .navbar-nav > li > a {
+    font-size: 1.1em;
+    font-weight: 700;
+    line-height: 20px;
+    color: #000;
+    text-align: center;
+    padding: 0;
+    margin: 10px;
+}
+
+.navbar .navbar-nav > li.active > a,
+.navbar .navbar-nav > li.active > a:hover,
+.navbar .navbar-nav > li > a:hover {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#xs-title{
+    margin-left: 27px;
+    font-size: 24px;
+    position: absolute;
+    top: 8px;
+    text-transform: uppercase;
+}
+
+@media(max-width: 991px) {
+    .navbar .navbar-header {
+        margin: 0px;
+    }
+    .navbar .navbar-nav > li > a {
+        font-size: 1.0em;
+        font-weight: 300;
+    }
+}
+
+@media(max-width: 767px) {
+    .navbar .navbar-header .brand {
+        margin-top: 10px;
+        font-size: 1.3em;
+    }
+    .navbar .navbar-container, .navbar .navbar-collapse {
+        padding: 0;
+        margin: 0;
+    }
+    .navbar .navbar-nav {
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+    .navbar .navbar-collapse {
+        padding: 0;
+    }
+    .navbar .navbar-nav>li {
+        width: 100%;
+    }
+}
+
+#header-navbar-collapse {
+    margin-left: 0;
+}
+@media(min-width: 768px){
+    .brand {
+        animation: brand-anim 2s;
+        animation-play-state: running;
+    }
+}
+@keyframes brand-anim{
+    0%   {left: -170px;}
+    100% {left: 0px;}
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus{
+    border: none;
+}
+
+/*-----------------BACKGROUNDS*/
+body{
+    width: 100%;
+    height: 100%;
+    background-position: center top;
+    background: fixed;
+    padding: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.body-responsable {
+}
+.body-trouver {
+}
+.body-traiteur {
+}
+.body-recap {
+}
+.body-menu {
+}
+
+#home {
+    width: 60%;
+}
+#home img {
+    width: 100%;
+}
+/*-----------------------BLOG*/
+#responsable .container {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.article
+{
+    position: relative;
+    width: 48%;
+    margin: 5px;
+    display: inline-block;
+    vertical-align: top;
+}
+@media (max-width:768px){
+    .article {
+        display: block;
+        width: 100%;
+    }
+}
+.article-vignette
+{
+    width: 100%;
+    height: auto;
+    padding:  8px 44px;
+}
+.article-vignette img
+{
+    width: 100%;
+    height: auto;
+}
+.article-vignette object, .article-vignette iframe
+{
+    width: 100%;
+    max-height: 300px;
+}
+@media (max-width:768px){
+    .article-vignette, .article-vignette img, .article-vignette object, .article-vignette iframe{
+        border-radius: 8px;
+        padding: 0px;
+    }
+}
+.article .toggle-link {
+    padding-left: 8px;
+    padding-right: 8px;
+    color: white;
+    font-weight: 600;
+
+}
+.article .toggle-link:hover, .article .toggle-link:focus {
+    color: white;
+}
+.article-text {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+
+
+/*----------------CONTACT*/
+
+
+/*-----------------TRAITEUR*/
+
+
+/*----------------------FOOTER*/
+#site-footer .row{
+    padding: 10px;
+}
+#site-footer div div{
+    text-align: center;
+}
+#site-footer a, #site-footer a:hover, #site-footer a:focus {
+    text-decoration: none;
+}
+
+.logo:hover, .logo:focus, .logo:active {
+    text-decoration: none;
+}
+.logo img {
+    background: url(../images/Logos.png);
+    width: 32px;
+    height: 32px;
+    background-position: 0px 32px;
+}
+.facebook img:hover{
+    background-position: 0px 0px;
+}
+.twitter img{
+    background-position: 224px 32px;
+}
+.twitter img:hover{
+    background-position: 224px 0px;
+}
+.google img{
+    background-position: 192px 32px;
+}
+.google img:hover{
+    background-position: 192px 0px;
+}
+.pinterest img{
+    background-position: 160px 32px;
+}
+.pinterest img:hover{
+    background-position: 160px 0px;
+}
+.youtube img{
+    background-position: 96px 32px;
+}
+.youtube img:hover{
+    background-position: 96px 0px;
+}
+.tripadvisor img{
+    background-position: 128px 32px;
+}
+.tripadvisor img:hover{
+    background-position: 128px 0px;
+}
+.tumblr img{
+    background-position: 64px 32px;
+}
+.tumblr img:hover{
+    background-position: 64px 0px;
+}
+.instagram img{
+    background-position: 32px 32px;
+}
+.instagram img:hover{
+    background-position: 32px 0px;
+}
+
+/*----------------------MENU*/
+#menu-nav .nav > li > a {
+    padding: 5px;
+    border-radius: 0;
+    font-weight: bold;
+}
+@media (min-width: 992px){
+    #menu-nav .nav > li > a {
+        padding-left: 34px;
+    }
+}
+#menu-nav .col-md-2 {
+    padding-left: 0;
+}
+
+.product {
+    box-shadow: black 3px 3px 6px;
+}
+
+
+/*----------------------CART*/
+#cart {
+    padding: 20px 0px 40px 15px;
+}
+#cart h3 {
+    padding: 20px 5px 30px 5px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#cart .section {
+    padding: 0px 5px;
+    border: none;
+}
+#cart .section-form {
+    margin-top: -10px;
+}
+#cart .nb-products {
+    color: #999;
+}
+#cart .total {
+    padding-bottom: 42px;
+    margin-bottom: 8px;
+}
+
+#cart .section-form div {
+    padding: 0 5px;
+}
+#cart .product-list .count a:hover,
+#cart .product-list .count a:active,
+#cart .product-list .count a:focus {
+    text-decoration: none;
+}
+
+/*----------------------RECAP*/
+
+
+/*---------------------OPTIONS*/
+
+
+/*----------------------AUTH PAYMENT RECEIPT*/
+
+
+/*-----------------------BTNS*/
+.btn {
+    border: none;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+/*----------------------MISC*/
+#map-canvas {
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
+.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
+.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
+.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
+.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-right: 5px;
+    padding-left: 5px;
+}

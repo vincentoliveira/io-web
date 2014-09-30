@@ -9,13 +9,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use IO\OrderBundle\Form\KidnapOrderType;
 
-class KidnapMamaController extends BaseController {
+class TraiteurController extends BaseController {
 
     /**
-     * @Route("/traiteur", name="kidnap_mama")
+     * @Route("/traiteur", name="traiteur")
      * @Template()
      */
-    public function indexAction() {
+    public function traiteurAction() {
         $commande = $this->createForm(new KidnapOrderType());
 
         return array('form' => $commande->createView(),);

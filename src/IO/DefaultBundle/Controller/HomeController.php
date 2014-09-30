@@ -5,14 +5,14 @@ namespace IO\DefaultBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class HomepageController extends DefaultController
+class HomeController extends DefaultController
 {
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="home")
      * @Template()
      */
-    public function indexAction()
+    public function homeAction()
     {
         return array();
     }

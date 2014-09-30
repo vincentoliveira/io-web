@@ -12,13 +12,16 @@
             {% stylesheets 
                 'bundles/iodefault/css/bootstrap.min.css'
                 'bundles/iodefault/css/styles.css'
-                'bundles/iodefault/css/mama.css'
+                'bundles/iodefault/css/template.css'
                 filter='yui_css,cssrewrite' 
                 output='css/main.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
-
+            {% include 'IODefaultBundle::style.html.twig' %} 
+        {% block css %}
+                
+        {% endblock %}
         <link rel="icon" type="image/x-icon" ref="{{ asset('favicon.ico') }}">
     </head>
     <body class="{% block body_class %}{% endblock body_class %}">
