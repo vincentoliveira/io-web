@@ -203,6 +203,13 @@ body{
 
 #home {
     width: 60%;
+    min-width: 420px;
+}
+@media (max-width: 420px) {
+    #home {
+        width: 100%;
+        min-width:100%;
+    }
 }
 #home img {
     width: 100%;
@@ -243,8 +250,8 @@ body{
     max-height: 300px;
 }
 @media (max-width:768px){
-    .article-vignette, .article-vignette img, .article-vignette object, .article-vignette iframe{
-        border-radius: 8px;
+    .article-vignette, .article-vignette img,
+    .article-vignette object, .article-vignette iframe{
         padding: 0px;
     }
 }
@@ -266,6 +273,24 @@ body{
 
 
 /*----------------CONTACT*/
+#map-canvas {
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+@media (min-width: 768px) {
+    #map-canvas {
+        width: 75%;
+    }
+    .contact-info {
+        width: 25%;
+        display: inline-block;
+        float: right;
+        padding-left: 10px;
+    }
+}
 
 
 /*-----------------TRAITEUR*/
@@ -407,13 +432,6 @@ body{
 }
 
 /*----------------------MISC*/
-#map-canvas {
-    height: 400px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
 .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
 .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,

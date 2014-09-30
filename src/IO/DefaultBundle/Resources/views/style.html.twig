@@ -19,6 +19,14 @@
         color: {{headerFontColor}};
         border-bottom: 4px solid {{decorationColor}};
     }
+    @media (max-width:768px){
+        .navbar .navbar-nav > li.active > a,
+        .navbar .navbar-nav > li.active > a:hover,
+        .navbar .navbar-nav > li > a:hover {
+            border-bottom: none;
+            background: {{decorationColor}};
+        }
+    }
 
     body{
         background-color: {{backgroundColor}};
@@ -70,7 +78,7 @@
     #cart {
         color: {{cartFontColor}};
     }
-    
+
     .navbar-default .navbar-nav > .open > a,
     .navbar-default .navbar-nav > .open > a:hover,
     .navbar-default .navbar-nav > .open > a:focus,
@@ -113,5 +121,14 @@
     .modal-content, .product-content {
         background-color: {{productColor}};
         color: {{productFontColor}};
+    }
+
+    #xs-title{
+        color: {{headerFontColor}};
+        font-weight: bold;
+    }
+
+    .contact-info h4 {
+        border-bottom: 2px solid {{decorationColor}};
     }
 </style>

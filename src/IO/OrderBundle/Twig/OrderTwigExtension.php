@@ -42,27 +42,27 @@ class OrderTwigExtension extends \Twig_Extension
             'order_type' => $this->storage->get('order_type'),
             'restaurantName' => $this->container->getParameter('io_restaurant_name'),
             
-            'backgroundColor' => 'black',/*CA7*/
-            'backgroundFontColor' => 'white',
+            'backgroundColor' => '#EED',
+            'backgroundFontColor' => '#111',
             
             'headerColor' => 'transparent',
-            'headerFontColor' => 'white',
+            'headerFontColor' => '#111',
             
             'footerColor' => '#222',
             'footerFontColor' => '#DDD',
             
-            'decorationColor' => '#D33',
-            'decorationHoverColor' => '#B22',
-            'decorationFontColor' => 'black',
-            'decorationDisabledFontColor' => '#B22',
+            'decorationColor' => '#CA7',
+            'decorationHoverColor' => '#975',
+            'decorationFontColor' => 'white',
+            'decorationDisabledFontColor' => '#DCA',
             
-            'cartColor' => '#222',
-            'cartFontColor' => '#DDD',
+            'cartColor' => 'rgba(0,0,0,0.6)',
+            'cartFontColor' => 'white',
             
-            'productColor' => '#222',
-            'productFontColor' => '#DDD',
+            'productColor' => 'white',
+            'productFontColor' => '#111',
             
-            'facebook' => 'facebook.com',
+            'facebook' => 'https://www.facebook.com/groups/693553540720813/?fref=ts',
             'twitter' => 'twitter.com',
             'google' => 'googleplus.com',
             'pinterest' => '',
