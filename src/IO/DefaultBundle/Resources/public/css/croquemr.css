@@ -333,7 +333,15 @@ a, a:hover, a:focus {
     font-size: 15px;
 }
 #menu .nav li {
-    margin: 1px;
+    width: 25%;
+    margin: 0;
+    padding: 1px;
+}
+@media(max-width:768px) {
+    #menu .nav li {
+        width: 50%;
+        text-align: center;
+    }
 }
 
 .product {
