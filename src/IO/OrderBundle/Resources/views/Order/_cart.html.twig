@@ -46,7 +46,9 @@
             </div>
             <div class="form-group order-datetime">
                 <label for="order_delivery_date">Heure de reception/livraison</label>
-                <input type="time" class="form-control" name="order_delivery_date" required />
+                <select class="form-control" name="order_delivery_date" required>
+                    {{ order_time_options()|raw }}
+                </select>
             </div>
             <div class="form-group order-postcode">
                 <label for="order_postcode">Code postal</label>

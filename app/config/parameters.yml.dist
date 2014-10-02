@@ -25,6 +25,14 @@ parameters:
         fixed:          0
         percent:        6
 
+    restaurant_time_service:
+        service_1:
+            start:      11:30
+            end:        14:30
+        service_2:
+            start:      18:00
+            end:        23:00
+
     mango_api_base_url:         ~
     mango_api_client_id:        ~
     mango_api_client_password:  ~
