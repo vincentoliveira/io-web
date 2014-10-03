@@ -1011,3 +1011,12 @@ body{
     border-radius: 8px;
     padding: 10px 25px;
 }
+
+/* Receip */
+.receipt {
+    border: none !important;
+}
+.receipt strong {
+    font-family: '28_Days_Later';
+    font-size: 1.8em;
+}
