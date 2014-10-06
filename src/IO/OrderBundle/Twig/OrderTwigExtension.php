@@ -42,6 +42,9 @@ class OrderTwigExtension extends \Twig_Extension
             'order_type' => $this->storage->get('order_type'),
             'restaurantName' => $this->container->getParameter('io_restaurant_name'),
             
+            'address' => '30 Rue Saint-Sauveur, 75002 Paris',
+            'phone' => '01 42 21 88 78',
+            
             'backgroundColor' => '#EED',
             'backgroundFontColor' => '#111',
             
@@ -85,6 +88,7 @@ class OrderTwigExtension extends \Twig_Extension
             'product_media' => new \Twig_SimpleFilter('product_media', array($this, 'productMediaFilter')),
         );
     }
+
 
     /**
      * Return api media path

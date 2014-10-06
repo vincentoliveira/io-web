@@ -1,4 +1,5 @@
-<div id="site-footer" class="container">
+<div id="site-footer">
+    <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-6">
                 <p><strong>Suivez-nous sur les réseaux sociaux</strong></p>
@@ -38,11 +39,13 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-3" id="restaurant_address" >
-                <p>16 rue Voltaire<br/>92742 Le Kremlin-Bicêtre<br/>Tél.: 06 99 45 47 94</p>
+                <p>{{ address }}</p>
+                <p>{{ phone }}</p>
             </div>
             <div class="col-md-4 col-sm-3">
-                <a class="mentions-link" href="{{ path('mentions_legales') }}">Mentions légales
-                    <br/>&copy; {{ restaurantName|default('InnovOrder') }} 2014<br/>tous droits réservés</a>
+                <p><a class="mentions-link" href="{{ path('mentions_legales') }}">Mentions légales</a></p>
+                <p>&copy; {{ restaurantName|default('InnovOrder') }} 2014<br/>Tous droits réservés</a></p>
             </div>
         </div>
+    </div>
 </div>
