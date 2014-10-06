@@ -5,180 +5,12 @@ and open the template in the editor.
 */
 /* 
     Created on : 5 sept. 2014, 15:10:01
-    Author     : Romain, Louis
+    Author     : Vincent, Romain, Louis
 */
 
-/*CHARGEMENT DES POLICES*/
-
-@font-face {
-    font-family: '28_Days_Later';
-    src: url(../fonts/28_Days_Later.ttf);
-}
-@font-face {
-    font-family: 'Aller_Bd';
-    src: url(../fonts/Aller_Bd.ttf);
-}
-
-@font-face {
-    font-family: 'Aller_Bdlt';
-    src: url(../fonts/Aller_Bdlt.ttf);
-}
-
-@font-face {
-    font-family: 'Aller_lt';
-    src: url(../fonts/Aller_lt.ttf);
-}
-
-@font-face {
-    font-family: 'Aller_Lt';
-    src: url(../fonts/Aller_Lt.ttf);
-}
-
-@font-face {
-    font-family: 'Aller_Ltlt';
-    src: url(../fonts/Aller_LTlt.ttf);
-}
-
-@font-face {
-    font-family: 'Aller_Rg';
-    src: url(../fonts/Aller_Rg.ttf);
-}
-
-@font-face {
-    font-family: 'AllerDisplay';
-    src: url(../fonts/AllerDisplay.ttf);
-}
-
-@font-face {
-    font-family: 'Juergen';
-    src: url(../fonts/Juergen.ttf);
-} 
-
-@font-face {
-    font-family: 'Lato-Black';
-    src: url(../fonts/Lato-Black.ttf);
-}
 
 
-@font-face {
-    font-family: 'Lato-Bold';
-    src: url(../fonts/Lato-Bold.ttf);
-}
-
-@font-face {
-    font-family: 'Lato-Regular';
-    src: url(../fonts/Lato-Regular.ttf);
-}
-
-.form-control {
-    background-color: white;
-}
-
-/*------------------HEADER*/
-.navbar {
-    background: none;
-    border: none;;
-}
-
-.navbar .navbar-header .brand {
-    display: inline-block;
-}
-
-.navbar .navbar-header .brand img{
-    height: auto;
-    width: 164px;
-}
-
-.navbar .navbar-collapse {
-    margin: 30px 0 0px 170px;
-    padding: 0;
-}
-
-.navbar .navbar-nav {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-}
-
-.navbar .navbar-nav > li > a {
-    font-size: 1.1em;
-    font-weight: 700;
-    line-height: 20px;
-    color: #000;
-    text-align: center;
-    padding: 0;
-    margin: 10px;
-}
-
-.navbar .navbar-nav > li.active > a,
-.navbar .navbar-nav > li.active > a:hover,
-.navbar .navbar-nav > li > a:hover {
-    background-color: transparent;
-    text-decoration: none;
-}
-
-#xs-title{
-    margin-left: 27px;
-    font-size: 24px;
-    position: absolute;
-    top: 8px;
-    text-transform: uppercase;
-}
-
-@media(max-width: 991px) {
-    .navbar .navbar-header {
-        margin: 0px;
-    }
-    .navbar .navbar-nav > li > a {
-        font-size: 1.0em;
-        font-weight: 300;
-    }
-}
-
-@media(max-width: 767px) {
-    .navbar .navbar-header .brand {
-        margin-top: 10px;
-        font-size: 1.3em;
-    }
-    .navbar .navbar-container, .navbar .navbar-collapse {
-        padding: 0;
-        margin: 0;
-    }
-    .navbar .navbar-nav {
-        padding: 0;
-        margin: 0;
-        border-radius: 0;
-    }
-    .navbar .navbar-collapse {
-        padding: 0;
-    }
-    .navbar .navbar-nav>li {
-        width: 100%;
-    }
-}
-
-#header-navbar-collapse {
-    margin-left: 0;
-}
-@media(min-width: 768px){
-    .brand {
-        animation: brand-anim 2s;
-        animation-play-state: running;
-    }
-}
-@keyframes brand-anim{
-    0%   {left: -170px;}
-    100% {left: 0px;}
-}
-
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus{
-    border: none;
-}
-
-/*-----------------BACKGROUNDS*/
+/** Boby **/
 body{
     width: 100%;
     height: 100%;
@@ -190,17 +22,71 @@ body{
     background-size: cover;
     -o-background-size: cover;
 }
-.body-responsable {
-}
-.body-trouver {
-}
-.body-traiteur {
-}
-.body-recap {
-}
-.body-menu {
+
+/** HEADER **/
+.navbar {
+    background: none;
+    border: none;
 }
 
+.navbar .navbar-nav > li > a {
+    text-align: center;
+}
+
+.navbar .navbar-nav > li.active > a,
+.navbar .navbar-nav > li.active > a:hover,
+.navbar .navbar-nav > li > a:hover {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    border: none;
+}
+
+@media(min-width: 768px) {
+    .navbar .navbar-header .brand img {
+        height: 100px;
+        width: auto;
+    }
+    
+    .navbar .navbar-header .brand span {
+        display: none;
+    }
+    
+    .navbar .navbar-collapse {
+        margin: 30px 0 0px 170px;
+    }
+
+    .navbar .navbar-nav > li > a {
+        padding: 0;
+        margin: 10px;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+}
+
+@media(max-width: 768px) {
+    .navbar .navbar-header .brand {
+        font-size: 1.3em;
+        text-transform: uppercase;
+    }
+    
+    .navbar .navbar-header .brand {
+        display: block;
+        margin: 10px 20px;
+    }
+        
+    .navbar .navbar-header .brand img {
+        display: none;
+    }
+
+}
+
+
+/* HOME */
 #home {
     width: 60%;
     min-width: 420px;
@@ -446,4 +332,9 @@ body{
 .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
     padding-right: 5px;
     padding-left: 5px;
+}
+
+
+.form-control {
+    background-color: white;
 }
