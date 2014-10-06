@@ -88,6 +88,16 @@ class OrderTwigExtension extends \Twig_Extension
             'product_media' => new \Twig_SimpleFilter('product_media', array($this, 'productMediaFilter')),
         );
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function getFunctions()
+    {
+        return array(
+            'order_time_options' => new \Twig_SimpleFunction('order_time_options', array($this, 'orderTimeOptionsFunction')),
+        );
+    }
 
 
     /**
@@ -170,6 +180,35 @@ class OrderTwigExtension extends \Twig_Extension
         return null;
     }
 
+    /**
+     * Generate option list for order time
+     * 
+     * @return string
+     */
+    public function orderTimeOptionsFunction()
+    {
+        $options = "";
+        
+        $timeServices = $this->container->getParameter('restaurant_time_service');
+        
+        $currentTime = time() % 86400;
+        
+        foreach ($timeServices as $timeService) {
+            $startTime = strtotime($timeService["start"]) % 86400;
+            $endTime = strtotime($timeService["end"]) % 86400;
+            
+            for ($time = $startTime; $time < $endTime; $time += 900) {
+                if ($time > $currentTime + 1800) {
+                    // TODO: Fix timezone
+                    $timeStr = sprintf('%d:%02d', 2 + $time / 3600, ($time / 60) % 60);
+                    $options .= sprintf('<option value="%s">%s</option>', $timeStr, $timeStr);
+                }
+            }
+        }
+        
+        return $options;
+    }
+    
     /**
      * {@inheritdoc}
      */

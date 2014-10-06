@@ -21,6 +21,17 @@ parameters:
     io_restaurant_name: ~
     io_auth_token:      ~
     io_api_base_url:    ~
+    io_fees:
+        fixed:          0
+        percent:        6
+
+    restaurant_time_service:
+        service_1:
+            start:      11:30
+            end:        14:30
+        service_2:
+            start:      18:00
+            end:        23:00
 
     mango_api_base_url:         ~
     mango_api_client_id:        ~
