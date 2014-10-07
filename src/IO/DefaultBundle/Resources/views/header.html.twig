@@ -1,29 +1,22 @@
 {% set current_route = app.request.attributes.get("_route")%}
-
 <nav class="navbar navbar-default" role="navigation">
     <div class="container navbar-container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse"
-                    data-target="#header-navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             <a class="brand" href="{{ path('home') }}">
-                {%if current_route != 'home'%}
-                <img class="hidden-xs"
-                     src="{{ asset("bundles/iodefault/images/logo.png") }}"
-                     alt="MamaStreet" />
-                {%endif%}
-                <span id="xs-title" class="visible-xs">
-                    {{ restaurantName|default('InnovOrder') }}
-                </span>
+                {% if current_route != 'home' %}
+                <img src="{{ asset("bundles/iodefault/images/logo.png") }}" alt="{{ restaurantName|default('InnovOrder') }}" />
+                {% endif %}
+                <span>{{ restaurantName|default('InnovOrder') }}</span>
             </a>
         </div>
-        <div class="collapse navbar-collapse col-sm-9" id="header-navbar-collapse">
+        <div class="navbar-collapse collapse" id="header-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li{%if current_route == 'home'%} class="active"{%endif%}>
                     <a href="{{ path('home') }}">Accueil</a>
@@ -35,17 +28,13 @@
                 <li{%if current_route == 'contact'%} class="active"{%endif%}>
                     <a href="{{ path('contact') }}">Contact</span></a>
                 </li>
-                <li {%if current_route == 'traiteur'%} class="active"{%endif%}>
-                    <a href="{{ path('traiteur') }}">Traiteur</a>
-                </li>
-                <li{%if current_route == 'blog'%} class="active"{%endif%}>
-                    <a href="{{ path('blog') }}">Blog</a>
-                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 {% if client %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Bonjour {{ client.user.identity.firstname|upper }}
-                            <span class="caret"></span>
+                        <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('profile') }}">Profil</a></li>

@@ -3,17 +3,15 @@
 {% block body_class %}body body-menu{% endblock body_class %}
 {% block content %}
 <div class="main container">
-    <div id="menu-nav" class="col-md-2">
-        <ul class="nav nav-pills" role="tablist">
-        {% for category in menu %}
-            <li{% if loop.first %} class="active"{% endif %}>
-                <a href="#cat{{ category.id }}" role="tab" data-toggle="tab">
-                    {{ category.name }}
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
+    <ul id="menu-nav" class="col-md-2 nav nav-pills" role="tablist">
+    {% for category in menu %}
+        <li{% if loop.first %} class="active"{% endif %}>
+            <a href="#cat{{ category.id }}" role="tab" data-toggle="tab">
+                {{ category.name }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
     <div id="menu" class="col-md-7">
         <div class="tab-content">
         {% for category in menu %}
@@ -24,19 +22,13 @@
                 {% for product in category.products %}
                 <div class="col col-sm-4 col-xs-12">
                     <div class="product" id="product24">
-                    {% if product.media is defined %}
-                        <img src="{{ product.media.path|apiMedia }}"
-                             alt="{{ product.name }}">
-                    {% else %}
-                    {% endif %}
+                        <img src="{{ asset("bundles/iodefault/images/vide.png") }}" alt="" {% if product.media is defined %}style="background-image:url({{ product.media.path|apiMedia }});" {% endif %}>
                         <div class="product-content">
                             <strong>{{ product.name }}</strong>
                             <em>{{ product.price|number_format(2, ',', ' ') }}€</em>
                             <p>{{ product.description }}</p>
                         </div>
-                        <a class="btn btn-primary btn-add-product"
-                           href="#cart" product-id="{{ product.id }}"
-                           action-url="{{ path('add_product') }}">Ajouter</a>
+                        <a class="btn btn-primary btn-add-product" href="#cart" product-id="{{ product.id }}" action-url="{{ path('add_product') }}">Ajouter</a>
                     </div>
                 </div>
                 {% endfor %}

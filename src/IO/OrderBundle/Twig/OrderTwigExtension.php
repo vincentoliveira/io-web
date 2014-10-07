@@ -42,6 +42,9 @@ class OrderTwigExtension extends \Twig_Extension
             'order_type' => $this->storage->get('order_type'),
             'restaurantName' => $this->container->getParameter('io_restaurant_name'),
             
+            'address' => '30 Rue Saint-Sauveur, 75002 Paris',
+            'phone' => '01 42 21 88 78',
+            
             'backgroundColor' => '#EED',
             'backgroundFontColor' => '#111',
             
@@ -85,6 +88,17 @@ class OrderTwigExtension extends \Twig_Extension
             'product_media' => new \Twig_SimpleFilter('product_media', array($this, 'productMediaFilter')),
         );
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function getFunctions()
+    {
+        return array(
+            'order_time_options' => new \Twig_SimpleFunction('order_time_options', array($this, 'orderTimeOptionsFunction')),
+        );
+    }
+
 
     /**
      * Return api media path
@@ -166,6 +180,35 @@ class OrderTwigExtension extends \Twig_Extension
         return null;
     }
 
+    /**
+     * Generate option list for order time
+     * 
+     * @return string
+     */
+    public function orderTimeOptionsFunction()
+    {
+        $options = "";
+        
+        $timeServices = $this->container->getParameter('restaurant_time_service');
+        
+        $currentTime = time() % 86400;
+        
+        foreach ($timeServices as $timeService) {
+            $startTime = strtotime($timeService["start"]) % 86400;
+            $endTime = strtotime($timeService["end"]) % 86400;
+            
+            for ($time = $startTime; $time < $endTime; $time += 900) {
+                if ($time > $currentTime + 1800) {
+                    // TODO: Fix timezone
+                    $timeStr = sprintf('%d:%02d', 2 + $time / 3600, ($time / 60) % 60);
+                    $options .= sprintf('<option value="%s">%s</option>', $timeStr, $timeStr);
+                }
+            }
+        }
+        
+        return $options;
+    }
+    
     /**
      * {@inheritdoc}
      */

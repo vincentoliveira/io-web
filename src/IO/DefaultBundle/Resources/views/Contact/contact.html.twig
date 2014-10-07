@@ -25,12 +25,16 @@ body body-trouver
 </script>
 
 <div id="contact" class="main container">
-    <div id="map-canvas"></div>
-    <div class="contact-info">
-        <h4>Adresse</h4>
-        <p>16 rue Voltaire<br/>92742 Le Kremlin-Bicêtre</p>
-        <h4>Téléphone</h4>
-        <p>06.99.45.47.94<br/>.</p>
+    <div id="map-canvas" class="col-md-9"></div>
+    <div col-md-3>
+        <div class="contact-info">
+            <h4>Adresse</h4>
+            {{ address }}
+        </div>
+        <div class="contact-info">
+            <h4>Téléphone</h4>
+            {{ phone }}
+        </div>
     </div>
 </div>
 {% endblock content %}

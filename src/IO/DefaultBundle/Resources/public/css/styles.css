@@ -116,7 +116,9 @@ html, body {
 
 #cart h3 {
     text-transform: uppercase;
-    margin-bottom: 30px;
+}
+
+#cart .empty-cart {
 }
 
 #cart .section {
