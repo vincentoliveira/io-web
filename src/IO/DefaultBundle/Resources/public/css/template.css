@@ -9,8 +9,7 @@ and open the template in the editor.
 */
 
 
-
-/** Boby **/
+/** BODY **/
 body{
     width: 100%;
     height: 100%;
@@ -23,10 +22,12 @@ body{
     -o-background-size: cover;
 }
 
+
 /** HEADER **/
 .navbar {
     background: none;
     border: none;
+    margin-top: 10px;
 }
 
 .navbar .navbar-nav > li > a {
@@ -86,103 +87,7 @@ body{
 }
 
 
-/* HOME */
-#home {
-    width: 60%;
-    min-width: 420px;
-}
-@media (max-width: 420px) {
-    #home {
-        width: 100%;
-        min-width:100%;
-    }
-}
-#home img {
-    width: 100%;
-}
-/*-----------------------BLOG*/
-#responsable .container {
-    margin-left: 40px;
-    margin-right: 40px;
-}
-.article
-{
-    position: relative;
-    width: 48%;
-    margin: 5px;
-    display: inline-block;
-    vertical-align: top;
-}
-@media (max-width:768px){
-    .article {
-        display: block;
-        width: 100%;
-    }
-}
-.article-vignette
-{
-    width: 100%;
-    height: auto;
-    padding:  8px 44px;
-}
-.article-vignette img
-{
-    width: 100%;
-    height: auto;
-}
-.article-vignette object, .article-vignette iframe
-{
-    width: 100%;
-    max-height: 300px;
-}
-@media (max-width:768px){
-    .article-vignette, .article-vignette img,
-    .article-vignette object, .article-vignette iframe{
-        padding: 0px;
-    }
-}
-.article .toggle-link {
-    padding-left: 8px;
-    padding-right: 8px;
-    color: white;
-    font-weight: 600;
-
-}
-.article .toggle-link:hover, .article .toggle-link:focus {
-    color: white;
-}
-.article-text {
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 8px;
-}
-
-
-/*----------------CONTACT*/
-#map-canvas {
-    height: 400px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-}
-@media (min-width: 768px) {
-    #map-canvas {
-        width: 75%;
-    }
-    .contact-info {
-        width: 25%;
-        display: inline-block;
-        float: right;
-        padding-left: 10px;
-    }
-}
-
-
-/*-----------------TRAITEUR*/
-
-
-/*----------------------FOOTER*/
+/** FOOTER **/
 #site-footer .row{
     padding: 10px;
 }
@@ -248,38 +153,104 @@ body{
     background-position: 32px 0px;
 }
 
-/*----------------------MENU*/
-#menu-nav .nav > li > a {
+
+/** HOME **/
+#home {
+    width: 60%;
+    min-width: 420px;
+}
+@media (max-width: 420px) {
+    #home {
+        width: 100%;
+        min-width:100%;
+    }
+}
+#home img {
+    width: 100%;
+}
+
+
+/** CONTACT */
+#map-canvas {
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+@media (min-width: 768px) {
+    #map-canvas {
+        width: 75%;
+    }
+    .contact-info {
+        width: 25%;
+        display: inline-block;
+        float: right;
+        padding-left: 10px;
+    }
+}
+
+
+/** MENU **/
+#menu-nav > li {
+    width: 100%;
+}
+#menu-nav > li > a {
     padding: 5px;
     border-radius: 0;
     font-weight: bold;
 }
 @media (min-width: 992px){
-    #menu-nav .nav > li > a {
+    #menu-nav > li > a {
         padding-left: 34px;
     }
 }
-#menu-nav .col-md-2 {
+#menu-nav {
     padding-left: 0;
 }
 
+#menu h3 {
+    margin-top: 0px;
+}
+
+/** Product **/
+#menu .col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 .product {
     box-shadow: black 3px 3px 6px;
 }
 
+.product img {
+    width: 100%;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
 
-/*----------------------CART*/
+/** CART **/
 #cart {
-    padding: 20px 0px 40px 15px;
+    padding: 0px 0px 40px 15px;
 }
 #cart h3 {
     padding: 20px 5px 30px 5px;
     margin-bottom: 0;
     margin-top: 0;
 }
+#cart .empty-cart {
+    position: relative;
+    top: -20px;
+    left: 10px;
+}
 #cart .section {
-    padding: 0px 5px;
+    padding: 0px 10px;
     border: none;
+}
+#cart .section .info {
+    text-align: left;
 }
 #cart .section-form {
     margin-top: -10px;
@@ -289,7 +260,7 @@ body{
 }
 #cart .total {
     padding-bottom: 42px;
-    margin-bottom: 8px;
+    margin: 8px 0;
 }
 
 #cart .section-form div {
@@ -315,23 +286,6 @@ body{
     border: none;
     border-radius: 0;
     font-weight: bold;
-}
-
-/*----------------------MISC*/
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
-.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
-.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
-.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
-.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
-.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
-.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
-.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
-.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
-.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
-.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
-.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-    padding-right: 5px;
-    padding-left: 5px;
 }
 
 
