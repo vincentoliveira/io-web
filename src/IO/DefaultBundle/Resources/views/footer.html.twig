@@ -43,7 +43,11 @@
                 <p>{{ phone }}</p>
             </div>
             <div class="col-md-4 col-sm-3">
-                <p><a class="mentions-link" href="{{ path('mentions_legales') }}">Mentions légales</a></p>
+                <p>
+                    <a class="mentions-link" href="{{ path('mentions_legales') }}">Mentions légales</a>
+                    -
+                    <a class="mentions-link" href="{{ path('mentions_legales_cgv') }}" title="Conditions générales de ventes">CGV</a>
+                </p>
                 <p>&copy; {{ restaurantName|default('InnovOrder') }} 2014<br/>Tous droits réservés</a></p>
             </div>
         </div>

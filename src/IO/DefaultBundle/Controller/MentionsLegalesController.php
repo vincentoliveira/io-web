@@ -15,5 +15,13 @@ class MentionsLegalesController extends BaseController {
     public function mentionslegalesAction() {
         return array();
     }
+    
+    /**
+     * @Route("/cgv", name="mentions_legales_cgv")
+     * @Template()
+     */
+    public function cgvAction() {
+        return array();
+    }
 
 }
