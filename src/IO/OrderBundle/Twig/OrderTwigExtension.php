@@ -42,10 +42,10 @@ class OrderTwigExtension extends \Twig_Extension
             'order_type' => $this->storage->get('order_type'),
             'restaurantName' => $this->container->getParameter('io_restaurant_name'),
             
-            'address' => '30 Rue Saint-Sauveur, 75002 Paris',
-            'phone' => '01 42 21 88 78',
+            'address' => '84 rue Montorgueil - 75002, Paris',
+            'phone' => '+33(0)1 42 36 40 25',
             
-            'backgroundColor' => '#EED',
+            'backgroundColor' => 'white',
             'backgroundFontColor' => '#111',
             
             'headerColor' => 'transparent',
@@ -54,8 +54,8 @@ class OrderTwigExtension extends \Twig_Extension
             'footerColor' => '#222',
             'footerFontColor' => '#DDD',
             
-            'decorationColor' => '#CA7',
-            'decorationHoverColor' => '#975',
+            'decorationColor' => '#e10406',
+            'decorationHoverColor' => '#ba0303',
             'decorationFontColor' => 'white',
             'decorationDisabledFontColor' => '#DCA',
             
@@ -65,8 +65,8 @@ class OrderTwigExtension extends \Twig_Extension
             'productColor' => 'white',
             'productFontColor' => '#111',
             
-            'facebook' => 'https://www.facebook.com/groups/693553540720813/?fref=ts',
-            'twitter' => 'twitter.com',
+            'facebook' => 'https://www.facebook.com/monthaistreetfoodparis',
+            'twitter' => 'https://twitter.com/Monthaistreet',
             'google' => 'googleplus.com',
             'pinterest' => '',
             'tripadvisor' => '',
