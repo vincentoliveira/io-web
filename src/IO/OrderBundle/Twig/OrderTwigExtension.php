@@ -42,10 +42,10 @@ class OrderTwigExtension extends \Twig_Extension
             'order_type' => $this->storage->get('order_type'),
             'restaurantName' => $this->container->getParameter('io_restaurant_name'),
             
-            'address' => '30 Rue Saint-Sauveur, 75002 Paris',
-            'phone' => '01 42 21 88 78',
+            'address' => '12, rue des Petits Carreaux 75002 Paris - Quartier Montorgueil',
+            'phone' => '+33(0)1 45 08 40 51',
             
-            'backgroundColor' => '#EED',
+            'backgroundColor' => '#FFFFFF',
             'backgroundFontColor' => '#111',
             
             'headerColor' => 'transparent',
@@ -54,8 +54,8 @@ class OrderTwigExtension extends \Twig_Extension
             'footerColor' => '#222',
             'footerFontColor' => '#DDD',
             
-            'decorationColor' => '#CA7',
-            'decorationHoverColor' => '#975',
+            'decorationColor' => '#fe04fc',
+            'decorationHoverColor' => '#b201af',
             'decorationFontColor' => 'white',
             'decorationDisabledFontColor' => '#DCA',
             
@@ -65,9 +65,9 @@ class OrderTwigExtension extends \Twig_Extension
             'productColor' => 'white',
             'productFontColor' => '#111',
             
-            'facebook' => 'https://www.facebook.com/groups/693553540720813/?fref=ts',
-            'twitter' => 'twitter.com',
-            'google' => 'googleplus.com',
+            'facebook' => 'https://www.facebook.com/pages/Bollynan/273228672734338?sk=app_2309869772',
+            'twitter' => '',
+            'google' => '',
             'pinterest' => '',
             'tripadvisor' => '',
             'youtube' => '',
