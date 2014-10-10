@@ -59,6 +59,28 @@ class PaymentController extends BaseController
         if ($client === null || $cart === null || !isset($cart['validated']) || !$cart['validated']) {
             return $this->redirect($this->generateUrl('menu'));
         }
+        
+        $allowOrders = $this->container->getParameter('allow_orders');
+        if (!$allowOrders) {
+            return $this->forward('IOOrderBundle:Payment:notActivated');
+        }
+        
+        return array();
+    }
+    
+    /**
+     * @Template()
+     */
+    public function notActivatedAction(Request $request)
+    {
+        $cart = $this->storage->getCart();
+        $client = $this->storage->getClient();
+        
+        $deliveryDate = $this->storage->get('client_delivery_date');
+        $orderType = $this->storage->get('order_type');
+        $this->apiClient->validateCart($cart, $client, $deliveryDate, $orderType);
+        $this->storage->setCart(null);
+
         return array();
     }
 

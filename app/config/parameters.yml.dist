@@ -41,3 +41,5 @@ parameters:
     mango_restaurant_wallet_id: ~
     mango_restaurant_user_id:   ~
 
+    allow_orders:       false
+
