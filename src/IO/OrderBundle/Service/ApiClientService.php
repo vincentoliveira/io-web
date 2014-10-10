@@ -82,7 +82,8 @@ class ApiClientService
         $data = array(
             'token' => $authToken,
             'product_id' => $productId,
-            'options' => $options
+            'options' => $options,
+            'source' => 'ONLINE',
         );
             
         if ($cart) {
